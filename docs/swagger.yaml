@@ -1,0 +1,5663 @@
+definitions:
+  controller.response:
+    properties:
+      message:
+        type: string
+    type: object
+  models.About:
+    properties:
+      created:
+        $ref: '#/definitions/models.Admins'
+      createdAt:
+        type: string
+      descriptionEn:
+        type: string
+      descriptionRu:
+        type: string
+      descriptionUz:
+        type: string
+      id:
+        type: integer
+      image:
+        type: string
+      nameEn:
+        type: string
+      nameRu:
+        type: string
+      nameUz:
+        type: string
+      position:
+        type: integer
+      type:
+        type: string
+      updated:
+        $ref: '#/definitions/models.Admins'
+      updatedAt:
+        type: string
+    type: object
+  models.AdminAuth:
+    properties:
+      password:
+        type: string
+      username:
+        type: string
+    type: object
+  models.Admins:
+    properties:
+      createdAt:
+        type: string
+      deletedAt:
+        type: string
+      id:
+        type: integer
+      isActive:
+        type: boolean
+      isSuperuser:
+        type: boolean
+      lastVisit:
+        type: string
+      updatedAt:
+        type: string
+      username:
+        type: string
+    type: object
+  models.AdminsCreateRequest:
+    properties:
+      isActive:
+        type: boolean
+      isSuperuser:
+        type: boolean
+      password:
+        type: string
+      username:
+        type: string
+    type: object
+  models.Analog:
+    properties:
+      created:
+        $ref: '#/definitions/models.Admins'
+      createdAt:
+        type: string
+      id:
+        type: integer
+      nameEn:
+        type: string
+      nameRu:
+        type: string
+      nameUz:
+        type: string
+      updated:
+        $ref: '#/definitions/models.Admins'
+      updatedAt:
+        type: string
+    type: object
+  models.AnalogRequest:
+    properties:
+      nameEn:
+        type: string
+      nameRu:
+        type: string
+      nameUz:
+        type: string
+    type: object
+  models.AnalogResponse:
+    properties:
+      created:
+        $ref: '#/definitions/models.Admins'
+      createdAt:
+        type: string
+      id:
+        type: integer
+      items:
+        items:
+          $ref: '#/definitions/models.Products'
+        type: array
+      nameEn:
+        type: string
+      nameRu:
+        type: string
+      nameUz:
+        type: string
+      updated:
+        $ref: '#/definitions/models.Admins'
+      updatedAt:
+        type: string
+    type: object
+  models.Applicant:
+    properties:
+      createdAt:
+        type: string
+      description:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      phone:
+        type: string
+      resume:
+        type: string
+      status:
+        type: integer
+      vacancy:
+        $ref: '#/definitions/models.Vacancy'
+      vacancyId:
+        type: integer
+    type: object
+  models.Banner:
+    properties:
+      created:
+        $ref: '#/definitions/models.Admins'
+      createdAt:
+        type: string
+      descriptionEn:
+        type: string
+      descriptionRu:
+        type: string
+      descriptionUz:
+        type: string
+      id:
+        type: integer
+      image:
+        type: string
+      nameEn:
+        type: string
+      nameRu:
+        type: string
+      nameUz:
+        type: string
+      position:
+        type: integer
+      updated:
+        $ref: '#/definitions/models.Admins'
+      updatedAt:
+        type: string
+    type: object
+  models.Brand:
+    properties:
+      created:
+        $ref: '#/definitions/models.Admins'
+      createdAt:
+        type: string
+      descriptionEn:
+        type: string
+      descriptionRu:
+        type: string
+      descriptionUz:
+        type: string
+      id:
+        type: integer
+      image:
+        type: string
+      isActive:
+        type: boolean
+      letter:
+        type: string
+      nameEn:
+        type: string
+      nameRu:
+        type: string
+      nameUz:
+        type: string
+      position:
+        type: integer
+      seoDescription:
+        type: string
+      seoTitle:
+        type: string
+      updated:
+        $ref: '#/definitions/models.Admins'
+      updatedAt:
+        type: string
+    type: object
+  models.BrandsByLetter:
+    properties:
+      brands:
+        items:
+          $ref: '#/definitions/models.Brand'
+        type: array
+      letter:
+        type: string
+    type: object
+  models.Category:
+    properties:
+      created:
+        $ref: '#/definitions/models.Admins'
+      createdAt:
+        type: string
+      deleted:
+        $ref: '#/definitions/models.Admins'
+      deletedAt:
+        type: string
+      descriptionEn:
+        type: string
+      descriptionRu:
+        type: string
+      descriptionUz:
+        type: string
+      id:
+        type: integer
+      image:
+        type: string
+      isActive:
+        type: boolean
+      nameEn:
+        type: string
+      nameRu:
+        type: string
+      nameUz:
+        type: string
+      parent:
+        $ref: '#/definitions/models.Category'
+      parentId:
+        type: integer
+      position:
+        type: integer
+      seoDescription:
+        type: string
+      seoTitle:
+        type: string
+      updated:
+        $ref: '#/definitions/models.Admins'
+      updatedAt:
+        type: string
+    type: object
+  models.CheckCodeRequest:
+    properties:
+      code:
+        example: "997361"
+        type: string
+      isRegistered:
+        type: boolean
+      phone:
+        example: "998995117361"
+        type: string
+    type: object
+  models.Contact:
+    properties:
+      address:
+        type: string
+      created:
+        $ref: '#/definitions/models.Admins'
+      createdAt:
+        type: string
+      email:
+        type: string
+      id:
+        type: integer
+      isMain:
+        type: boolean
+      latitude:
+        type: string
+      longitude:
+        type: string
+      nameEn:
+        type: string
+      nameRu:
+        type: string
+      nameUz:
+        type: string
+      phone:
+        type: string
+      workingHours:
+        type: string
+    type: object
+  models.ContactRequest:
+    properties:
+      address:
+        type: string
+      email:
+        type: string
+      isMain:
+        type: boolean
+      latitude:
+        type: string
+      longitude:
+        type: string
+      nameEn:
+        type: string
+      nameRu:
+        type: string
+      nameUz:
+        type: string
+      phone:
+        type: string
+      workingHours:
+        type: string
+    type: object
+  models.Country:
+    properties:
+      created:
+        $ref: '#/definitions/models.Admins'
+      createdAt:
+        type: string
+      id:
+        type: integer
+      nameEn:
+        type: string
+      nameRu:
+        type: string
+      nameUz:
+        type: string
+    type: object
+  models.CountryRequest:
+    properties:
+      nameEn:
+        type: string
+      nameRu:
+        type: string
+      nameUz:
+        type: string
+    type: object
+  models.CustomOrderResponse:
+    properties:
+      activeCount:
+        type: integer
+      cancelledCount:
+        type: integer
+      count:
+        type: integer
+      finishedCount:
+        type: integer
+      orders:
+        items:
+          $ref: '#/definitions/models.Orders'
+        type: array
+      page:
+        type: integer
+      pageSize:
+        type: integer
+    type: object
+  models.Customer:
+    properties:
+      birthday:
+        type: string
+      created:
+        $ref: '#/definitions/models.Admins'
+      createdAt:
+        type: string
+      email:
+        type: string
+      id:
+        type: integer
+      lastVisit:
+        type: string
+      name:
+        type: string
+      phone:
+        type: string
+      updated:
+        $ref: '#/definitions/models.Admins'
+      updatedAt:
+        type: string
+    type: object
+  models.CustomerCode:
+    properties:
+      phone:
+        example: "998995117361"
+        type: string
+    type: object
+  models.CustomerLogin:
+    properties:
+      password:
+        example: secret
+        type: string
+      phone:
+        example: "998995117361"
+        type: string
+    type: object
+  models.CustomerRegister:
+    properties:
+      name:
+        type: string
+      password:
+        example: secret
+        type: string
+    type: object
+  models.CustomerRegisterByAdmin:
+    properties:
+      name:
+        type: string
+      phone:
+        type: string
+    type: object
+  models.CustomerRequest:
+    properties:
+      birthday:
+        type: string
+      email:
+        type: string
+      name:
+        type: string
+    type: object
+  models.News:
+    properties:
+      created:
+        $ref: '#/definitions/models.Admins'
+      createdAt:
+        type: string
+      descriptionEn:
+        type: string
+      descriptionRu:
+        type: string
+      descriptionUz:
+        type: string
+      id:
+        type: integer
+      image:
+        type: string
+      nameEn:
+        type: string
+      nameRu:
+        type: string
+      nameUz:
+        type: string
+      position:
+        type: integer
+      updated:
+        $ref: '#/definitions/models.Admins'
+      updatedAt:
+        type: string
+    type: object
+  models.OrderApplicant:
+    properties:
+      createdAt:
+        type: string
+      fullName:
+        type: string
+      id:
+        type: integer
+      message:
+        type: string
+      phone:
+        type: string
+    type: object
+  models.OrderApplicantRequest:
+    properties:
+      fullName:
+        type: string
+      message:
+        type: string
+      phone:
+        type: string
+    type: object
+  models.OrderItems:
+    properties:
+      amount:
+        type: integer
+      item:
+        $ref: '#/definitions/models.Products'
+      itemId:
+        type: integer
+      total:
+        type: number
+    type: object
+  models.OrderItemsRequest:
+    properties:
+      amount:
+        type: integer
+      itemId:
+        type: integer
+      price:
+        type: number
+    type: object
+  models.OrderRequest:
+    properties:
+      description:
+        type: string
+      items:
+        items:
+          $ref: '#/definitions/models.OrderItemsRequest'
+        type: array
+      total:
+        type: number
+    type: object
+  models.OrderResponse:
+    properties:
+      created:
+        $ref: '#/definitions/models.Admins'
+      createdAt:
+        type: string
+      customer:
+        $ref: '#/definitions/models.Customer'
+      customerId:
+        type: integer
+      deleted:
+        $ref: '#/definitions/models.Admins'
+      deletedAt:
+        type: string
+      description:
+        type: string
+      id:
+        type: integer
+      items:
+        items:
+          $ref: '#/definitions/models.OrderItems'
+        type: array
+      status:
+        type: integer
+      total:
+        type: number
+      updated:
+        $ref: '#/definitions/models.Admins'
+      updatedAt:
+        type: string
+    type: object
+  models.Orders:
+    properties:
+      created:
+        $ref: '#/definitions/models.Admins'
+      createdAt:
+        type: string
+      customer:
+        $ref: '#/definitions/models.Customer'
+      customerId:
+        type: integer
+      deleted:
+        $ref: '#/definitions/models.Admins'
+      deletedAt:
+        type: string
+      description:
+        type: string
+      id:
+        type: integer
+      status:
+        type: integer
+      total:
+        type: number
+      updated:
+        $ref: '#/definitions/models.Admins'
+      updatedAt:
+        type: string
+    type: object
+  models.Parameters:
+    properties:
+      created:
+        $ref: '#/definitions/models.Admins'
+      createdAt:
+        type: string
+      id:
+        type: integer
+      nameEn:
+        type: string
+      nameRu:
+        type: string
+      nameUz:
+        type: string
+      position:
+        type: integer
+    type: object
+  models.ParametersRequest:
+    properties:
+      nameEn:
+        type: string
+      nameRu:
+        type: string
+      nameUz:
+        type: string
+      position:
+        type: integer
+    type: object
+  models.ProductAdditionRequest:
+    properties:
+      additionCategoryId:
+        type: integer
+      productCategoryId:
+        type: integer
+    type: object
+  models.ProductMedia:
+    properties:
+      id:
+        type: integer
+      media:
+        type: string
+      position:
+        type: integer
+      productId:
+        type: integer
+      type:
+        type: string
+    type: object
+  models.ProductParamReq:
+    properties:
+      parameters:
+        items:
+          $ref: '#/definitions/models.ProductParametersRequest'
+        type: array
+    type: object
+  models.ProductParameters:
+    properties:
+      parameter:
+        $ref: '#/definitions/models.Parameters'
+      parameterId:
+        type: integer
+      product:
+        $ref: '#/definitions/models.Products'
+      productId:
+        type: integer
+      valEn:
+        type: string
+      valRu:
+        type: string
+      valUz:
+        type: string
+    type: object
+  models.ProductParametersRequest:
+    properties:
+      parameterId:
+        type: integer
+      valEn:
+        type: string
+      valRu:
+        type: string
+      valUz:
+        type: string
+    type: object
+  models.ProductResponse:
+    properties:
+      brand:
+        $ref: '#/definitions/models.Brand'
+      brandId:
+        type: integer
+      country:
+        $ref: '#/definitions/models.Country'
+      countryId:
+        type: integer
+      created:
+        $ref: '#/definitions/models.Admins'
+      createdAt:
+        type: string
+      deleted:
+        $ref: '#/definitions/models.Admins'
+      deletedAt:
+        type: string
+      descriptionEn:
+        type: string
+      descriptionRu:
+        type: string
+      descriptionUz:
+        type: string
+      id:
+        type: integer
+      image:
+        type: string
+      isActive:
+        type: boolean
+      isNew:
+        type: boolean
+      isTop:
+        type: boolean
+      media:
+        items:
+          $ref: '#/definitions/models.ProductMedia'
+        type: array
+      nameEn:
+        type: string
+      nameRu:
+        type: string
+      nameUz:
+        type: string
+      parameters:
+        items:
+          $ref: '#/definitions/models.ProductParameters'
+        type: array
+      parent:
+        $ref: '#/definitions/models.Category'
+      parentId:
+        type: integer
+      position:
+        type: integer
+      price:
+        type: number
+      seoDescription:
+        type: string
+      seoTitle:
+        type: string
+      updated:
+        $ref: '#/definitions/models.Admins'
+      updatedAt:
+        type: string
+    type: object
+  models.Products:
+    properties:
+      brand:
+        $ref: '#/definitions/models.Brand'
+      brandId:
+        type: integer
+      country:
+        $ref: '#/definitions/models.Country'
+      countryId:
+        type: integer
+      created:
+        $ref: '#/definitions/models.Admins'
+      createdAt:
+        type: string
+      deleted:
+        $ref: '#/definitions/models.Admins'
+      deletedAt:
+        type: string
+      descriptionEn:
+        type: string
+      descriptionRu:
+        type: string
+      descriptionUz:
+        type: string
+      id:
+        type: integer
+      image:
+        type: string
+      isActive:
+        type: boolean
+      isNew:
+        type: boolean
+      isTop:
+        type: boolean
+      nameEn:
+        type: string
+      nameRu:
+        type: string
+      nameUz:
+        type: string
+      parent:
+        $ref: '#/definitions/models.Category'
+      parentId:
+        type: integer
+      position:
+        type: integer
+      price:
+        type: number
+      seoDescription:
+        type: string
+      seoTitle:
+        type: string
+      updated:
+        $ref: '#/definitions/models.Admins'
+      updatedAt:
+        type: string
+    type: object
+  models.ProductsIds:
+    properties:
+      productsIds:
+        items:
+          type: integer
+        type: array
+    type: object
+  models.ProductsList:
+    properties:
+      count:
+        type: integer
+      page:
+        type: integer
+      pageSize:
+        type: integer
+      products:
+        items:
+          $ref: '#/definitions/models.Products'
+        type: array
+    type: object
+  models.PublicOffer:
+    properties:
+      created:
+        $ref: '#/definitions/models.Admins'
+      createdAt:
+        type: string
+      descriptionEn:
+        type: string
+      descriptionRu:
+        type: string
+      descriptionUz:
+        type: string
+      id:
+        type: integer
+      nameEn:
+        type: string
+      nameRu:
+        type: string
+      nameUz:
+        type: string
+    type: object
+  models.PublicOfferRequest:
+    properties:
+      descriptionEn:
+        type: string
+      descriptionRu:
+        type: string
+      descriptionUz:
+        type: string
+      nameEn:
+        type: string
+      nameRu:
+        type: string
+      nameUz:
+        type: string
+    type: object
+  models.Service:
+    properties:
+      created:
+        $ref: '#/definitions/models.Admins'
+      createdAt:
+        type: string
+      descriptionEn:
+        type: string
+      descriptionRu:
+        type: string
+      descriptionUz:
+        type: string
+      id:
+        type: integer
+      image:
+        type: string
+      nameEn:
+        type: string
+      nameRu:
+        type: string
+      nameUz:
+        type: string
+      position:
+        type: integer
+      updated:
+        $ref: '#/definitions/models.Admins'
+      updatedAt:
+        type: string
+    type: object
+  models.TokenResponse:
+    properties:
+      accessToken:
+        type: string
+    type: object
+  models.Vacancy:
+    properties:
+      created:
+        $ref: '#/definitions/models.Admins'
+      createdAt:
+        type: string
+      descriptionEn:
+        type: string
+      descriptionRu:
+        type: string
+      descriptionUz:
+        type: string
+      id:
+        type: integer
+      image:
+        type: string
+      isActive:
+        type: boolean
+      isDeleted:
+        type: boolean
+      nameEn:
+        type: string
+      nameRu:
+        type: string
+      nameUz:
+        type: string
+      region:
+        type: string
+      requirementEn:
+        type: string
+      requirementRu:
+        type: string
+      requirementUz:
+        type: string
+      responsibilityEn:
+        type: string
+      responsibilityRu:
+        type: string
+      responsibilityUz:
+        type: string
+      typeEn:
+        type: string
+      typeRu:
+        type: string
+      typeUz:
+        type: string
+      updated:
+        $ref: '#/definitions/models.Admins'
+      updatedAt:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: This is a sample server CRM server.
+  title: Golang CRM Swagger Documentation
+  version: "1.0"
+paths:
+  /api/about:
+    get:
+      consumes:
+      - application/json
+      description: this api is to get about
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            items:
+              $ref: '#/definitions/models.Country'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      summary: Get about
+      tags:
+      - About
+  /api/about/:
+    post:
+      consumes:
+      - application/json
+      description: this api is create new about
+      parameters:
+      - in: formData
+        name: descriptionEn
+        type: string
+      - in: formData
+        name: descriptionRu
+        type: string
+      - in: formData
+        name: descriptionUz
+        type: string
+      - in: formData
+        name: nameEn
+        type: string
+      - in: formData
+        name: nameRu
+        type: string
+      - in: formData
+        name: nameUz
+        type: string
+      - in: formData
+        name: position
+        type: integer
+      - in: formData
+        name: type
+        type: string
+      - description: file
+        in: formData
+        name: image_file
+        type: file
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.About'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Create new about
+      tags:
+      - About
+  /api/about/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: this api is to delete about
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/controller.response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Delete about
+      tags:
+      - About
+    get:
+      consumes:
+      - application/json
+      description: this api is to get about
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.About'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Get about
+      tags:
+      - About
+    put:
+      consumes:
+      - application/json
+      description: this api is Update about
+      parameters:
+      - description: update id
+        in: path
+        name: id
+        required: true
+        type: string
+      - in: formData
+        name: descriptionEn
+        type: string
+      - in: formData
+        name: descriptionRu
+        type: string
+      - in: formData
+        name: descriptionUz
+        type: string
+      - in: formData
+        name: nameEn
+        type: string
+      - in: formData
+        name: nameRu
+        type: string
+      - in: formData
+        name: nameUz
+        type: string
+      - in: formData
+        name: position
+        type: integer
+      - in: formData
+        name: type
+        type: string
+      - description: file
+        in: formData
+        name: image_file
+        type: file
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.About'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Update about
+      tags:
+      - About
+  /api/admin:
+    get:
+      consumes:
+      - application/json
+      description: this api is for Get admins
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            items:
+              $ref: '#/definitions/models.Admins'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Get admins
+      tags:
+      - Admin
+    post:
+      consumes:
+      - application/json
+      description: this api is for create admin
+      parameters:
+      - description: data body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.AdminsCreateRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.TokenResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      summary: Create admin
+      tags:
+      - Admin
+  /api/admin/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: this api is for DELETE admin
+      parameters:
+      - description: admin id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/controller.response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Delete admin
+      tags:
+      - Admin
+    get:
+      consumes:
+      - application/json
+      description: this api is for Get admin by id from superuser
+      parameters:
+      - description: admin id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Admins'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Get admin  by id from superuser
+      tags:
+      - Admin
+    put:
+      consumes:
+      - application/json
+      description: this api is for Update admin for superuser
+      parameters:
+      - description: admin  id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - in: query
+        name: isActive
+        type: boolean
+      - in: query
+        name: isSuperuser
+        type: boolean
+      - in: query
+        name: password
+        type: string
+      - in: query
+        name: username
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.TokenResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Update admin for superuser
+      tags:
+      - Admin
+  /api/admin/activate/{id}:
+    put:
+      consumes:
+      - application/json
+      description: this api is for activating admin
+      parameters:
+      - description: admin id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/controller.response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Activate admin
+      tags:
+      - Admin
+  /api/admin/auth:
+    post:
+      consumes:
+      - application/json
+      description: this api is for auth admin
+      parameters:
+      - description: data body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.AdminAuth'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.TokenResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      summary: auth admin
+      tags:
+      - Admin
+  /api/admin/deactivate/{id}:
+    put:
+      consumes:
+      - application/json
+      description: this api is for deactivating admin
+      parameters:
+      - description: admin id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/controller.response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Deactivate admin
+      tags:
+      - Admin
+  /api/admin/me:
+    get:
+      consumes:
+      - application/json
+      description: this api is for Get me
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Admins'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Get me
+      tags:
+      - Admin
+    put:
+      consumes:
+      - application/json
+      description: this api is for Update admin
+      parameters:
+      - in: query
+        name: password
+        type: string
+      - in: query
+        name: username
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.TokenResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Update admin
+      tags:
+      - Admin
+  /api/analog:
+    get:
+      consumes:
+      - application/json
+      description: this api is get analogs
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            items:
+              $ref: '#/definitions/models.Analog'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Get analogs
+      tags:
+      - Analogs
+    post:
+      consumes:
+      - application/json
+      description: this api is create analog
+      parameters:
+      - description: data body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.AnalogRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Analog'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Create analog
+      tags:
+      - Analogs
+  /api/analog/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: this api is delete news
+      parameters:
+      - description: news id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/controller.response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: DELETE news
+      tags:
+      - Analogs
+    get:
+      consumes:
+      - application/json
+      description: this api is get to analogs
+      parameters:
+      - description: analog id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.AnalogResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Get analog
+      tags:
+      - Analogs
+    put:
+      consumes:
+      - application/json
+      description: this api is Update Analog
+      parameters:
+      - description: Analog id
+        in: path
+        name: id
+        required: true
+        type: string
+      - in: query
+        name: nameEn
+        type: string
+      - in: query
+        name: nameRu
+        type: string
+      - in: query
+        name: nameUz
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Analog'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Update Analog
+      tags:
+      - Analogs
+  /api/analog/products/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: this api is  Add analog products
+      parameters:
+      - description: news id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: new products add
+        in: query
+        name: products
+        required: true
+        type: array
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/controller.response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Add analog products
+      tags:
+      - Analogs
+    get:
+      consumes:
+      - application/json
+      description: this api is  Add analog products
+      parameters:
+      - description: product id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            items:
+              $ref: '#/definitions/models.Products'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Add analog products
+      tags:
+      - Analogs
+    put:
+      consumes:
+      - application/json
+      description: this api is  Add analog products
+      parameters:
+      - description: news id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: new products add
+        in: query
+        name: products
+        required: true
+        type: array
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/controller.response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Add analog products
+      tags:
+      - Analogs
+  /api/banner:
+    get:
+      consumes:
+      - application/json
+      description: this api is get banner
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            items:
+              $ref: '#/definitions/models.Banner'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      summary: Get banner
+      tags:
+      - Banner
+    post:
+      consumes:
+      - application/json
+      description: this api is create new banner
+      parameters:
+      - in: formData
+        name: descriptionEn
+        type: string
+      - in: formData
+        name: descriptionRu
+        type: string
+      - in: formData
+        name: descriptionUz
+        type: string
+      - in: formData
+        name: nameEn
+        type: string
+      - in: formData
+        name: nameRu
+        type: string
+      - in: formData
+        name: nameUz
+        type: string
+      - in: formData
+        name: position
+        type: integer
+      - description: file
+        in: formData
+        name: image_file
+        type: file
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Banner'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Create new banner
+      tags:
+      - Banner
+  /api/banner/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: this api is to delete banner
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/controller.response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: DELETE banner
+      tags:
+      - Banner
+    get:
+      consumes:
+      - application/json
+      description: this api is Update banner
+      parameters:
+      - description: banner id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Banner'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Update banner
+      tags:
+      - Banner
+    put:
+      consumes:
+      - application/json
+      description: this api is Update banner
+      parameters:
+      - description: category id
+        in: path
+        name: id
+        required: true
+        type: string
+      - in: formData
+        name: descriptionEn
+        type: string
+      - in: formData
+        name: descriptionRu
+        type: string
+      - in: formData
+        name: descriptionUz
+        type: string
+      - in: formData
+        name: nameEn
+        type: string
+      - in: formData
+        name: nameRu
+        type: string
+      - in: formData
+        name: nameUz
+        type: string
+      - in: formData
+        name: position
+        type: integer
+      - description: file
+        in: formData
+        name: image_file
+        type: file
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Banner'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Update banner
+      tags:
+      - Banner
+  /api/brand:
+    get:
+      consumes:
+      - application/json
+      description: this api is to get brands
+      parameters:
+      - in: query
+        name: letter
+        type: string
+      - in: query
+        name: name
+        type: string
+      - in: query
+        name: page
+        type: integer
+      - in: query
+        name: pageSize
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            items:
+              $ref: '#/definitions/models.Brand'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      summary: Get brands
+      tags:
+      - Brand
+  /api/brand/:
+    post:
+      consumes:
+      - application/json
+      description: this api is create new brand
+      parameters:
+      - in: formData
+        name: descriptionEn
+        type: string
+      - in: formData
+        name: descriptionRu
+        type: string
+      - in: formData
+        name: descriptionUz
+        type: string
+      - in: formData
+        name: isActive
+        type: boolean
+      - in: formData
+        name: letter
+        type: string
+      - in: formData
+        name: nameEn
+        type: string
+      - in: formData
+        name: nameRu
+        type: string
+      - in: formData
+        name: nameUz
+        type: string
+      - in: formData
+        name: position
+        type: integer
+      - in: formData
+        name: seoDescription
+        type: string
+      - in: formData
+        name: seoTitle
+        type: string
+      - description: file
+        in: formData
+        name: image_file
+        type: file
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Brand'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Create new brand
+      tags:
+      - Brand
+  /api/brand/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: this api is to delete brands
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/controller.response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: DELETE brands
+      tags:
+      - Brand
+    get:
+      consumes:
+      - application/json
+      description: this api is to get brands
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            items:
+              $ref: '#/definitions/models.Brand'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      summary: Get brands
+      tags:
+      - Brand
+    put:
+      consumes:
+      - application/json
+      description: this api is Update brand
+      parameters:
+      - description: update id
+        in: path
+        name: id
+        required: true
+        type: string
+      - in: formData
+        name: descriptionEn
+        type: string
+      - in: formData
+        name: descriptionRu
+        type: string
+      - in: formData
+        name: descriptionUz
+        type: string
+      - in: formData
+        name: isActive
+        type: boolean
+      - in: formData
+        name: letter
+        type: string
+      - in: formData
+        name: nameEn
+        type: string
+      - in: formData
+        name: nameRu
+        type: string
+      - in: formData
+        name: nameUz
+        type: string
+      - in: formData
+        name: position
+        type: integer
+      - in: formData
+        name: seoDescription
+        type: string
+      - in: formData
+        name: seoTitle
+        type: string
+      - description: file
+        in: formData
+        name: image_file
+        type: file
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Brand'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Update brand
+      tags:
+      - Brand
+  /api/brand/all:
+    get:
+      consumes:
+      - application/json
+      description: this api is to get brands
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            items:
+              $ref: '#/definitions/models.Brand'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Get brands
+      tags:
+      - Brand
+  /api/brand/letter:
+    get:
+      consumes:
+      - application/json
+      description: this api is to get brands by letter
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            items:
+              $ref: '#/definitions/models.BrandsByLetter'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      summary: Get brands by letter
+      tags:
+      - Brand
+  /api/category:
+    get:
+      consumes:
+      - application/json
+      description: this api is get category
+      parameters:
+      - in: query
+        name: name
+        type: string
+      - in: query
+        name: page
+        type: integer
+      - in: query
+        name: pageSize
+        type: integer
+      - in: query
+        name: parentId
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            items:
+              $ref: '#/definitions/models.Category'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      summary: Get category
+      tags:
+      - Category
+    post:
+      consumes:
+      - application/json
+      description: this api is create new category
+      parameters:
+      - in: formData
+        name: descriptionEn
+        type: string
+      - in: formData
+        name: descriptionRu
+        type: string
+      - in: formData
+        name: descriptionUz
+        type: string
+      - in: formData
+        name: isActive
+        type: boolean
+      - in: formData
+        name: nameEn
+        type: string
+      - in: formData
+        name: nameRu
+        type: string
+      - in: formData
+        name: nameUz
+        type: string
+      - in: formData
+        name: parentId
+        type: integer
+      - in: formData
+        name: position
+        type: integer
+      - in: formData
+        name: seoDescription
+        type: string
+      - in: formData
+        name: seoTitle
+        type: string
+      - description: file
+        in: formData
+        name: image_file
+        type: file
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Category'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Create new category
+      tags:
+      - Category
+  /api/category/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: this api is to delete category
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/controller.response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: DELETE category
+      tags:
+      - Category
+    get:
+      consumes:
+      - application/json
+      description: this api is Update category
+      parameters:
+      - description: category id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Category'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Update category
+      tags:
+      - Category
+    put:
+      consumes:
+      - application/json
+      description: this api is Update category
+      parameters:
+      - description: category id
+        in: path
+        name: id
+        required: true
+        type: string
+      - in: formData
+        name: descriptionEn
+        type: string
+      - in: formData
+        name: descriptionRu
+        type: string
+      - in: formData
+        name: descriptionUz
+        type: string
+      - in: formData
+        name: isActive
+        type: boolean
+      - in: formData
+        name: nameEn
+        type: string
+      - in: formData
+        name: nameRu
+        type: string
+      - in: formData
+        name: nameUz
+        type: string
+      - in: formData
+        name: parentId
+        type: integer
+      - in: formData
+        name: position
+        type: integer
+      - in: formData
+        name: seoDescription
+        type: string
+      - in: formData
+        name: seoTitle
+        type: string
+      - description: file
+        in: formData
+        name: image_file
+        type: file
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Category'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Update category
+      tags:
+      - Category
+  /api/category/addition:
+    delete:
+      consumes:
+      - application/json
+      description: this api is to delete category addition
+      parameters:
+      - in: query
+        name: additionCategoryId
+        type: integer
+      - in: query
+        name: productCategoryId
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/controller.response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: DELETE category addition
+      tags:
+      - Category
+    post:
+      consumes:
+      - application/json
+      description: this api is to add category addition
+      parameters:
+      - description: add products addition
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/models.ProductAdditionRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/controller.response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Add category addition
+      tags:
+      - Category
+  /api/category/addition/{id}:
+    get:
+      consumes:
+      - application/json
+      description: this api is to get category addition
+      parameters:
+      - description: category id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            items:
+              $ref: '#/definitions/models.Products'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Get category additions
+      tags:
+      - Category
+  /api/category/all:
+    get:
+      consumes:
+      - application/json
+      description: this api is get category
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            items:
+              $ref: '#/definitions/models.Category'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Get category
+      tags:
+      - Category
+  /api/contact:
+    get:
+      consumes:
+      - application/json
+      description: this api is to get contacts
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            items:
+              $ref: '#/definitions/models.Contact'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      summary: Get contacts
+      tags:
+      - Contact
+  /api/contact/:
+    post:
+      consumes:
+      - application/json
+      description: this api is create new contact
+      parameters:
+      - description: data body
+        in: body
+        name: data
+        schema:
+          $ref: '#/definitions/models.ContactRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Contact'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Create new contact
+      tags:
+      - Contact
+  /api/contact/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: this api is to delete country
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/controller.response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Delete country
+      tags:
+      - Contact
+    get:
+      consumes:
+      - application/json
+      description: this api is to get contacts
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Contact'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Get contacts
+      tags:
+      - Contact
+    put:
+      consumes:
+      - application/json
+      description: this api is Update contact
+      parameters:
+      - description: update id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: data body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.ContactRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Contact'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Update contact
+      tags:
+      - Contact
+  /api/contact/main:
+    get:
+      consumes:
+      - application/json
+      description: this api is to get contacts
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            items:
+              $ref: '#/definitions/models.Contact'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Get contacts
+      tags:
+      - Contact
+  /api/country:
+    get:
+      consumes:
+      - application/json
+      description: this api is to get countries
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            items:
+              $ref: '#/definitions/models.Country'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      summary: Get countries
+      tags:
+      - Country
+  /api/country/:
+    post:
+      consumes:
+      - application/json
+      description: this api is create new country
+      parameters:
+      - description: data body
+        in: body
+        name: data
+        schema:
+          $ref: '#/definitions/models.CountryRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Country'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Create new country
+      tags:
+      - Country
+  /api/country/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: this api is to delete country
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/controller.response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Delete country
+      tags:
+      - Country
+    get:
+      consumes:
+      - application/json
+      description: this api is to get country
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Country'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      summary: Get country
+      tags:
+      - Country
+    put:
+      consumes:
+      - application/json
+      description: this api is Update country
+      parameters:
+      - description: update id
+        in: path
+        name: id
+        required: true
+        type: string
+      - in: query
+        name: nameEn
+        type: string
+      - in: query
+        name: nameRu
+        type: string
+      - in: query
+        name: nameUz
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Country'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Update country
+      tags:
+      - Country
+  /api/customer:
+    get:
+      consumes:
+      - application/json
+      description: this api is for Get me
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Customer'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Get customers
+      tags:
+      - Customer
+    post:
+      consumes:
+      - application/json
+      description: this api is for Create customer by the phone if already exists
+        return existing customer
+      parameters:
+      - description: data body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.CustomerRegisterByAdmin'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Customer'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Create customer
+      tags:
+      - Customer
+    put:
+      consumes:
+      - application/json
+      description: this api is for Update customer
+      parameters:
+      - description: data body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.CustomerRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Customer'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Update customer
+      tags:
+      - Customer
+  /api/customer/{id}:
+    get:
+      consumes:
+      - application/json
+      description: this api is for Get by id
+      parameters:
+      - description: customer id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Customer'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Get by id
+      tags:
+      - Customer
+  /api/customer/check-code:
+    post:
+      consumes:
+      - application/json
+      description: this api is for checking customer code
+      parameters:
+      - description: data body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.CheckCodeRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.TokenResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      summary: Check customer code
+      tags:
+      - Customer
+  /api/customer/login:
+    post:
+      consumes:
+      - application/json
+      description: this api is for login customer
+      parameters:
+      - description: data body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.CustomerLogin'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.TokenResponse'
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/controller.response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      summary: Login customer
+      tags:
+      - Customer
+  /api/customer/me:
+    get:
+      consumes:
+      - application/json
+      description: this api is for Get me
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Customer'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Get me
+      tags:
+      - Customer
+  /api/customer/password:
+    put:
+      consumes:
+      - application/json
+      description: this api is for update customer password
+      parameters:
+      - description: customer password
+        in: query
+        name: password
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.TokenResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Update customer password
+      tags:
+      - Customer
+  /api/customer/register:
+    post:
+      consumes:
+      - application/json
+      description: this api is for register new customer
+      parameters:
+      - description: data body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.CustomerRegister'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Customer'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Register a new customer
+      tags:
+      - Customer
+  /api/customer/send-code:
+    post:
+      consumes:
+      - application/json
+      description: this api is for sending code to a customer
+      parameters:
+      - description: data body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.CustomerCode'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/controller.response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      summary: Send code to customer
+      tags:
+      - Customer
+  /api/news:
+    get:
+      consumes:
+      - application/json
+      description: this api is get news
+      parameters:
+      - in: query
+        name: name
+        type: string
+      - in: query
+        name: page
+        type: integer
+      - in: query
+        name: pageSize
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            items:
+              $ref: '#/definitions/models.News'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      summary: Get news
+      tags:
+      - News
+    post:
+      consumes:
+      - application/json
+      description: this api is create news
+      parameters:
+      - in: formData
+        name: descriptionEn
+        type: string
+      - in: formData
+        name: descriptionRu
+        type: string
+      - in: formData
+        name: descriptionUz
+        type: string
+      - in: formData
+        name: nameEn
+        type: string
+      - in: formData
+        name: nameRu
+        type: string
+      - in: formData
+        name: nameUz
+        type: string
+      - in: formData
+        name: position
+        type: integer
+      - description: file
+        in: formData
+        name: image_file
+        type: file
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.News'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Create news
+      tags:
+      - News
+  /api/news/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: this api is delete news
+      parameters:
+      - description: news id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/controller.response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: DELETE news
+      tags:
+      - News
+    get:
+      consumes:
+      - application/json
+      description: this api is Update news
+      parameters:
+      - description: news id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.News'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      summary: Update news
+      tags:
+      - News
+    put:
+      consumes:
+      - application/json
+      description: this api is Update news
+      parameters:
+      - description: news id
+        in: path
+        name: id
+        required: true
+        type: string
+      - in: formData
+        name: descriptionEn
+        type: string
+      - in: formData
+        name: descriptionRu
+        type: string
+      - in: formData
+        name: descriptionUz
+        type: string
+      - in: formData
+        name: nameEn
+        type: string
+      - in: formData
+        name: nameRu
+        type: string
+      - in: formData
+        name: nameUz
+        type: string
+      - in: formData
+        name: position
+        type: integer
+      - description: file
+        in: formData
+        name: image_file
+        type: file
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.News'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Update news
+      tags:
+      - News
+  /api/order:
+    get:
+      consumes:
+      - application/json
+      description: this api is to get customer orders
+      parameters:
+      - in: query
+        name: page
+        type: integer
+      - in: query
+        name: pageSize
+        type: integer
+      - in: query
+        name: status
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            items:
+              $ref: '#/definitions/models.CustomOrderResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Get customer orders
+      tags:
+      - Order
+    post:
+      consumes:
+      - application/json
+      description: this api is create new order
+      parameters:
+      - description: data body
+        in: body
+        name: data
+        schema:
+          $ref: '#/definitions/models.OrderRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.OrderResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Create new order
+      tags:
+      - Order
+  /api/order/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: this api is delete order this api change status to 2
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Orders'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Delete Order
+      tags:
+      - Order
+    get:
+      consumes:
+      - application/json
+      description: this api is to get by id order
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            items:
+              $ref: '#/definitions/models.Orders'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Get by id order
+      tags:
+      - Order
+    post:
+      consumes:
+      - application/json
+      description: this api is create new order admin
+      parameters:
+      - description: customer id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: data body
+        in: body
+        name: data
+        schema:
+          $ref: '#/definitions/models.OrderRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.OrderResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Create new order by admin
+      tags:
+      - Order
+    put:
+      consumes:
+      - application/json
+      description: this api is Update order admin
+      parameters:
+      - description: order id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - in: formData
+        name: description
+        type: string
+      - in: formData
+        name: total
+        type: number
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.OrderResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Update order by admin
+      tags:
+      - Order
+  /api/order/all:
+    get:
+      consumes:
+      - application/json
+      description: this api is to get all orders from admin
+      parameters:
+      - in: query
+        name: customerId
+        type: integer
+      - in: query
+        name: dateFrom
+        type: string
+      - in: query
+        name: dateTo
+        type: string
+      - in: query
+        name: page
+        type: integer
+      - in: query
+        name: pageSize
+        type: integer
+      - in: query
+        name: status
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            items:
+              $ref: '#/definitions/models.Orders'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Get all orders for admin
+      tags:
+      - Order
+  /api/order/applicant:
+    get:
+      consumes:
+      - application/json
+      description: this api is to get customer orders applicants
+      parameters:
+      - in: query
+        name: fullName
+        type: string
+      - in: query
+        name: page
+        type: integer
+      - in: query
+        name: pageSize
+        type: integer
+      - in: query
+        name: phone
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            items:
+              $ref: '#/definitions/models.CustomOrderResponse'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Get customer orders applicants
+      tags:
+      - Order
+    post:
+      consumes:
+      - application/json
+      description: this api is create new order applicant
+      parameters:
+      - description: data body
+        in: body
+        name: data
+        schema:
+          $ref: '#/definitions/models.OrderApplicantRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.OrderApplicant'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      summary: Create new order applicant
+      tags:
+      - Order
+  /api/order/applicant/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: this api is to delete by id order applicant
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/controller.response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: delete by id order applicant
+      tags:
+      - Order
+  /api/order/cancel/{id}:
+    put:
+      consumes:
+      - application/json
+      description: this api is for cancel order this api change status to 3
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            items:
+              $ref: '#/definitions/models.Orders'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Cancel  order
+      tags:
+      - Order
+  /api/order/finish/{id}:
+    put:
+      consumes:
+      - application/json
+      description: this api is finish order this api change status to 2
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Orders'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Finish Order
+      tags:
+      - Order
+  /api/parameter:
+    get:
+      consumes:
+      - application/json
+      description: this api is for get product parameter
+      parameters:
+      - in: query
+        name: name
+        type: string
+      - in: query
+        name: page
+        type: integer
+      - in: query
+        name: pageSize
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            items:
+              $ref: '#/definitions/models.Parameters'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: get product parameter
+      tags:
+      - Parameter
+  /api/parameter/:
+    post:
+      consumes:
+      - application/json
+      description: this api is create new parameter
+      parameters:
+      - description: data body
+        in: body
+        name: data
+        schema:
+          $ref: '#/definitions/models.ParametersRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Parameters'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Create new parameter
+      tags:
+      - Parameter
+  /api/parameter/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: this api is to delete parameter
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/controller.response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Delete parameter
+      tags:
+      - Parameter
+    get:
+      consumes:
+      - application/json
+      description: this api is to get Parameter
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Parameters'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Get Parameter
+      tags:
+      - Parameter
+    put:
+      consumes:
+      - application/json
+      description: this api is Update parameter
+      parameters:
+      - description: update id
+        in: path
+        name: id
+        required: true
+        type: string
+      - in: query
+        name: nameEn
+        type: string
+      - in: query
+        name: nameRu
+        type: string
+      - in: query
+        name: nameUz
+        type: string
+      - in: query
+        name: position
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Parameters'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Update parameter
+      tags:
+      - Parameter
+  /api/product:
+    get:
+      consumes:
+      - application/json
+      description: this api is get product
+      parameters:
+      - in: query
+        name: isNew
+        type: boolean
+      - in: query
+        name: isTop
+        type: boolean
+      - in: query
+        name: multiSearch
+        type: string
+      - in: query
+        name: page
+        type: integer
+      - in: query
+        name: pageSize
+        type: integer
+      - in: query
+        name: parentId
+        type: integer
+      - in: query
+        name: priceFrom
+        type: number
+      - in: query
+        name: priceTo
+        type: number
+      - description: product brand ids
+        in: query
+        name: brandId
+        type: array
+      - description: product country ids
+        in: query
+        name: countryId
+        type: array
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.ProductsList'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      summary: get product
+      tags:
+      - Product
+    post:
+      consumes:
+      - application/json
+      description: this api is create new product
+      parameters:
+      - in: formData
+        name: brandId
+        type: integer
+      - in: formData
+        name: countryId
+        type: integer
+      - in: formData
+        name: descriptionEn
+        type: string
+      - in: formData
+        name: descriptionRu
+        type: string
+      - in: formData
+        name: descriptionUz
+        type: string
+      - in: formData
+        name: isActive
+        type: boolean
+      - in: formData
+        name: isNew
+        type: boolean
+      - in: formData
+        name: isTop
+        type: boolean
+      - in: formData
+        name: nameEn
+        type: string
+      - in: formData
+        name: nameRu
+        type: string
+      - in: formData
+        name: nameUz
+        type: string
+      - in: formData
+        name: parentId
+        type: integer
+      - in: formData
+        name: position
+        type: integer
+      - in: formData
+        name: price
+        type: number
+      - in: formData
+        name: seoDescription
+        type: string
+      - in: formData
+        name: seoTitle
+        type: string
+      - description: file
+        in: formData
+        name: image_file
+        type: file
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Products'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Create new product
+      tags:
+      - Product
+  /api/product/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: this api is for delete product from favorites
+      parameters:
+      - description: product id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/controller.response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: delete product from favorites
+      tags:
+      - Product
+    get:
+      consumes:
+      - application/json
+      description: this api is Update product
+      parameters:
+      - description: product id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.ProductResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Update product
+      tags:
+      - Product
+    put:
+      consumes:
+      - application/json
+      description: this api is Update product
+      parameters:
+      - description: product id
+        in: path
+        name: id
+        required: true
+        type: string
+      - in: formData
+        name: brandId
+        type: integer
+      - in: formData
+        name: countryId
+        type: integer
+      - in: formData
+        name: descriptionEn
+        type: string
+      - in: formData
+        name: descriptionRu
+        type: string
+      - in: formData
+        name: descriptionUz
+        type: string
+      - in: formData
+        name: isActive
+        type: boolean
+      - in: formData
+        name: isNew
+        type: boolean
+      - in: formData
+        name: isTop
+        type: boolean
+      - in: formData
+        name: nameEn
+        type: string
+      - in: formData
+        name: nameRu
+        type: string
+      - in: formData
+        name: nameUz
+        type: string
+      - in: formData
+        name: parentId
+        type: integer
+      - in: formData
+        name: position
+        type: integer
+      - in: formData
+        name: price
+        type: number
+      - in: formData
+        name: seoDescription
+        type: string
+      - in: formData
+        name: seoTitle
+        type: string
+      - description: file
+        in: formData
+        name: image_file
+        type: file
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Products'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Update product
+      tags:
+      - Product
+  /api/product/all:
+    get:
+      consumes:
+      - application/json
+      description: this api is get product
+      parameters:
+      - in: query
+        name: isNew
+        type: boolean
+      - in: query
+        name: isTop
+        type: boolean
+      - in: query
+        name: multiSearch
+        type: string
+      - in: query
+        name: page
+        type: integer
+      - in: query
+        name: pageSize
+        type: integer
+      - in: query
+        name: parentId
+        type: integer
+      - in: query
+        name: priceFrom
+        type: number
+      - in: query
+        name: priceTo
+        type: number
+      - description: product brand ids
+        in: query
+        name: brandId
+        type: array
+      - description: product country ids
+        in: query
+        name: countryId
+        type: array
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.ProductsList'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: get product
+      tags:
+      - Product
+  /api/product/list:
+    post:
+      consumes:
+      - application/json
+      description: this api is get product
+      parameters:
+      - description: product brand ids
+        in: body
+        name: data
+        schema:
+          $ref: '#/definitions/models.ProductsIds'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.ProductsList'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      summary: get product
+      tags:
+      - Product
+  /api/product/media/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: this api is add media to product
+      parameters:
+      - description: media id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Products'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Add product media
+      tags:
+      - Product
+    post:
+      consumes:
+      - application/json
+      description: this api is add media to product
+      parameters:
+      - description: product id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - in: formData
+        name: position
+        required: true
+        type: integer
+      - in: formData
+        name: type
+        required: true
+        type: string
+      - description: file
+        in: formData
+        name: file
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Products'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Add product media
+      tags:
+      - Product
+  /api/product/parameter/{id}:
+    post:
+      consumes:
+      - application/json
+      description: this api will create gotten parameters and delete other relations
+        product parameters
+      parameters:
+      - description: product id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: data body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.ProductParamReq'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Products'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Create product parameters
+      tags:
+      - Product
+  /api/public-offer:
+    get:
+      consumes:
+      - application/json
+      description: this api is to get public offer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.PublicOffer'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      summary: Get public offer
+      tags:
+      - PublicOffer
+  /api/public-offer/:
+    delete:
+      consumes:
+      - application/json
+      description: this api is to delete public offer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/controller.response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Delete public offer
+      tags:
+      - PublicOffer
+    post:
+      consumes:
+      - application/json
+      description: this api is create new public
+      parameters:
+      - description: data body
+        in: body
+        name: data
+        schema:
+          $ref: '#/definitions/models.PublicOfferRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.PublicOffer'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Create new public offer
+      tags:
+      - PublicOffer
+  /api/service:
+    get:
+      consumes:
+      - application/json
+      description: this api is get service
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            items:
+              $ref: '#/definitions/models.Service'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      summary: Get service
+      tags:
+      - Service
+    post:
+      consumes:
+      - application/json
+      description: this api is create new service
+      parameters:
+      - in: formData
+        name: descriptionEn
+        type: string
+      - in: formData
+        name: descriptionRu
+        type: string
+      - in: formData
+        name: descriptionUz
+        type: string
+      - in: formData
+        name: nameEn
+        type: string
+      - in: formData
+        name: nameRu
+        type: string
+      - in: formData
+        name: nameUz
+        type: string
+      - in: formData
+        name: position
+        type: integer
+      - description: file
+        in: formData
+        name: image_file
+        type: file
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Service'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Create new service
+      tags:
+      - Service
+  /api/service/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: this api is to delete service
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/controller.response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: DELETE service
+      tags:
+      - Service
+    get:
+      consumes:
+      - application/json
+      description: this api is Update service
+      parameters:
+      - description: service id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Service'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Update service
+      tags:
+      - Service
+    put:
+      consumes:
+      - application/json
+      description: this api is Update service
+      parameters:
+      - description: category id
+        in: path
+        name: id
+        required: true
+        type: string
+      - in: formData
+        name: descriptionEn
+        type: string
+      - in: formData
+        name: descriptionRu
+        type: string
+      - in: formData
+        name: descriptionUz
+        type: string
+      - in: formData
+        name: nameEn
+        type: string
+      - in: formData
+        name: nameRu
+        type: string
+      - in: formData
+        name: nameUz
+        type: string
+      - in: formData
+        name: position
+        type: integer
+      - description: file
+        in: formData
+        name: image_file
+        type: file
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Service'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Update service
+      tags:
+      - Service
+  /api/vacancy:
+    get:
+      consumes:
+      - application/json
+      description: this api is get vacancy
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            items:
+              $ref: '#/definitions/models.Vacancy'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      summary: Get vacancy
+      tags:
+      - Vacancy
+    post:
+      consumes:
+      - application/json
+      description: this api is create vacancy
+      parameters:
+      - in: formData
+        name: descriptionEn
+        type: string
+      - in: formData
+        name: descriptionRu
+        type: string
+      - in: formData
+        name: descriptionUz
+        type: string
+      - in: formData
+        name: isActive
+        type: boolean
+      - in: formData
+        name: nameEn
+        type: string
+      - in: formData
+        name: nameRu
+        type: string
+      - in: formData
+        name: nameUz
+        type: string
+      - in: formData
+        name: region
+        type: string
+      - in: formData
+        name: requirementEn
+        type: string
+      - in: formData
+        name: requirementRu
+        type: string
+      - in: formData
+        name: requirementUz
+        type: string
+      - in: formData
+        name: responsibilityEn
+        type: string
+      - in: formData
+        name: responsibilityRu
+        type: string
+      - in: formData
+        name: responsibilityUz
+        type: string
+      - in: formData
+        name: typeEn
+        type: string
+      - in: formData
+        name: typeRu
+        type: string
+      - in: formData
+        name: typeUz
+        type: string
+      - description: file
+        in: formData
+        name: image_file
+        type: file
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Vacancy'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Create vacancy
+      tags:
+      - Vacancy
+  /api/vacancy/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: this api is DELETE vacancy
+      parameters:
+      - description: vacancy id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/controller.response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: DELETE vacancy
+      tags:
+      - Vacancy
+    get:
+      consumes:
+      - application/json
+      description: this api is Update vacancy
+      parameters:
+      - description: vacancy id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Vacancy'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      summary: Update vacancy
+      tags:
+      - Vacancy
+    put:
+      consumes:
+      - application/json
+      description: this api is Update vacancy
+      parameters:
+      - description: vacancy id
+        in: path
+        name: id
+        required: true
+        type: string
+      - in: formData
+        name: descriptionEn
+        type: string
+      - in: formData
+        name: descriptionRu
+        type: string
+      - in: formData
+        name: descriptionUz
+        type: string
+      - in: formData
+        name: isActive
+        type: boolean
+      - in: formData
+        name: nameEn
+        type: string
+      - in: formData
+        name: nameRu
+        type: string
+      - in: formData
+        name: nameUz
+        type: string
+      - in: formData
+        name: region
+        type: string
+      - in: formData
+        name: requirementEn
+        type: string
+      - in: formData
+        name: requirementRu
+        type: string
+      - in: formData
+        name: requirementUz
+        type: string
+      - in: formData
+        name: responsibilityEn
+        type: string
+      - in: formData
+        name: responsibilityRu
+        type: string
+      - in: formData
+        name: responsibilityUz
+        type: string
+      - in: formData
+        name: typeEn
+        type: string
+      - in: formData
+        name: typeRu
+        type: string
+      - in: formData
+        name: typeUz
+        type: string
+      - description: file
+        in: formData
+        name: image_file
+        type: file
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Vacancy'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Update vacancy
+      tags:
+      - Vacancy
+  /api/vacancy/all:
+    get:
+      consumes:
+      - application/json
+      description: this api is get all vacancy
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            items:
+              $ref: '#/definitions/models.Vacancy'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Get all vacancy
+      tags:
+      - Vacancy
+  /api/vacancy/applicant:
+    get:
+      consumes:
+      - application/json
+      description: this api is get applicant of vacancy statuses(0--new , 1-accept,2-saved,3-rejected)
+      parameters:
+      - in: query
+        name: page
+        type: integer
+      - in: query
+        name: pageSize
+        type: integer
+      - in: query
+        name: status
+        type: integer
+      - in: query
+        name: vacancyId
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            items:
+              $ref: '#/definitions/models.Applicant'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Create applicant to vacancy
+      tags:
+      - Vacancy
+    post:
+      consumes:
+      - application/json
+      description: this api is create applicant to vacancy
+      parameters:
+      - in: formData
+        name: description
+        type: string
+      - in: formData
+        name: name
+        type: string
+      - in: formData
+        name: phone
+        type: string
+      - in: formData
+        name: vacancyId
+        type: integer
+      - description: file
+        in: formData
+        name: resume_file
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/controller.response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      summary: Create applicant to vacancy
+      tags:
+      - Vacancy
+  /api/vacancy/applicant/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: this api is create applicant to vacancy
+      parameters:
+      - description: vacancy id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/controller.response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Create applicant to vacancy
+      tags:
+      - Vacancy
+    get:
+      consumes:
+      - application/json
+      description: this api is create applicant to vacancy
+      parameters:
+      - description: vacancy id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Applicant'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Create applicant to vacancy
+      tags:
+      - Vacancy
+  /api/vacancy/applicant/accept/{id}:
+    put:
+      consumes:
+      - application/json
+      description: this api is for change status applicant to 1
+      parameters:
+      - description: applicant id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Applicant'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Accept applicant
+      tags:
+      - Vacancy
+  /api/vacancy/applicant/reject/{id}:
+    put:
+      consumes:
+      - application/json
+      description: this api is for change status applicant to 3
+      parameters:
+      - description: applicant id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Applicant'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Reject applicant
+      tags:
+      - Vacancy
+  /api/vacancy/applicant/save/{id}:
+    put:
+      consumes:
+      - application/json
+      description: this api is change applicant status to 2
+      parameters:
+      - description: applicant id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Applicant'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Save applicant
+      tags:
+      - Vacancy
+securityDefinitions:
+  BearerAuth:
+    description: AUTH.
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

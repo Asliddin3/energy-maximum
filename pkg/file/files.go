@@ -9,15 +9,15 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/Asliddin/zoomda/configs"
-	"github.com/Asliddin/zoomda/models"
+	"github.com/Asliddin3/energy-maximum/config"
+	"github.com/Asliddin3/energy-maximum/models"
 )
 
 type FilesService struct {
-	cfg configs.Config
+	cfg config.Config
 }
 
-func NewFilesService(cfg configs.Config) *FilesService {
+func NewFilesService(cfg config.Config) *FilesService {
 	return &FilesService{cfg: cfg}
 }
 
@@ -40,7 +40,7 @@ func (f *FilesService) Save(ctx context.Context, file models.File) (string, erro
 
 	extension := pattern.FindString(file.File.Filename)
 	if extension == "" {
-		return "", models.ErrFileName
+		return "", fmt.Errorf("missing extension")
 	}
 
 	now := strconv.FormatInt(time.Now().UnixNano(), 10)
@@ -48,7 +48,6 @@ func (f *FilesService) Save(ctx context.Context, file models.File) (string, erro
 	newName := now + extension
 
 	dst := createPath + "/" + newName
-
 	out, err := os.Create(dst)
 	if err != nil {
 		return "", err
