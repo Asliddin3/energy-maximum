@@ -4,16 +4,16 @@ import "time"
 
 type Country struct {
 	ID        int        `gorm:"type:bigint;primaryKey" json:"id"`
-	NameUz    string     `gorm:"type:varchar(250) not null" json:"nameUz"`
-	NameRu    string     `gorm:"type:varchar(250) not null" json:"nameRu"`
-	NameEn    string     `gorm:"type:varchar(250) not null" json:"nameEn"`
+	NameUz    string     `gorm:"type:varchar(250) not null" json:"name_uz"`
+	NameRu    string     `gorm:"type:varchar(250) not null" json:"name_ru"`
+	NameEn    string     `gorm:"type:varchar(250) not null" json:"name_en"`
 	Created   *Admins    `gorm:"foreignKey:CreatedID"       json:"created"`
 	CreatedID *int       `gorm:"type:bigint;default:null"  json:"-"`
-	CreatedAt *time.Time `gorm:"type:timestamptz;default:null" json:"createdAt"`
+	CreatedAt *time.Time `gorm:"type:timestamptz;default:null" json:"created_at"`
 }
 
 type CountryRequest struct {
-	NameUz string `json:"nameUz" form:"nameUz"`
-	NameRu string `json:"nameRu" form:"nameRu"`
-	NameEn string `json:"nameEn" form:"nameEn"`
+	NameUz string `json:"name_uz" form:"name_uz"`
+	NameRu string `json:"name_ru" form:"name_ru"`
+	NameEn string `json:"name_en" form:"name_en"`
 }

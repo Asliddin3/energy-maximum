@@ -3,25 +3,29 @@ package models
 import "time"
 
 type Admins struct {
-	ID          int        `gorm:"type:bigint;primaryKey" json:"id"`
-	Username    string     `gorm:"type:varchar(255);unique" json:"username"`
-	Password    string     `gorm:"type:varchar(255)" json:"-"`
-	IsSuperuser *bool      `gorm:"type:boolean not null" json:"isSuperuser"`
-	CreatedAt   *time.Time `gorm:"type:timestamptz;default:null" json:"createdAt"`
-	UpdatedAt   *time.Time `gorm:"type:timestamptz;default:null" json:"updatedAt"`
-	LastVisit   *time.Time `gorm:"type:timestamptz;default:null" json:"lastVisit"`
-	IsActive    *bool      `gorm:"type:boolean;default:true" json:"isActive"`
-	DeletedAt   *time.Time `gorm:"type:timestamptz;default:null" json:"deletedAt"`
+	ID        int        `gorm:"type:bigint;primaryKey" json:"id"`
+	Username  string     `gorm:"type:varchar(255);unique" json:"username"`
+	Password  string     `gorm:"type:varchar(255)" json:"-"`
+	Role      *Roles     `gorm:"foreignKey:RoleID" json:"role"`
+	RoleID    int        `gorm:"type:bigint;default:null" json:"role_id"`
+	CreatedAt *time.Time `gorm:"type:timestamptz;default:null" json:"created_at"`
+	UpdatedAt *time.Time `gorm:"type:timestamptz;default:null" json:"updated_at"`
+	LastVisit *time.Time `gorm:"type:timestamptz;default:null" json:"last_visit"`
+	IsActive  *bool      `gorm:"type:boolean;default:true;index" json:"is_active"`
+	DeletedAt *time.Time `gorm:"type:timestamptz;default:null" json:"deleted_at"`
+}
+type AdminResponse struct {
+	Admins
+	ModuleItemKeys []string `json:"moduleItemKeys"`
 }
 type AdminMetadata struct {
-	Id          int
-	IsSuperuser bool
+	Id int
 }
 type AdminsCreateRequest struct {
-	Username    string `json:"username" form:"username"`
-	Password    string `json:"password" form:"password"`
-	IsSuperuser bool   `json:"isSuperuser" form:"isSuperuser"`
-	IsActive    *bool  `json:"isActive" form:"isActive"`
+	Username string `json:"username" form:"username"`
+	Password string `json:"password" form:"password"`
+	RoleID   int    `json:"role_id" form:"role_id"`
+	IsActive *bool  `json:"is_active" form:"is_active"`
 }
 type AdminsRequest struct {
 	Username string `json:"username" form:"username"`
@@ -38,5 +42,6 @@ type AccessToken struct {
 }
 
 type TokenResponse struct {
-	AccessToken string `json:"accessToken"`
+	AccessToken    string   `json:"accessToken"`
+	ModuleItemKeys []string `json:"moduleItemKeys"`
 }

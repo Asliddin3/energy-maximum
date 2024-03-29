@@ -2,7 +2,6 @@ package controller
 
 import (
 	"errors"
-	"fmt"
 	"net/http"
 	"strconv"
 	"strings"
@@ -23,7 +22,7 @@ func (h *Handler) NewAdminController(api *gin.RouterGroup) {
 	adminContr := &AdminController{h}
 	admin := api.Group("admin")
 	{
-		admin.POST("", adminContr.CreateAdmin)
+		admin.POST("", h.DeserializeAdmin(), adminContr.CreateAdmin)
 		admin.POST("/auth", adminContr.AuthAdmin)
 		admin.PUT("/:id", h.DeserializeAdmin(), adminContr.UpdateAdmin)
 		admin.GET("", h.DeserializeAdmin(), adminContr.GetAdmins)
@@ -39,6 +38,7 @@ func (h *Handler) NewAdminController(api *gin.RouterGroup) {
 // @Summary		  Create admin
 // @Description	   this api is for create admin
 // @Tags			Admin
+// @Security		BearerAuth
 // @Accept			json
 // @Produce			json
 // @Param			data 	body		models.AdminsCreateRequest	true	"data body"
@@ -61,11 +61,11 @@ func (h *AdminController) CreateAdmin(c *gin.Context) {
 		return
 	}
 	admin := &models.Admins{
-		Username:    body.Username,
-		Password:    hashed,
-		IsSuperuser: &body.IsSuperuser,
-		CreatedAt:   timeNow(),
-		IsActive:    body.IsActive,
+		Username:  body.Username,
+		Password:  hashed,
+		RoleID:    body.RoleID,
+		CreatedAt: timeNow(),
+		IsActive:  body.IsActive,
 		// CreatedID: ,
 	}
 	err = h.db.Create(&admin).Error
@@ -155,6 +155,12 @@ func (h *AdminController) AuthAdmin(c *gin.Context) {
 		h.log.Error("error while token", logger.Error(err))
 		return
 	}
+	var moduleItemKeys []string
+	err = h.db.Model(&models.RoleItems{}).Where("role_id=?", admin.RoleID).Find(&moduleItemKeys).Error
+	if err != nil {
+		newResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
 	// refreshToken, err := utils.CreateToken(time.Duration(time.Hour*720), admin.ID, h.cfg.RefreshTokenPrivateKey)
 	// if err != nil {
 	// 	newResponse(c, http.StatusInternalServerError, err.Error())
@@ -163,7 +169,8 @@ func (h *AdminController) AuthAdmin(c *gin.Context) {
 	// }
 
 	c.JSON(http.StatusOK, models.TokenResponse{
-		AccessToken: token,
+		AccessToken:    token,
+		ModuleItemKeys: moduleItemKeys,
 	})
 }
 
@@ -180,11 +187,11 @@ func (h *AdminController) AuthAdmin(c *gin.Context) {
 // @Failure			500		{object}	response
 // @Router			/api/admin/{id} [PUT]
 func (h *AdminController) UpdateAdmin(c *gin.Context) {
-	user := h.GetAdmin(c)
-	if !user.IsSuperuser {
-		newResponse(c, http.StatusForbidden, "yor are not superuser")
-		return
-	}
+	// user := h.GetAdmin(c)
+	// if !user.IsSuperuser {
+	// 	newResponse(c, http.StatusForbidden, "yor are not superuser")
+	// 	return
+	// }
 	inputId := c.Param("id")
 	id, err := strconv.Atoi(inputId)
 	if err != nil {
@@ -212,7 +219,7 @@ func (h *AdminController) UpdateAdmin(c *gin.Context) {
 	}
 	admin.Username = body.Username
 	admin.Password = hashed
-	admin.IsSuperuser = &body.IsSuperuser
+	admin.RoleID = body.RoleID
 	if body.IsActive != nil {
 		admin.IsActive = body.IsActive
 	}
@@ -311,11 +318,11 @@ func (h *AdminController) GetAdmins(c *gin.Context) {
 // @Failure			500		{object}	response
 // @Router			/api/admin/deactivate/{id} [PUT]
 func (h *AdminController) DeactivateAdmin(c *gin.Context) {
-	currentUser := h.GetAdmin(c)
-	if !currentUser.IsSuperuser {
-		newResponse(c, http.StatusForbidden, "your are not superuser")
-		return
-	}
+	// currentUser := h.GetAdmin(c)
+	// if !currentUser.IsSuperuser {
+	// 	newResponse(c, http.StatusForbidden, "your are not superuser")
+	// 	return
+	// }
 	id := c.Param("id")
 	if id == "" {
 		newResponse(c, http.StatusBadRequest, "missing id")
@@ -326,10 +333,6 @@ func (h *AdminController) DeactivateAdmin(c *gin.Context) {
 		h.log.Error("failed to update admins", err.Error())
 		newResponse(c, http.StatusInternalServerError, "failed to update admin status")
 		return
-	}
-	err = h.BigCache.Delete(fmt.Sprintf("admin:%v", id))
-	if err != nil {
-		h.log.Error("failed to delete admin from bigcache", err.Error())
 	}
 	c.JSON(http.StatusOK, response{"success"})
 }
@@ -346,11 +349,11 @@ func (h *AdminController) DeactivateAdmin(c *gin.Context) {
 // @Failure			500		{object}	response
 // @Router			/api/admin/activate/{id} [PUT]
 func (h *AdminController) ActivateAdmin(c *gin.Context) {
-	currentUser := h.GetAdmin(c)
-	if !currentUser.IsSuperuser {
-		newResponse(c, http.StatusForbidden, "your are not superuser")
-		return
-	}
+	// currentUser := h.GetAdmin(c)
+	// if !currentUser.IsSuperuser {
+	// 	newResponse(c, http.StatusForbidden, "your are not superuser")
+	// 	return
+	// }
 	id := c.Param("id")
 	if id == "" {
 		newResponse(c, http.StatusBadRequest, "missing id")
@@ -377,11 +380,11 @@ func (h *AdminController) ActivateAdmin(c *gin.Context) {
 // @Failure			500		{object}	response
 // @Router			/api/admin/{id} [DELETE]
 func (h *AdminController) DeleteAdmin(c *gin.Context) {
-	currentUser := h.GetAdmin(c)
-	if !currentUser.IsSuperuser {
-		newResponse(c, http.StatusForbidden, "your are not superuser")
-		return
-	}
+	// currentUser := h.GetAdmin(c)
+	// if !currentUser.IsSuperuser {
+	// 	newResponse(c, http.StatusForbidden, "your are not superuser")
+	// 	return
+	// }
 	id := c.Param("id")
 	if id == "" {
 		newResponse(c, http.StatusBadRequest, "missing id")
@@ -396,10 +399,7 @@ func (h *AdminController) DeleteAdmin(c *gin.Context) {
 		newResponse(c, http.StatusInternalServerError, "failed to update admin status")
 		return
 	}
-	err = h.BigCache.Delete(fmt.Sprintf("admin:%v", id))
-	if err != nil {
-		h.log.Error("failed to delete admin from bigcache", err.Error())
-	}
+
 	c.JSON(http.StatusOK, response{"success"})
 }
 
@@ -409,7 +409,7 @@ func (h *AdminController) DeleteAdmin(c *gin.Context) {
 // @Security		BearerAuth
 // @Accept			json
 // @Produce			json
-// @Success			200		{object}	models.Admins
+// @Success			200		{object}	models.AdminResponse
 // @Failure			400,409	{object}	response
 // @Failure			500		{object}	response
 // @Router			/api/admin/me [GET]
@@ -422,7 +422,16 @@ func (h *AdminController) GetMe(c *gin.Context) {
 		h.log.Error("failed to get admin", err.Error())
 		return
 	}
-	c.JSON(http.StatusOK, admins)
+	var moduleItemKeys []string
+	err = h.db.Model(&models.RoleItems{}).Where("role_id=?", admins.RoleID).Find(&moduleItemKeys).Error
+	if err != nil {
+		newResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+	c.JSON(http.StatusOK, models.AdminResponse{
+		Admins:         admins,
+		ModuleItemKeys: moduleItemKeys,
+	})
 }
 
 // @Summary		  Get admin  by id from superuser
@@ -437,24 +446,24 @@ func (h *AdminController) GetMe(c *gin.Context) {
 // @Failure			500		{object}	response
 // @Router			/api/admin/{id} [GET]
 func (h *AdminController) GetAdminById(c *gin.Context) {
-	admin := h.GetAdmin(c)
+	// admin := h.GetAdmin(c)
 	id := c.Param("id")
 	var admins models.Admins
-	if admin.IsSuperuser {
-		err := h.db.First(&admins, "id=?", id).Error
-		if err != nil {
-			if errors.Is(err, gorm.ErrRecordNotFound) {
-				newResponse(c, http.StatusNotFound, "no such admin")
-				return
-			}
-			newResponse(c, http.StatusInternalServerError, err.Error())
-			h.log.Error("failed to get admin", err.Error())
+	// if admin.IsSuperuser {
+	err := h.db.First(&admins, "id=?", id).Error
+	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			newResponse(c, http.StatusNotFound, "no such admin")
 			return
 		}
-	} else {
-		newResponse(c, http.StatusForbidden, "you are not superuser")
+		newResponse(c, http.StatusInternalServerError, err.Error())
+		h.log.Error("failed to get admin", err.Error())
 		return
 	}
+	// } else {
+	// 	newResponse(c, http.StatusForbidden, "you are not superuser")
+	// 	return
+	// }
 
 	c.JSON(http.StatusOK, admins)
 }

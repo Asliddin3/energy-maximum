@@ -8,23 +8,23 @@ definitions:
     properties:
       created:
         $ref: '#/definitions/models.Admins'
-      createdAt:
+      created_at:
         type: string
-      descriptionEn:
+      description_en:
         type: string
-      descriptionRu:
+      description_ru:
         type: string
-      descriptionUz:
+      description_uz:
         type: string
       id:
         type: integer
       image:
         type: string
-      nameEn:
+      name_en:
         type: string
-      nameRu:
+      name_ru:
         type: string
-      nameUz:
+      name_uz:
         type: string
       position:
         type: integer
@@ -32,7 +32,7 @@ definitions:
         type: string
       updated:
         $ref: '#/definitions/models.Admins'
-      updatedAt:
+      updated_at:
         type: string
     type: object
   models.AdminAuth:
@@ -42,33 +42,60 @@ definitions:
       username:
         type: string
     type: object
-  models.Admins:
+  models.AdminResponse:
     properties:
-      createdAt:
+      created_at:
         type: string
-      deletedAt:
+      deleted_at:
         type: string
       id:
         type: integer
-      isActive:
+      is_active:
         type: boolean
-      isSuperuser:
-        type: boolean
-      lastVisit:
+      last_visit:
         type: string
-      updatedAt:
+      moduleItemKeys:
+        items:
+          type: string
+        type: array
+      role:
+        $ref: '#/definitions/models.Roles'
+      role_id:
+        type: integer
+      updated_at:
+        type: string
+      username:
+        type: string
+    type: object
+  models.Admins:
+    properties:
+      created_at:
+        type: string
+      deleted_at:
+        type: string
+      id:
+        type: integer
+      is_active:
+        type: boolean
+      last_visit:
+        type: string
+      role:
+        $ref: '#/definitions/models.Roles'
+      role_id:
+        type: integer
+      updated_at:
         type: string
       username:
         type: string
     type: object
   models.AdminsCreateRequest:
     properties:
-      isActive:
-        type: boolean
-      isSuperuser:
+      is_active:
         type: boolean
       password:
         type: string
+      role_id:
+        type: integer
       username:
         type: string
     type: object
@@ -76,35 +103,35 @@ definitions:
     properties:
       created:
         $ref: '#/definitions/models.Admins'
-      createdAt:
+      created_at:
         type: string
       id:
         type: integer
-      nameEn:
+      name_en:
         type: string
-      nameRu:
+      name_ru:
         type: string
-      nameUz:
+      name_uz:
         type: string
       updated:
         $ref: '#/definitions/models.Admins'
-      updatedAt:
+      updated_at:
         type: string
     type: object
   models.AnalogRequest:
     properties:
-      nameEn:
+      name_en:
         type: string
-      nameRu:
+      name_ru:
         type: string
-      nameUz:
+      name_uz:
         type: string
     type: object
   models.AnalogResponse:
     properties:
       created:
         $ref: '#/definitions/models.Admins'
-      createdAt:
+      created_at:
         type: string
       id:
         type: integer
@@ -112,20 +139,20 @@ definitions:
         items:
           $ref: '#/definitions/models.Products'
         type: array
-      nameEn:
+      name_en:
         type: string
-      nameRu:
+      name_ru:
         type: string
-      nameUz:
+      name_uz:
         type: string
       updated:
         $ref: '#/definitions/models.Admins'
-      updatedAt:
+      updated_at:
         type: string
     type: object
   models.Applicant:
     properties:
-      createdAt:
+      created_at:
         type: string
       description:
         type: string
@@ -141,73 +168,73 @@ definitions:
         type: integer
       vacancy:
         $ref: '#/definitions/models.Vacancy'
-      vacancyId:
+      vacancy_id:
         type: integer
     type: object
   models.Banner:
     properties:
       created:
         $ref: '#/definitions/models.Admins'
-      createdAt:
+      created_at:
         type: string
-      descriptionEn:
+      description_en:
         type: string
-      descriptionRu:
+      description_ru:
         type: string
-      descriptionUz:
+      description_uz:
         type: string
       id:
         type: integer
       image:
         type: string
-      nameEn:
+      name_en:
         type: string
-      nameRu:
+      name_ru:
         type: string
-      nameUz:
+      name_uz:
         type: string
       position:
         type: integer
       updated:
         $ref: '#/definitions/models.Admins'
-      updatedAt:
+      updated_at:
         type: string
     type: object
   models.Brand:
     properties:
       created:
         $ref: '#/definitions/models.Admins'
-      createdAt:
+      created_at:
         type: string
-      descriptionEn:
+      description_en:
         type: string
-      descriptionRu:
+      description_ru:
         type: string
-      descriptionUz:
+      description_uz:
         type: string
       id:
         type: integer
       image:
         type: string
-      isActive:
+      is_active:
         type: boolean
       letter:
         type: string
-      nameEn:
+      name_en:
         type: string
-      nameRu:
+      name_ru:
         type: string
-      nameUz:
+      name_uz:
         type: string
       position:
         type: integer
-      seoDescription:
+      seo_description:
         type: string
-      seoTitle:
+      seo_title:
         type: string
       updated:
         $ref: '#/definitions/models.Admins'
-      updatedAt:
+      updated_at:
         type: string
     type: object
   models.BrandsByLetter:
@@ -223,43 +250,53 @@ definitions:
     properties:
       created:
         $ref: '#/definitions/models.Admins'
-      createdAt:
+      created_at:
         type: string
       deleted:
         $ref: '#/definitions/models.Admins'
-      deletedAt:
+      deleted_at:
         type: string
-      descriptionEn:
+      description_en:
         type: string
-      descriptionRu:
+      description_ru:
         type: string
-      descriptionUz:
+      description_uz:
         type: string
       id:
         type: integer
       image:
         type: string
-      isActive:
+      is_active:
         type: boolean
-      nameEn:
+      name_en:
         type: string
-      nameRu:
+      name_ru:
         type: string
-      nameUz:
+      name_uz:
         type: string
       parent:
         $ref: '#/definitions/models.Category'
-      parentId:
+      parent_id:
         type: integer
       position:
         type: integer
-      seoDescription:
+      seo_description_en:
         type: string
-      seoTitle:
+      seo_description_ru:
+        type: string
+      seo_description_uz:
+        type: string
+      seo_title_en:
+        type: string
+      seo_title_ru:
+        type: string
+      seo_title_uz:
         type: string
       updated:
         $ref: '#/definitions/models.Admins'
-      updatedAt:
+      updated_at:
+        type: string
+      url:
         type: string
     type: object
   models.CheckCodeRequest:
@@ -279,27 +316,27 @@ definitions:
         type: string
       created:
         $ref: '#/definitions/models.Admins'
-      createdAt:
+      created_at:
         type: string
       email:
         type: string
       id:
         type: integer
-      isMain:
+      is_main:
         type: boolean
       latitude:
         type: string
       longitude:
         type: string
-      nameEn:
+      name_en:
         type: string
-      nameRu:
+      name_ru:
         type: string
-      nameUz:
+      name_uz:
         type: string
       phone:
         type: string
-      workingHours:
+      working_hours:
         type: string
     type: object
   models.ContactRequest:
@@ -308,56 +345,85 @@ definitions:
         type: string
       email:
         type: string
-      isMain:
+      is_main:
         type: boolean
       latitude:
         type: string
       longitude:
         type: string
-      nameEn:
+      name_en:
         type: string
-      nameRu:
+      name_ru:
         type: string
-      nameUz:
+      name_uz:
         type: string
       phone:
         type: string
-      workingHours:
+      working_hours:
         type: string
     type: object
   models.Country:
     properties:
       created:
         $ref: '#/definitions/models.Admins'
-      createdAt:
+      created_at:
         type: string
       id:
         type: integer
-      nameEn:
+      name_en:
         type: string
-      nameRu:
+      name_ru:
         type: string
-      nameUz:
+      name_uz:
         type: string
     type: object
   models.CountryRequest:
     properties:
-      nameEn:
+      name_en:
         type: string
-      nameRu:
+      name_ru:
         type: string
-      nameUz:
+      name_uz:
         type: string
+    type: object
+  models.CreateModuleInput:
+    properties:
+      description:
+        type: string
+      name:
+        type: string
+    type: object
+  models.CreateModuleItemInput:
+    properties:
+      description:
+        type: string
+      end_point:
+        type: string
+      key:
+        type: string
+      method:
+        type: string
+      module_id:
+        type: integer
+      name:
+        type: string
+    required:
+    - description
+    - end_point
+    - key
+    - method
+    - module_id
+    - name
     type: object
   models.CustomOrderResponse:
     properties:
-      activeCount:
+      active_count:
         type: integer
-      cancelledCount:
+      cancelled_count:
         type: integer
       count:
         type: integer
-      finishedCount:
+      finished_count:
         type: integer
       orders:
         items:
@@ -365,7 +431,7 @@ definitions:
         type: array
       page:
         type: integer
-      pageSize:
+      page_size:
         type: integer
     type: object
   models.Customer:
@@ -374,13 +440,13 @@ definitions:
         type: string
       created:
         $ref: '#/definitions/models.Admins'
-      createdAt:
+      created_at:
         type: string
       email:
         type: string
       id:
         type: integer
-      lastVisit:
+      last_visit:
         type: string
       name:
         type: string
@@ -388,7 +454,7 @@ definitions:
         type: string
       updated:
         $ref: '#/definitions/models.Admins'
-      updatedAt:
+      updated_at:
         type: string
     type: object
   models.CustomerCode:
@@ -430,40 +496,66 @@ definitions:
       name:
         type: string
     type: object
+  models.ModuleItems:
+    properties:
+      description:
+        type: string
+      end_point:
+        type: string
+      id:
+        type: integer
+      key:
+        type: string
+      method:
+        type: string
+      module:
+        $ref: '#/definitions/models.Modules'
+      name:
+        type: string
+    type: object
+  models.Modules:
+    properties:
+      description:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
   models.News:
     properties:
       created:
         $ref: '#/definitions/models.Admins'
-      createdAt:
+      created_at:
         type: string
-      descriptionEn:
+      description_en:
         type: string
-      descriptionRu:
+      description_ru:
         type: string
-      descriptionUz:
+      description_uz:
         type: string
       id:
         type: integer
       image:
         type: string
-      nameEn:
+      name_en:
         type: string
-      nameRu:
+      name_ru:
         type: string
-      nameUz:
+      name_uz:
         type: string
       position:
         type: integer
       updated:
         $ref: '#/definitions/models.Admins'
-      updatedAt:
+      updated_at:
         type: string
     type: object
   models.OrderApplicant:
     properties:
-      createdAt:
+      created_at:
         type: string
-      fullName:
+      full_name:
         type: string
       id:
         type: integer
@@ -474,7 +566,7 @@ definitions:
     type: object
   models.OrderApplicantRequest:
     properties:
-      fullName:
+      full_name:
         type: string
       message:
         type: string
@@ -487,7 +579,7 @@ definitions:
         type: integer
       item:
         $ref: '#/definitions/models.Products'
-      itemId:
+      item_id:
         type: integer
       total:
         type: number
@@ -496,7 +588,7 @@ definitions:
     properties:
       amount:
         type: integer
-      itemId:
+      item_id:
         type: integer
       price:
         type: number
@@ -516,15 +608,15 @@ definitions:
     properties:
       created:
         $ref: '#/definitions/models.Admins'
-      createdAt:
+      created_at:
         type: string
       customer:
         $ref: '#/definitions/models.Customer'
-      customerId:
+      customer_id:
         type: integer
       deleted:
         $ref: '#/definitions/models.Admins'
-      deletedAt:
+      deleted_at:
         type: string
       description:
         type: string
@@ -540,22 +632,22 @@ definitions:
         type: number
       updated:
         $ref: '#/definitions/models.Admins'
-      updatedAt:
+      updated_at:
         type: string
     type: object
   models.Orders:
     properties:
       created:
         $ref: '#/definitions/models.Admins'
-      createdAt:
+      created_at:
         type: string
       customer:
         $ref: '#/definitions/models.Customer'
-      customerId:
+      customer_id:
         type: integer
       deleted:
         $ref: '#/definitions/models.Admins'
-      deletedAt:
+      deleted_at:
         type: string
       description:
         type: string
@@ -567,42 +659,93 @@ definitions:
         type: number
       updated:
         $ref: '#/definitions/models.Admins'
-      updatedAt:
+      updated_at:
+        type: string
+    type: object
+  models.Pages:
+    properties:
+      created:
+        $ref: '#/definitions/models.Admins'
+      created_at:
+        type: string
+      deleted:
+        $ref: '#/definitions/models.Admins'
+      deleted_at:
+        type: string
+      description_en:
+        type: string
+      description_ru:
+        type: string
+      description_uz:
+        type: string
+      id:
+        type: integer
+      image:
+        type: string
+      is_active:
+        type: boolean
+      name_en:
+        type: string
+      name_ru:
+        type: string
+      name_uz:
+        type: string
+      position:
+        type: integer
+      seo_description_en:
+        type: string
+      seo_description_ru:
+        type: string
+      seo_description_uz:
+        type: string
+      seo_title_en:
+        type: string
+      seo_title_ru:
+        type: string
+      seo_title_uz:
+        type: string
+      updated:
+        $ref: '#/definitions/models.Admins'
+      updated_at:
+        type: string
+      url:
         type: string
     type: object
   models.Parameters:
     properties:
       created:
         $ref: '#/definitions/models.Admins'
-      createdAt:
+      created_at:
         type: string
       id:
         type: integer
-      nameEn:
+      is_deleted:
+        type: boolean
+      name_en:
         type: string
-      nameRu:
+      name_ru:
         type: string
-      nameUz:
+      name_uz:
         type: string
       position:
         type: integer
     type: object
   models.ParametersRequest:
     properties:
-      nameEn:
+      name_en:
         type: string
-      nameRu:
+      name_ru:
         type: string
-      nameUz:
+      name_uz:
         type: string
       position:
         type: integer
     type: object
   models.ProductAdditionRequest:
     properties:
-      additionCategoryId:
+      addition_category_id:
         type: integer
-      productCategoryId:
+      product_category_id:
         type: integer
     type: object
   models.ProductMedia:
@@ -613,10 +756,17 @@ definitions:
         type: string
       position:
         type: integer
-      productId:
+      product_id:
         type: integer
       type:
         type: string
+    type: object
+  models.ProductParamDeleteReq:
+    properties:
+      parameterIds:
+        items:
+          type: integer
+        type: array
     type: object
   models.ProductParamReq:
     properties:
@@ -625,21 +775,40 @@ definitions:
           $ref: '#/definitions/models.ProductParametersRequest'
         type: array
     type: object
+  models.ProductParameterResponse:
+    properties:
+      name_en:
+        type: string
+      name_ru:
+        type: string
+      name_uz:
+        type: string
+      parameter_id:
+        type: integer
+      position:
+        type: integer
+      val_en:
+        type: string
+      val_ru:
+        type: string
+      val_uz:
+        type: string
+    type: object
   models.ProductParameters:
     properties:
       parameter:
         $ref: '#/definitions/models.Parameters'
-      parameterId:
+      parameter_id:
         type: integer
       product:
         $ref: '#/definitions/models.Products'
-      productId:
+      product_id:
         type: integer
-      valEn:
+      val_en:
         type: string
-      valRu:
+      val_ru:
         type: string
-      valUz:
+      val_uz:
         type: string
     type: object
   models.ProductParametersRequest:
@@ -657,122 +826,142 @@ definitions:
     properties:
       brand:
         $ref: '#/definitions/models.Brand'
-      brandId:
+      brand_id:
         type: integer
       country:
         $ref: '#/definitions/models.Country'
-      countryId:
+      country_id:
         type: integer
       created:
         $ref: '#/definitions/models.Admins'
-      createdAt:
+      created_at:
         type: string
       deleted:
         $ref: '#/definitions/models.Admins'
-      deletedAt:
+      deleted_at:
         type: string
-      descriptionEn:
+      description_en:
         type: string
-      descriptionRu:
+      description_ru:
         type: string
-      descriptionUz:
+      description_uz:
         type: string
       id:
         type: integer
       image:
         type: string
-      isActive:
+      is_active:
         type: boolean
-      isNew:
+      is_new:
         type: boolean
-      isTop:
+      is_top:
         type: boolean
       media:
         items:
           $ref: '#/definitions/models.ProductMedia'
         type: array
-      nameEn:
+      name_en:
         type: string
-      nameRu:
+      name_ru:
         type: string
-      nameUz:
+      name_uz:
         type: string
       parameters:
         items:
-          $ref: '#/definitions/models.ProductParameters'
+          $ref: '#/definitions/models.ProductParameterResponse'
         type: array
       parent:
         $ref: '#/definitions/models.Category'
-      parentId:
+      parent_id:
         type: integer
       position:
         type: integer
       price:
         type: number
-      seoDescription:
+      seo_description_en:
         type: string
-      seoTitle:
+      seo_description_ru:
+        type: string
+      seo_description_uz:
+        type: string
+      seo_title_en:
+        type: string
+      seo_title_ru:
+        type: string
+      seo_title_uz:
         type: string
       updated:
         $ref: '#/definitions/models.Admins'
-      updatedAt:
+      updated_at:
+        type: string
+      url:
         type: string
     type: object
   models.Products:
     properties:
       brand:
         $ref: '#/definitions/models.Brand'
-      brandId:
+      brand_id:
         type: integer
       country:
         $ref: '#/definitions/models.Country'
-      countryId:
+      country_id:
         type: integer
       created:
         $ref: '#/definitions/models.Admins'
-      createdAt:
+      created_at:
         type: string
       deleted:
         $ref: '#/definitions/models.Admins'
-      deletedAt:
+      deleted_at:
         type: string
-      descriptionEn:
+      description_en:
         type: string
-      descriptionRu:
+      description_ru:
         type: string
-      descriptionUz:
+      description_uz:
         type: string
       id:
         type: integer
       image:
         type: string
-      isActive:
+      is_active:
         type: boolean
-      isNew:
+      is_new:
         type: boolean
-      isTop:
+      is_top:
         type: boolean
-      nameEn:
+      name_en:
         type: string
-      nameRu:
+      name_ru:
         type: string
-      nameUz:
+      name_uz:
         type: string
       parent:
         $ref: '#/definitions/models.Category'
-      parentId:
+      parent_id:
         type: integer
       position:
         type: integer
       price:
         type: number
-      seoDescription:
+      seo_description_en:
         type: string
-      seoTitle:
+      seo_description_ru:
+        type: string
+      seo_description_uz:
+        type: string
+      seo_title_en:
+        type: string
+      seo_title_ru:
+        type: string
+      seo_title_uz:
         type: string
       updated:
         $ref: '#/definitions/models.Admins'
-      updatedAt:
+      updated_at:
+        type: string
+      url:
         type: string
     type: object
   models.ProductsIds:
@@ -788,7 +977,7 @@ definitions:
         type: integer
       page:
         type: integer
-      pageSize:
+      page_size:
         type: integer
       products:
         items:
@@ -799,121 +988,252 @@ definitions:
     properties:
       created:
         $ref: '#/definitions/models.Admins'
-      createdAt:
+      created_at:
         type: string
-      descriptionEn:
+      description_en:
         type: string
-      descriptionRu:
+      description_ru:
         type: string
-      descriptionUz:
+      description_uz:
         type: string
       id:
         type: integer
-      nameEn:
+      name_en:
         type: string
-      nameRu:
+      name_ru:
         type: string
-      nameUz:
+      name_uz:
         type: string
     type: object
   models.PublicOfferRequest:
     properties:
-      descriptionEn:
+      description_en:
         type: string
-      descriptionRu:
+      description_ru:
         type: string
-      descriptionUz:
+      description_uz:
         type: string
-      nameEn:
+      name_en:
         type: string
-      nameRu:
+      name_ru:
         type: string
-      nameUz:
+      name_uz:
+        type: string
+    type: object
+  models.RoleItemRequest:
+    properties:
+      key:
+        type: string
+      role_id:
+        type: integer
+    type: object
+  models.RoleItems:
+    properties:
+      created:
+        $ref: '#/definitions/models.Admins'
+      created_at:
+        type: string
+      id:
+        type: integer
+      key:
+        type: string
+      module_item:
+        $ref: '#/definitions/models.ModuleItems'
+      role:
+        $ref: '#/definitions/models.Roles'
+      role_id:
+        type: integer
+      updated:
+        $ref: '#/definitions/models.Admins'
+      updated_at:
+        type: string
+    type: object
+  models.RoleWithModuleItems:
+    properties:
+      comment:
+        type: string
+      created:
+        $ref: '#/definitions/models.Admins'
+      created_at:
+        type: string
+      id:
+        type: integer
+      is_active:
+        type: boolean
+      is_deleted:
+        type: boolean
+      key:
+        type: string
+      module_item_keys:
+        items:
+          type: string
+        type: array
+      title:
+        type: string
+      updated:
+        $ref: '#/definitions/models.Admins'
+      updated_at:
+        type: string
+    type: object
+  models.Roles:
+    properties:
+      comment:
+        type: string
+      created:
+        $ref: '#/definitions/models.Admins'
+      created_at:
+        type: string
+      id:
+        type: integer
+      is_active:
+        type: boolean
+      is_deleted:
+        type: boolean
+      key:
+        type: string
+      title:
+        type: string
+      updated:
+        $ref: '#/definitions/models.Admins'
+      updated_at:
+        type: string
+    type: object
+  models.RolesRequest:
+    properties:
+      comment:
+        type: string
+      is_active:
+        type: boolean
+      key:
+        type: string
+      title:
         type: string
     type: object
   models.Service:
     properties:
       created:
         $ref: '#/definitions/models.Admins'
-      createdAt:
+      created_at:
         type: string
-      descriptionEn:
+      description_en:
         type: string
-      descriptionRu:
+      description_ru:
         type: string
-      descriptionUz:
+      description_uz:
         type: string
       id:
         type: integer
       image:
         type: string
-      nameEn:
+      name_en:
         type: string
-      nameRu:
+      name_ru:
         type: string
-      nameUz:
+      name_uz:
         type: string
       position:
         type: integer
       updated:
         $ref: '#/definitions/models.Admins'
-      updatedAt:
+      updated_at:
         type: string
     type: object
   models.TokenResponse:
     properties:
       accessToken:
         type: string
+      moduleItemKeys:
+        items:
+          type: string
+        type: array
+    type: object
+  models.UpdateModuleInput:
+    properties:
+      description:
+        type: string
+      name:
+        type: string
+    type: object
+  models.UpdateModuleItemInput:
+    properties:
+      description:
+        type: string
+      end_point:
+        type: string
+      key:
+        type: string
+      method:
+        type: string
+      module_id:
+        type: integer
+      name:
+        type: string
+    required:
+    - description
+    - end_point
+    - key
+    - method
+    - module_id
+    - name
+    type: object
+  models.UpdateRoleItemsList:
+    properties:
+      module_item_keys:
+        items:
+          type: string
+        type: array
+      role_id:
+        type: integer
     type: object
   models.Vacancy:
     properties:
       created:
         $ref: '#/definitions/models.Admins'
-      createdAt:
+      created_at:
         type: string
-      descriptionEn:
+      description_en:
         type: string
-      descriptionRu:
+      description_ru:
         type: string
-      descriptionUz:
+      description_uz:
         type: string
       id:
         type: integer
       image:
         type: string
-      isActive:
+      is_active:
         type: boolean
-      isDeleted:
+      is_deleted:
         type: boolean
-      nameEn:
+      name_en:
         type: string
-      nameRu:
+      name_ru:
         type: string
-      nameUz:
+      name_uz:
         type: string
       region:
         type: string
-      requirementEn:
+      requirement_en:
         type: string
-      requirementRu:
+      requirement_ru:
         type: string
-      requirementUz:
+      requirement_uz:
         type: string
-      responsibilityEn:
+      responsibility_en:
         type: string
-      responsibilityRu:
+      responsibility_ru:
         type: string
-      responsibilityUz:
+      responsibility_uz:
         type: string
-      typeEn:
+      type_en:
         type: string
-      typeRu:
+      type_ru:
         type: string
-      typeUz:
+      type_uz:
         type: string
       updated:
         $ref: '#/definitions/models.Admins'
-      updatedAt:
+      updated_at:
         type: string
     type: object
 info:
@@ -958,22 +1278,22 @@ paths:
       description: this api is create new about
       parameters:
       - in: formData
-        name: descriptionEn
+        name: description_en
         type: string
       - in: formData
-        name: descriptionRu
+        name: description_ru
         type: string
       - in: formData
-        name: descriptionUz
+        name: description_uz
         type: string
       - in: formData
-        name: nameEn
+        name: name_en
         type: string
       - in: formData
-        name: nameRu
+        name: name_ru
         type: string
       - in: formData
-        name: nameUz
+        name: name_uz
         type: string
       - in: formData
         name: position
@@ -1089,22 +1409,22 @@ paths:
         required: true
         type: string
       - in: formData
-        name: descriptionEn
+        name: description_en
         type: string
       - in: formData
-        name: descriptionRu
+        name: description_ru
         type: string
       - in: formData
-        name: descriptionUz
+        name: description_uz
         type: string
       - in: formData
-        name: nameEn
+        name: name_en
         type: string
       - in: formData
-        name: nameRu
+        name: name_ru
         type: string
       - in: formData
-        name: nameUz
+        name: name_uz
         type: string
       - in: formData
         name: position
@@ -1201,6 +1521,8 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
       summary: Create admin
       tags:
       - Admin
@@ -1284,14 +1606,14 @@ paths:
         required: true
         type: integer
       - in: query
-        name: isActive
-        type: boolean
-      - in: query
-        name: isSuperuser
+        name: is_active
         type: boolean
       - in: query
         name: password
         type: string
+      - in: query
+        name: role_id
+        type: integer
       - in: query
         name: username
         type: string
@@ -1434,7 +1756,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/models.Admins'
+            $ref: '#/definitions/models.AdminResponse'
         "400":
           description: Bad Request
           schema:
@@ -1633,13 +1955,13 @@ paths:
         required: true
         type: string
       - in: query
-        name: nameEn
+        name: name_en
         type: string
       - in: query
-        name: nameRu
+        name: name_ru
         type: string
       - in: query
-        name: nameUz
+        name: name_uz
         type: string
       produces:
       - application/json
@@ -1815,22 +2137,22 @@ paths:
       description: this api is create new banner
       parameters:
       - in: formData
-        name: descriptionEn
+        name: description_en
         type: string
       - in: formData
-        name: descriptionRu
+        name: description_ru
         type: string
       - in: formData
-        name: descriptionUz
+        name: description_uz
         type: string
       - in: formData
-        name: nameEn
+        name: name_en
         type: string
       - in: formData
-        name: nameRu
+        name: name_ru
         type: string
       - in: formData
-        name: nameUz
+        name: name_uz
         type: string
       - in: formData
         name: position
@@ -1943,22 +2265,22 @@ paths:
         required: true
         type: string
       - in: formData
-        name: descriptionEn
+        name: description_en
         type: string
       - in: formData
-        name: descriptionRu
+        name: description_ru
         type: string
       - in: formData
-        name: descriptionUz
+        name: description_uz
         type: string
       - in: formData
-        name: nameEn
+        name: name_en
         type: string
       - in: formData
-        name: nameRu
+        name: name_ru
         type: string
       - in: formData
-        name: nameUz
+        name: name_uz
         type: string
       - in: formData
         name: position
@@ -2007,7 +2329,7 @@ paths:
         name: page
         type: integer
       - in: query
-        name: pageSize
+        name: page_size
         type: integer
       produces:
       - application/json
@@ -2040,37 +2362,37 @@ paths:
       description: this api is create new brand
       parameters:
       - in: formData
-        name: descriptionEn
+        name: description_en
         type: string
       - in: formData
-        name: descriptionRu
+        name: description_ru
         type: string
       - in: formData
-        name: descriptionUz
+        name: description_uz
         type: string
       - in: formData
-        name: isActive
+        name: is_active
         type: boolean
       - in: formData
         name: letter
         type: string
       - in: formData
-        name: nameEn
+        name: name_en
         type: string
       - in: formData
-        name: nameRu
+        name: name_ru
         type: string
       - in: formData
-        name: nameUz
+        name: name_uz
         type: string
       - in: formData
         name: position
         type: integer
       - in: formData
-        name: seoDescription
+        name: seo_description
         type: string
       - in: formData
-        name: seoTitle
+        name: seo_title
         type: string
       - description: file
         in: formData
@@ -2180,37 +2502,37 @@ paths:
         required: true
         type: string
       - in: formData
-        name: descriptionEn
+        name: description_en
         type: string
       - in: formData
-        name: descriptionRu
+        name: description_ru
         type: string
       - in: formData
-        name: descriptionUz
+        name: description_uz
         type: string
       - in: formData
-        name: isActive
+        name: is_active
         type: boolean
       - in: formData
         name: letter
         type: string
       - in: formData
-        name: nameEn
+        name: name_en
         type: string
       - in: formData
-        name: nameRu
+        name: name_ru
         type: string
       - in: formData
-        name: nameUz
+        name: name_uz
         type: string
       - in: formData
         name: position
         type: integer
       - in: formData
-        name: seoDescription
+        name: seo_description
         type: string
       - in: formData
-        name: seoTitle
+        name: seo_title
         type: string
       - description: file
         in: formData
@@ -2313,10 +2635,10 @@ paths:
         name: page
         type: integer
       - in: query
-        name: pageSize
+        name: page_size
         type: integer
       - in: query
-        name: parentId
+        name: parent_id
         type: integer
       produces:
       - application/json
@@ -2348,37 +2670,52 @@ paths:
       description: this api is create new category
       parameters:
       - in: formData
-        name: descriptionEn
+        name: description_en
         type: string
       - in: formData
-        name: descriptionRu
+        name: description_ru
         type: string
       - in: formData
-        name: descriptionUz
+        name: description_uz
         type: string
       - in: formData
-        name: isActive
+        name: is_active
         type: boolean
       - in: formData
-        name: nameEn
+        name: name_en
         type: string
       - in: formData
-        name: nameRu
+        name: name_ru
         type: string
       - in: formData
-        name: nameUz
+        name: name_uz
         type: string
       - in: formData
-        name: parentId
+        name: parent_id
         type: integer
       - in: formData
         name: position
         type: integer
       - in: formData
-        name: seoDescription
+        name: seo_description_en
         type: string
       - in: formData
-        name: seoTitle
+        name: seo_description_ru
+        type: string
+      - in: formData
+        name: seo_description_uz
+        type: string
+      - in: formData
+        name: seo_title_en
+        type: string
+      - in: formData
+        name: seo_title_ru
+        type: string
+      - in: formData
+        name: seo_title_uz
+        type: string
+      - in: formData
+        name: url
         type: string
       - description: file
         in: formData
@@ -2488,37 +2825,52 @@ paths:
         required: true
         type: string
       - in: formData
-        name: descriptionEn
+        name: description_en
         type: string
       - in: formData
-        name: descriptionRu
+        name: description_ru
         type: string
       - in: formData
-        name: descriptionUz
+        name: description_uz
         type: string
       - in: formData
-        name: isActive
+        name: is_active
         type: boolean
       - in: formData
-        name: nameEn
+        name: name_en
         type: string
       - in: formData
-        name: nameRu
+        name: name_ru
         type: string
       - in: formData
-        name: nameUz
+        name: name_uz
         type: string
       - in: formData
-        name: parentId
+        name: parent_id
         type: integer
       - in: formData
         name: position
         type: integer
       - in: formData
-        name: seoDescription
+        name: seo_description_en
         type: string
       - in: formData
-        name: seoTitle
+        name: seo_description_ru
+        type: string
+      - in: formData
+        name: seo_description_uz
+        type: string
+      - in: formData
+        name: seo_title_en
+        type: string
+      - in: formData
+        name: seo_title_ru
+        type: string
+      - in: formData
+        name: seo_title_uz
+        type: string
+      - in: formData
+        name: url
         type: string
       - description: file
         in: formData
@@ -2555,10 +2907,10 @@ paths:
       description: this api is to delete category addition
       parameters:
       - in: query
-        name: additionCategoryId
+        name: addition_category_id
         type: integer
       - in: query
-        name: productCategoryId
+        name: product_category_id
         type: integer
       produces:
       - application/json
@@ -3033,13 +3385,13 @@ paths:
         required: true
         type: string
       - in: query
-        name: nameEn
+        name: name_en
         type: string
       - in: query
-        name: nameRu
+        name: name_ru
         type: string
       - in: query
-        name: nameUz
+        name: name_uz
         type: string
       produces:
       - application/json
@@ -3408,6 +3760,351 @@ paths:
       summary: Send code to customer
       tags:
       - Customer
+  /api/modules:
+    get:
+      consumes:
+      - application/json
+      description: This api for get Modules
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Modules'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Get all Modules
+      tags:
+      - Module
+    post:
+      consumes:
+      - application/json
+      description: This API to create a Module.
+      parameters:
+      - description: data body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateModuleInput'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Modules'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Create a Module.
+      tags:
+      - Module
+  /api/modules-items:
+    get:
+      consumes:
+      - application/json
+      description: This api for get Modules items
+      parameters:
+      - description: Module ID
+        in: query
+        name: moduleId
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.ModuleItems'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Get all Modules items
+      tags:
+      - ModuleItems
+    post:
+      consumes:
+      - application/json
+      description: This API to create an module item.
+      parameters:
+      - description: data body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateModuleItemInput'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.ModuleItems'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Create an Module item.
+      tags:
+      - ModuleItems
+  /api/modules-items/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: This API to delete module item by id.
+      parameters:
+      - description: id for delete module item
+        format: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Delete module item by id.
+      tags:
+      - ModuleItems
+    get:
+      consumes:
+      - application/json
+      description: This API to get module item by id.
+      parameters:
+      - description: id for get module
+        format: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ModuleItems'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Get module by id.
+      tags:
+      - ModuleItems
+    put:
+      consumes:
+      - application/json
+      description: This API to update an module item.
+      parameters:
+      - description: id for update Module item
+        format: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: data body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdateModuleItemInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ModuleItems'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Update a module item.
+      tags:
+      - ModuleItems
+  /api/modules/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: This API to get module by id.
+      parameters:
+      - description: id for get module
+        format: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Get module by id.
+      tags:
+      - Module
+    get:
+      consumes:
+      - application/json
+      description: This API to get module by id.
+      parameters:
+      - description: id for get module
+        format: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Modules'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Get module by id.
+      tags:
+      - Module
+    put:
+      consumes:
+      - application/json
+      description: This API to update an Module.
+      parameters:
+      - description: id for update Module
+        format: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: data body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdateModuleInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Modules'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Update an Module.
+      tags:
+      - Module
   /api/news:
     get:
       consumes:
@@ -3421,7 +4118,7 @@ paths:
         name: page
         type: integer
       - in: query
-        name: pageSize
+        name: page_size
         type: integer
       produces:
       - application/json
@@ -3453,22 +4150,22 @@ paths:
       description: this api is create news
       parameters:
       - in: formData
-        name: descriptionEn
+        name: description_en
         type: string
       - in: formData
-        name: descriptionRu
+        name: description_ru
         type: string
       - in: formData
-        name: descriptionUz
+        name: description_uz
         type: string
       - in: formData
-        name: nameEn
+        name: name_en
         type: string
       - in: formData
-        name: nameRu
+        name: name_ru
         type: string
       - in: formData
-        name: nameUz
+        name: name_uz
         type: string
       - in: formData
         name: position
@@ -3579,22 +4276,22 @@ paths:
         required: true
         type: string
       - in: formData
-        name: descriptionEn
+        name: description_en
         type: string
       - in: formData
-        name: descriptionRu
+        name: description_ru
         type: string
       - in: formData
-        name: descriptionUz
+        name: description_uz
         type: string
       - in: formData
-        name: nameEn
+        name: name_en
         type: string
       - in: formData
-        name: nameRu
+        name: name_ru
         type: string
       - in: formData
-        name: nameUz
+        name: name_uz
         type: string
       - in: formData
         name: position
@@ -3637,7 +4334,7 @@ paths:
         name: page
         type: integer
       - in: query
-        name: pageSize
+        name: page_size
         type: integer
       - in: query
         name: status
@@ -3859,19 +4556,19 @@ paths:
       description: this api is to get all orders from admin
       parameters:
       - in: query
-        name: customerId
+        name: customer_id
         type: integer
       - in: query
-        name: dateFrom
+        name: date_from
         type: string
       - in: query
-        name: dateTo
+        name: date_to
         type: string
       - in: query
         name: page
         type: integer
       - in: query
-        name: pageSize
+        name: page_size
         type: integer
       - in: query
         name: status
@@ -3909,13 +4606,13 @@ paths:
       description: this api is to get customer orders applicants
       parameters:
       - in: query
-        name: fullName
+        name: full_name
         type: string
       - in: query
         name: page
         type: integer
       - in: query
-        name: pageSize
+        name: page_size
         type: integer
       - in: query
         name: phone
@@ -4085,6 +4782,306 @@ paths:
       summary: Finish Order
       tags:
       - Order
+  /api/pages:
+    get:
+      consumes:
+      - application/json
+      description: this api is get category
+      parameters:
+      - in: query
+        name: name
+        type: string
+      - in: query
+        name: page
+        type: integer
+      - in: query
+        name: page_size
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            items:
+              $ref: '#/definitions/models.Pages'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      summary: Get category
+      tags:
+      - Category
+    post:
+      consumes:
+      - application/json
+      description: this api is create new category
+      parameters:
+      - in: formData
+        name: description_en
+        type: string
+      - in: formData
+        name: description_ru
+        type: string
+      - in: formData
+        name: description_uz
+        type: string
+      - in: formData
+        name: is_active
+        type: boolean
+      - in: formData
+        name: name_en
+        type: string
+      - in: formData
+        name: name_ru
+        type: string
+      - in: formData
+        name: name_uz
+        type: string
+      - in: formData
+        name: position
+        type: integer
+      - in: formData
+        name: seo_description_en
+        type: string
+      - in: formData
+        name: seo_description_ru
+        type: string
+      - in: formData
+        name: seo_description_uz
+        type: string
+      - in: formData
+        name: seo_title_en
+        type: string
+      - in: formData
+        name: seo_title_ru
+        type: string
+      - in: formData
+        name: seo_title_uz
+        type: string
+      - in: formData
+        name: url
+        type: string
+      - description: file
+        in: formData
+        name: image_file
+        type: file
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Pages'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Create new category
+      tags:
+      - Category
+  /api/pages/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: this api is to delete category
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/controller.response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: DELETE category
+      tags:
+      - Category
+    get:
+      consumes:
+      - application/json
+      description: this api is Update category
+      parameters:
+      - description: category id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Pages'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Update category
+      tags:
+      - Category
+    put:
+      consumes:
+      - application/json
+      description: this api is Update category
+      parameters:
+      - description: category id
+        in: path
+        name: id
+        required: true
+        type: string
+      - in: formData
+        name: description_en
+        type: string
+      - in: formData
+        name: description_ru
+        type: string
+      - in: formData
+        name: description_uz
+        type: string
+      - in: formData
+        name: is_active
+        type: boolean
+      - in: formData
+        name: name_en
+        type: string
+      - in: formData
+        name: name_ru
+        type: string
+      - in: formData
+        name: name_uz
+        type: string
+      - in: formData
+        name: position
+        type: integer
+      - in: formData
+        name: seo_description_en
+        type: string
+      - in: formData
+        name: seo_description_ru
+        type: string
+      - in: formData
+        name: seo_description_uz
+        type: string
+      - in: formData
+        name: seo_title_en
+        type: string
+      - in: formData
+        name: seo_title_ru
+        type: string
+      - in: formData
+        name: seo_title_uz
+        type: string
+      - in: formData
+        name: url
+        type: string
+      - description: file
+        in: formData
+        name: image_file
+        type: file
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Pages'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Update category
+      tags:
+      - Category
+  /api/pages/all:
+    get:
+      consumes:
+      - application/json
+      description: this api is get category
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            items:
+              $ref: '#/definitions/models.Pages'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Get category
+      tags:
+      - Category
   /api/parameter:
     get:
       consumes:
@@ -4098,8 +5095,11 @@ paths:
         name: page
         type: integer
       - in: query
-        name: pageSize
+        name: page_size
         type: integer
+      - in: query
+        name: with_deleted
+        type: boolean
       produces:
       - application/json
       responses:
@@ -4240,18 +5240,12 @@ paths:
         name: id
         required: true
         type: string
-      - in: query
-        name: nameEn
-        type: string
-      - in: query
-        name: nameRu
-        type: string
-      - in: query
-        name: nameUz
-        type: string
-      - in: query
-        name: position
-        type: integer
+      - description: data body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.ParametersRequest'
       produces:
       - application/json
       responses:
@@ -4283,10 +5277,13 @@ paths:
       description: this api is get product
       parameters:
       - in: query
-        name: isNew
+        name: is_active
         type: boolean
       - in: query
-        name: isTop
+        name: is_new
+        type: boolean
+      - in: query
+        name: is_top
         type: boolean
       - in: query
         name: multiSearch
@@ -4295,10 +5292,10 @@ paths:
         name: page
         type: integer
       - in: query
-        name: pageSize
+        name: page_size
         type: integer
       - in: query
-        name: parentId
+        name: parent_id
         type: integer
       - in: query
         name: priceFrom
@@ -4342,40 +5339,41 @@ paths:
       description: this api is create new product
       parameters:
       - in: formData
-        name: brandId
+        name: brand_id
         type: integer
       - in: formData
-        name: countryId
+        name: country_id
         type: integer
       - in: formData
-        name: descriptionEn
+        name: description_en
         type: string
       - in: formData
-        name: descriptionRu
+        name: description_ru
         type: string
       - in: formData
-        name: descriptionUz
+        name: description_uz
         type: string
       - in: formData
-        name: isActive
+        name: is_active
         type: boolean
       - in: formData
-        name: isNew
+        name: is_new
         type: boolean
       - in: formData
-        name: isTop
+        name: is_top
         type: boolean
       - in: formData
-        name: nameEn
+        name: name_en
         type: string
       - in: formData
-        name: nameRu
+        name: name_ru
+        required: true
         type: string
       - in: formData
-        name: nameUz
+        name: name_uz
         type: string
       - in: formData
-        name: parentId
+        name: parent_id
         type: integer
       - in: formData
         name: position
@@ -4384,10 +5382,25 @@ paths:
         name: price
         type: number
       - in: formData
-        name: seoDescription
+        name: seo_description_en
         type: string
       - in: formData
-        name: seoTitle
+        name: seo_description_ru
+        type: string
+      - in: formData
+        name: seo_description_uz
+        type: string
+      - in: formData
+        name: seo_title_en
+        type: string
+      - in: formData
+        name: seo_title_ru
+        type: string
+      - in: formData
+        name: seo_title_uz
+        type: string
+      - in: formData
+        name: url
         type: string
       - description: file
         in: formData
@@ -4497,40 +5510,41 @@ paths:
         required: true
         type: string
       - in: formData
-        name: brandId
+        name: brand_id
         type: integer
       - in: formData
-        name: countryId
+        name: country_id
         type: integer
       - in: formData
-        name: descriptionEn
+        name: description_en
         type: string
       - in: formData
-        name: descriptionRu
+        name: description_ru
         type: string
       - in: formData
-        name: descriptionUz
+        name: description_uz
         type: string
       - in: formData
-        name: isActive
+        name: is_active
         type: boolean
       - in: formData
-        name: isNew
+        name: is_new
         type: boolean
       - in: formData
-        name: isTop
+        name: is_top
         type: boolean
       - in: formData
-        name: nameEn
+        name: name_en
         type: string
       - in: formData
-        name: nameRu
+        name: name_ru
+        required: true
         type: string
       - in: formData
-        name: nameUz
+        name: name_uz
         type: string
       - in: formData
-        name: parentId
+        name: parent_id
         type: integer
       - in: formData
         name: position
@@ -4539,10 +5553,25 @@ paths:
         name: price
         type: number
       - in: formData
-        name: seoDescription
+        name: seo_description_en
         type: string
       - in: formData
-        name: seoTitle
+        name: seo_description_ru
+        type: string
+      - in: formData
+        name: seo_description_uz
+        type: string
+      - in: formData
+        name: seo_title_en
+        type: string
+      - in: formData
+        name: seo_title_ru
+        type: string
+      - in: formData
+        name: seo_title_uz
+        type: string
+      - in: formData
+        name: url
         type: string
       - description: file
         in: formData
@@ -4579,10 +5608,13 @@ paths:
       description: this api is get product
       parameters:
       - in: query
-        name: isNew
+        name: is_active
         type: boolean
       - in: query
-        name: isTop
+        name: is_new
+        type: boolean
+      - in: query
+        name: is_top
         type: boolean
       - in: query
         name: multiSearch
@@ -4591,10 +5623,10 @@ paths:
         name: page
         type: integer
       - in: query
-        name: pageSize
+        name: page_size
         type: integer
       - in: query
-        name: parentId
+        name: parent_id
         type: integer
       - in: query
         name: priceFrom
@@ -4749,7 +5781,85 @@ paths:
       summary: Add product media
       tags:
       - Product
+  /api/product/parameter/:
+    put:
+      consumes:
+      - application/json
+      description: this api will create gotten parameters and delete other relations
+        product parameters
+      parameters:
+      - description: data body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.ProductParameters'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.ProductParameters'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Create product parameters
+      tags:
+      - Product
   /api/product/parameter/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: this api will create gotten parameters and delete other relations
+        product parameters
+      parameters:
+      - description: product id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: data body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.ProductParamDeleteReq'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Products'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Create product parameters
+      tags:
+      - Product
     post:
       consumes:
       - application/json
@@ -4881,6 +5991,418 @@ paths:
       summary: Create new public offer
       tags:
       - PublicOffer
+  /api/role-items:
+    get:
+      consumes:
+      - application/json
+      description: this api is to get roles
+      parameters:
+      - in: query
+        name: name
+        type: string
+      - in: query
+        name: page
+        type: integer
+      - in: query
+        name: page_size
+        type: integer
+      - description: All        bool   `json:"all"  form:"all"`
+        in: query
+        name: with_delete
+        type: boolean
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            items:
+              $ref: '#/definitions/models.RoleItems'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Get roles
+      tags:
+      - Roles
+    post:
+      consumes:
+      - application/json
+      description: this api is for Create role
+      parameters:
+      - description: data body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.RoleItemRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.RoleItems'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Create role
+      tags:
+      - Roles
+  /api/role-items/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: this api is to delete Roles
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/controller.response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Delete Roles
+      tags:
+      - Roles
+    get:
+      consumes:
+      - application/json
+      description: this api is for Get by id
+      parameters:
+      - description: role id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.RoleItems'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Get by id
+      tags:
+      - Roles
+    put:
+      consumes:
+      - application/json
+      description: this api is for Update roles
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: data body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.RoleItemRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.RoleItems'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Update roles
+      tags:
+      - Roles
+  /api/role-items/list:
+    put:
+      consumes:
+      - application/json
+      description: This api is for update Role module item it will delete all existing
+        role module items and will create news
+      parameters:
+      - description: data body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdateRoleItemsList'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.RoleItems'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Update a Role module items
+      tags:
+      - Roles
+  /api/roles:
+    get:
+      consumes:
+      - application/json
+      description: this api is to get roles
+      parameters:
+      - in: query
+        name: name
+        type: string
+      - in: query
+        name: page
+        type: integer
+      - in: query
+        name: page_size
+        type: integer
+      - description: All        bool   `json:"all"  form:"all"`
+        in: query
+        name: with_delete
+        type: boolean
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            items:
+              $ref: '#/definitions/models.Roles'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Get roles
+      tags:
+      - Roles
+    post:
+      consumes:
+      - application/json
+      description: this api is for Create role
+      parameters:
+      - description: data body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.RolesRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Roles'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Create role
+      tags:
+      - Roles
+  /api/roles/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: this api is to delete Roles
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/controller.response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Delete Roles
+      tags:
+      - Roles
+    get:
+      consumes:
+      - application/json
+      description: this api is for Get by id
+      parameters:
+      - description: role id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.RoleWithModuleItems'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Get by id
+      tags:
+      - Roles
+    put:
+      consumes:
+      - application/json
+      description: this api is for Update roles
+      parameters:
+      - description: data body
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.RolesRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Roles'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/controller.response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/controller.response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/controller.response'
+      security:
+      - BearerAuth: []
+      summary: Update roles
+      tags:
+      - Roles
   /api/service:
     get:
       consumes:
@@ -4916,22 +6438,22 @@ paths:
       description: this api is create new service
       parameters:
       - in: formData
-        name: descriptionEn
+        name: description_en
         type: string
       - in: formData
-        name: descriptionRu
+        name: description_ru
         type: string
       - in: formData
-        name: descriptionUz
+        name: description_uz
         type: string
       - in: formData
-        name: nameEn
+        name: name_en
         type: string
       - in: formData
-        name: nameRu
+        name: name_ru
         type: string
       - in: formData
-        name: nameUz
+        name: name_uz
         type: string
       - in: formData
         name: position
@@ -5044,22 +6566,22 @@ paths:
         required: true
         type: string
       - in: formData
-        name: descriptionEn
+        name: description_en
         type: string
       - in: formData
-        name: descriptionRu
+        name: description_ru
         type: string
       - in: formData
-        name: descriptionUz
+        name: description_uz
         type: string
       - in: formData
-        name: nameEn
+        name: name_en
         type: string
       - in: formData
-        name: nameRu
+        name: name_ru
         type: string
       - in: formData
-        name: nameUz
+        name: name_uz
         type: string
       - in: formData
         name: position
@@ -5127,55 +6649,55 @@ paths:
       description: this api is create vacancy
       parameters:
       - in: formData
-        name: descriptionEn
+        name: description_en
         type: string
       - in: formData
-        name: descriptionRu
+        name: description_ru
         type: string
       - in: formData
-        name: descriptionUz
+        name: description_uz
         type: string
       - in: formData
-        name: isActive
+        name: is_active
         type: boolean
       - in: formData
-        name: nameEn
+        name: name_en
         type: string
       - in: formData
-        name: nameRu
+        name: name_ru
         type: string
       - in: formData
-        name: nameUz
+        name: name_uz
         type: string
       - in: formData
         name: region
         type: string
       - in: formData
-        name: requirementEn
+        name: requirement_en
         type: string
       - in: formData
-        name: requirementRu
+        name: requirement_ru
         type: string
       - in: formData
-        name: requirementUz
+        name: requirement_uz
         type: string
       - in: formData
-        name: responsibilityEn
+        name: responsibility_en
         type: string
       - in: formData
-        name: responsibilityRu
+        name: responsibility_ru
         type: string
       - in: formData
-        name: responsibilityUz
+        name: responsibility_uz
         type: string
       - in: formData
-        name: typeEn
+        name: type_en
         type: string
       - in: formData
-        name: typeRu
+        name: type_ru
         type: string
       - in: formData
-        name: typeUz
+        name: type_uz
         type: string
       - description: file
         in: formData
@@ -5283,55 +6805,55 @@ paths:
         required: true
         type: string
       - in: formData
-        name: descriptionEn
+        name: description_en
         type: string
       - in: formData
-        name: descriptionRu
+        name: description_ru
         type: string
       - in: formData
-        name: descriptionUz
+        name: description_uz
         type: string
       - in: formData
-        name: isActive
+        name: is_active
         type: boolean
       - in: formData
-        name: nameEn
+        name: name_en
         type: string
       - in: formData
-        name: nameRu
+        name: name_ru
         type: string
       - in: formData
-        name: nameUz
+        name: name_uz
         type: string
       - in: formData
         name: region
         type: string
       - in: formData
-        name: requirementEn
+        name: requirement_en
         type: string
       - in: formData
-        name: requirementRu
+        name: requirement_ru
         type: string
       - in: formData
-        name: requirementUz
+        name: requirement_uz
         type: string
       - in: formData
-        name: responsibilityEn
+        name: responsibility_en
         type: string
       - in: formData
-        name: responsibilityRu
+        name: responsibility_ru
         type: string
       - in: formData
-        name: responsibilityUz
+        name: responsibility_uz
         type: string
       - in: formData
-        name: typeEn
+        name: type_en
         type: string
       - in: formData
-        name: typeRu
+        name: type_ru
         type: string
       - in: formData
-        name: typeUz
+        name: type_uz
         type: string
       - description: file
         in: formData
@@ -5402,13 +6924,13 @@ paths:
         name: page
         type: integer
       - in: query
-        name: pageSize
+        name: page_size
         type: integer
       - in: query
         name: status
         type: integer
       - in: query
-        name: vacancyId
+        name: vacancy_id
         type: integer
       produces:
       - application/json
@@ -5451,7 +6973,7 @@ paths:
         name: phone
         type: string
       - in: formData
-        name: vacancyId
+        name: vacancy_id
         type: integer
       - description: file
         in: formData

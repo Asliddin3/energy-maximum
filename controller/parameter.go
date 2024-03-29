@@ -72,7 +72,7 @@ func (h *ParameterController) CreateParameter(c *gin.Context) {
 // @Accept			json
 // @Produce			json
 // @Param           id    path     string   true   "update id"
-// @Param			data 	query		models.ParametersRequest	true	"data body"
+// @Param			data 	body		models.ParametersRequest	true	"data body"
 // @Success			201		{object}	models.Parameters
 // @Failure			400,409	{object}	response
 // @Failure			500		{object}	response
@@ -81,7 +81,7 @@ func (h *ParameterController) UpdateParameter(c *gin.Context) {
 	admin := h.GetAdmin(c)
 	id := c.Param("id")
 	var body models.ParametersRequest
-	err := c.ShouldBindQuery(&body)
+	err := c.ShouldBindJSON(&body)
 	if err != nil {
 		newResponse(c, http.StatusBadRequest, err.Error())
 		h.log.Error("failed to create category", err.Error())
@@ -148,10 +148,28 @@ func (h *ParameterController) GetProductParameter(c *gin.Context) {
 	if body.PageSize == 0 {
 		body.PageSize = 10
 	}
+	if !body.WithDeleted {
+		db = db.Where("is_deleted=false")
+	}
+	var count int64
+	err = db.Count(&count).Error
+	if err != nil {
+		newResponse(c, http.StatusInternalServerError, "failed to get count ")
+		h.log.Error("failed to get count", err.Error())
+		return
+	}
 	var params []models.Parameters
 	err = db.Limit(body.PageSize).Offset((body.Page - 1) * body.PageSize).Find(&params).Error
-
-	c.JSON(http.StatusOK, params)
+	if err != nil {
+		newResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+	c.JSON(http.StatusOK, models.ParameterResponse{
+		Parameters: params,
+		Page:       body.Page,
+		PageSize:   body.PageSize,
+		Count:      int(count),
+	})
 }
 
 // @Summary		  Get Parameter
@@ -193,7 +211,7 @@ func (h *ParameterController) GetByID(c *gin.Context) {
 // @Router			/api/parameter/{id} [DELETE]
 func (h *ParameterController) DeleteParameter(c *gin.Context) {
 	id := c.Param("id")
-	err := h.db.Delete(&models.Parameters{}, "id=?", id).Error
+	err := h.db.Model(&models.Parameters{}).Where("id=?", id).UpdateColumn("is_deleted", true).Error
 	if err != nil {
 		newResponse(c, http.StatusInternalServerError, err.Error())
 		return

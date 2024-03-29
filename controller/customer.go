@@ -96,7 +96,7 @@ func (h *CustomerController) SendCode(c *gin.Context) {
 	if phone == h.DEVELOPER_PHONE {
 		sendCode = 997361
 	}
-	err = h.Sms.SendCode(phone, fmt.Sprintf("Your code from zoomda -%d ", sendCode))
+	err = h.Sms.SendCode(phone, fmt.Sprintf("Your code from pribor -%d ", sendCode))
 	if err != nil {
 		// newResponse(c, http.StatusInternalServerError, err.Error())
 		h.log.Error("Error while send code", logger.Error(err))
@@ -323,7 +323,7 @@ func (h *CustomerController) checkCode(c *gin.Context) {
 		newResponse(c, http.StatusUnauthorized, "Неправильный код!")
 		return
 	}
-	if code.Code != codeInt || err != nil {
+	if code.Code != codeInt {
 		newResponse(c, http.StatusUnauthorized, "Неправильный код!")
 		return
 	}
@@ -543,7 +543,7 @@ func (h *CustomerController) GetCustomerById(c *gin.Context) {
 	var admins models.Customer
 	err := h.db.First(&admins, "id=?", id).Error
 	if err != nil {
-		if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
 			newResponse(c, http.StatusBadRequest, "no such customer")
 			return
 		}

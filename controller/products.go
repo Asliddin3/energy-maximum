@@ -32,6 +32,8 @@ func (h *Handler) NewProductController(api *gin.RouterGroup) {
 		prod.POST("/media/:id", product.AddProductMedia)
 		prod.DELETE("/media/:id", product.DeleteProductMedia)
 		prod.POST("/parameter/:id", product.CreateProductParameter)
+		prod.PUT("/parameter/", product.UpdateProductParameter)
+		prod.DELETE("/parameter/:id", product.DeleteProductParameter)
 
 		// prod.POST("/recommend/", product.AddProductRecommend)
 		// prod.DELETE("/recommend/:id", product.DeleteProductRecommend)
@@ -76,29 +78,49 @@ func (h *ProductController) CreateProduct(c *gin.Context) {
 			newResponse(c, http.StatusInternalServerError, "failed to save image")
 			h.log.Error("error while save file ", logger.Error(err))
 			return
-
 		}
-
 		body.Image = &name
 	}
+	url := h.humanizer.Regenerate(body.NameRu)
 	product := models.Products{
-		NameRu:         body.NameRu,
-		NameUz:         body.NameUz,
-		NameEn:         body.NameEn,
-		Price:          body.Price,
-		IsTop:          body.IsTop,
-		IsNew:          body.IsNew,
-		CountryID:      body.CountryID,
-		Position:       body.Position,
-		IsActive:       body.IsActive,
-		DescriptionRu:  body.DescriptionRu,
-		DescriptionUz:  body.DescriptionUz,
-		DescriptionEn:  body.DescriptionEn,
-		SeoTitle:       body.SeoTitle,
-		Image:          body.Image,
-		SeoDescription: body.SeoDescription,
-		CreatedID:      &admin.Id,
-		CreatedAt:      timeNow(),
+		NameRu:           body.NameRu,
+		NameUz:           body.NameUz,
+		NameEn:           body.NameEn,
+		Price:            body.Price,
+		IsTop:            body.IsTop,
+		Url:              url,
+		IsNew:            body.IsNew,
+		CountryID:        body.CountryID,
+		Position:         body.Position,
+		IsActive:         body.IsActive,
+		DescriptionRu:    body.DescriptionRu,
+		DescriptionUz:    body.DescriptionUz,
+		DescriptionEn:    body.DescriptionEn,
+		SeoTitleRu:       body.SeoTitleRu,
+		SeoTitleEn:       body.SeoTitleEn,
+		SeoTitleUz:       body.SeoTitleUz,
+		SeoDescriptionRu: body.SeoDescriptionRu,
+		SeoDescriptionEn: body.SeoDescriptionEn,
+		SeoDescriptionUz: body.SeoDescriptionUz,
+		CreatedID:        &admin.Id,
+		CreatedAt:        timeNow(),
+	}
+	if body.Url == "" {
+		// count, err := p.productsRepo.GetCountNameRu(c.Request.Context(), body.NameRu)
+		var count int64
+
+		err := h.db.WithContext(c.Request.Context()).Table("products").Count(&count).Error
+		if err != nil {
+			return
+		}
+		url := h.humanizer.Regenerate(body.NameRu)
+		if count != 0 {
+			url = url + fmt.Sprintf("-%d", count+1)
+		}
+		body.Url = url
+	}
+	if body.Image != nil {
+		product.Image = *body.Image
 	}
 	if body.ParentID != 0 {
 		product.ParentID = &body.ParentID
@@ -138,13 +160,13 @@ func (h *ProductController) CreateProductParameter(c *gin.Context) {
 		return
 	}
 	tr := h.db.Begin()
-	err = tr.Delete(&models.ProductParameters{}, "product_id=?", id).Error
-	if err != nil {
-		tr.Rollback()
-		newResponse(c, http.StatusInternalServerError, err.Error())
-		h.log.Error("failed to delete product params")
-		return
-	}
+	// err = tr.Delete(&models.ProductParameters{}, "product_id=?", id).Error
+	// if err != nil {
+	// 	tr.Rollback()
+	// 	newResponse(c, http.StatusInternalServerError, err.Error())
+	// 	h.log.Error("failed to delete product params")
+	// 	return
+	// }
 	params := make([]models.ProductParameters, len(body.Parameters))
 	for i, param := range body.Parameters {
 		params[i] = models.ProductParameters{
@@ -175,6 +197,67 @@ func (h *ProductController) CreateProductParameter(c *gin.Context) {
 	tr.Commit()
 	c.JSON(http.StatusOK, params)
 
+}
+
+// @Summary		  Create product parameters
+// @Description	   this api will create gotten parameters and delete other relations product parameters
+// @Tags			Product
+// @Security		BearerAuth
+// @Accept			json
+// @Produce			json
+// @Param          	id    	path    int   true "product id"
+// @Param			data 	body	models.ProductParamDeleteReq	true	"data body"
+// @Success			201		{object}	models.Products
+// @Failure			400,409	{object}	response
+// @Failure			500		{object}	response
+// @Router			/api/product/parameter/{id} [DELETE]
+func (h *ProductController) DeleteProductParameter(c *gin.Context) {
+	inputId := c.Param("id")
+	id, _ := strconv.ParseInt(inputId, 10, 64)
+	var body models.ProductParamDeleteReq
+	err := c.ShouldBindJSON(&body)
+	if err != nil {
+		newResponse(c, http.StatusBadRequest, err.Error())
+		return
+	}
+	err = h.db.Delete(&models.ProductParameters{}, "product_id=? AND parameter_id IN ?", id, body.Parameters).Error
+	if err != nil {
+		newResponse(c, http.StatusInternalServerError, err.Error())
+		h.log.Error("failed to delete product params")
+		return
+	}
+	c.JSON(http.StatusOK, "success")
+}
+
+// @Summary		  Create product parameters
+// @Description	   this api will create gotten parameters and delete other relations product parameters
+// @Tags			Product
+// @Security		BearerAuth
+// @Accept			json
+// @Produce			json
+// @Param			data 	body	models.ProductParameters	true	"data body"
+// @Success			201		{object}	models.ProductParameters
+// @Failure			400,409	{object}	response
+// @Failure			500		{object}	response
+// @Router			/api/product/parameter/ [PUT]
+func (h *ProductController) UpdateProductParameter(c *gin.Context) {
+	var body models.ProductParameters
+	err := c.ShouldBindJSON(&body)
+	if err != nil {
+		newResponse(c, http.StatusBadRequest, err.Error())
+		return
+	}
+	err = h.db.Model(&models.ProductParameters{}).Where("product_id=? AND parameter_id=?", body.ProductID, body.ParameterID).Updates(map[string]interface{}{
+		"val_ru": body.ValRu,
+		"val_en": body.ValEn,
+		"val_uz": body.ValUz,
+	}).Error
+	if err != nil {
+		newResponse(c, http.StatusInternalServerError, err.Error())
+		h.log.Error("failed to delete product params")
+		return
+	}
+	c.JSON(http.StatusOK, "success")
 }
 
 // @Summary		  Update product
@@ -222,6 +305,9 @@ func (h *ProductController) UpdateProduct(c *gin.Context) {
 	if body.DescriptionUz != "" {
 		columns["description_uz"] = body.DescriptionUz
 	}
+	if body.Price != 0 {
+		columns["price"] = body.Price
+	}
 	if body.NameEn != "" {
 		columns["name_en"] = body.NameEn
 	}
@@ -236,15 +322,29 @@ func (h *ProductController) UpdateProduct(c *gin.Context) {
 	}
 	if body.NameRu != "" {
 		columns["name_ru"] = body.NameRu
+		url := h.humanizer.Regenerate(body.NameRu)
+		columns["url"] = url
 	}
 	if body.NameUz != "" {
 		columns["name_uz"] = body.NameUz
 	}
-	if body.SeoDescription != "" {
-		columns["seo_description"] = body.SeoDescription
+	if body.SeoDescriptionRu != "" {
+		columns["seo_description_ru"] = body.SeoDescriptionRu
 	}
-	if body.SeoTitle != "" {
-		columns["seo_title"] = body.SeoTitle
+	if body.SeoDescriptionRu != "" {
+		columns["seo_description_ru"] = body.SeoDescriptionRu
+	}
+	if body.SeoDescriptionRu != "" {
+		columns["seo_description_ru"] = body.SeoDescriptionRu
+	}
+	if body.SeoTitleRu != "" {
+		columns["seo_title_ru"] = body.SeoTitleRu
+	}
+	if body.SeoTitleUz != "" {
+		columns["seo_title_uz"] = body.SeoTitleUz
+	}
+	if body.SeoTitleUz != "" {
+		columns["seo_title_uz"] = body.SeoTitleUz
 	}
 	if body.IsActive != nil {
 		columns["is_active"] = body.IsActive
@@ -271,7 +371,7 @@ func (h *ProductController) UpdateProduct(c *gin.Context) {
 }
 func (h *ProductController) updateProduct(productId int, adminId int) error {
 	columns := map[string]interface{}{
-		"updatedAt":  timeNow(),
+		"updated_at": timeNow(),
 		"updated_id": adminId,
 	}
 	return h.db.Model(&models.Products{ID: productId}).Updates(columns).Error
@@ -427,7 +527,7 @@ func (h *ProductController) GetProducts(c *gin.Context) {
 	brandId := c.Query("brandId")
 	countryId := c.Query("countryId")
 	var products []models.Products
-	db := h.db.Debug().Model(&models.Products{}).Where("is_active=true AND deleted_at IS NULL ")
+	db := h.db.Debug().Model(&models.Products{}).Preload("Parent").Preload("Brand").Where("is_active=true AND deleted_at IS NULL ")
 	if brandId != "" {
 		arr := strings.Split(brandId, ",")
 		db = db.Where("brand_id IN ?", arr)
@@ -449,15 +549,14 @@ func (h *ProductController) GetProducts(c *gin.Context) {
 	}
 	if countryId != "" {
 		arr := strings.Split(countryId, ",")
-
 		db = db.Where("country_id IN ?", arr)
 	}
 	if body.MultiSearch != "" {
 		field := fmt.Sprintf("%%%s%%", body.MultiSearch)
-		db = db.Where(`LOWER(name) LIKE LOWER(?) OR LOWER(description) LIKE LOWER(?) `, field, field)
+		db = db.Where(`LOWER(name_ru) LIKE LOWER(?) OR LOWER(name_en) LIKE LOWER(?) OR LOWER(name_uz) LIKE LOWER(?) `, field, field, field)
 	}
-	var count int
-	err = db.Select("COUNT(*)").Scan(&count).Error
+	var count int64
+	err = db.Count(&count).Error
 	if err != nil {
 		newResponse(c, http.StatusInternalServerError, err.Error())
 		h.log.Errorf("failed to get products %v", err)
@@ -480,7 +579,7 @@ func (h *ProductController) GetProducts(c *gin.Context) {
 		Products: products,
 		Page:     body.Page,
 		PageSize: body.PageSize,
-		Count:    count,
+		Count:    int(count),
 	})
 }
 
@@ -507,11 +606,12 @@ func (h *ProductController) GetAllProducts(c *gin.Context) {
 	brandId := c.Query("brandId")
 	countryId := c.Query("countryId")
 	var products []models.Products
-	db := h.db.Debug().Model(&models.Products{})
+	db := h.db.Debug().Model(&models.Products{}).Preload("Parent").Preload("Brand")
 	if brandId != "" {
 		arr := strings.Split(brandId, ",")
 		db = db.Where("brand_id IN ?", arr)
 	}
+
 	if body.ParentID != 0 {
 		db = db.Where("parent_id=?", body.ParentID)
 	}
@@ -527,6 +627,9 @@ func (h *ProductController) GetAllProducts(c *gin.Context) {
 	if body.IsTop != nil {
 		db = db.Where("is_top=?", body.IsTop)
 	}
+	if body.IsActive != nil {
+		db = db.Where("is_active=?", body.IsActive)
+	}
 	if countryId != "" {
 		arr := strings.Split(countryId, ",")
 
@@ -534,10 +637,10 @@ func (h *ProductController) GetAllProducts(c *gin.Context) {
 	}
 	if body.MultiSearch != "" {
 		field := fmt.Sprintf("%%%s%%", body.MultiSearch)
-		db = db.Where(`LOWER(name) LIKE LOWER(?) OR LOWER(description) LIKE LOWER(?) `, field, field)
+		db = db.Where(`LOWER(name_ru) LIKE LOWER(?) OR LOWER(name_en) LIKE LOWER(?) OR LOWER(name_uz) LIKE LOWER(?) `, field, field, field)
 	}
-	var count int
-	err = db.Select("COUNT(*)").Scan(&count).Error
+	var count int64
+	err = db.Count(&count).Error
 	if err != nil {
 		newResponse(c, http.StatusInternalServerError, err.Error())
 		h.log.Errorf("failed to get products %v", err)
@@ -560,7 +663,7 @@ func (h *ProductController) GetAllProducts(c *gin.Context) {
 		Products: products,
 		Page:     body.Page,
 		PageSize: body.PageSize,
-		Count:    count,
+		Count:    int(count),
 	})
 }
 
@@ -578,7 +681,8 @@ func (h *ProductController) GetAllProducts(c *gin.Context) {
 func (h *ProductController) GetByID(c *gin.Context) {
 	inputId := c.Param("id")
 	var product models.Products
-	err := h.db.Model(&models.Products{}).Preload("Country").Preload("Parent").
+	err := h.db.Model(&models.Products{}).Preload("Brand").Preload("Country").Preload("Parent").Preload("Created", GetUserFields).
+		Preload("Updated", GetUserFields).Preload("Deleted", GetUserFields).
 		First(&product, "id=?", inputId).Error
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
@@ -595,8 +699,10 @@ func (h *ProductController) GetByID(c *gin.Context) {
 		h.log.Error("failed to get product media", err.Error())
 		return
 	}
-	var parameters []models.ProductParameters
-	err = h.db.Model(&models.ProductParameters{}).Preload("Parameter").Find(&parameters, "product_id=?", inputId).Error
+	var parameters []models.ProductParameterResponse
+	err = h.db.Table("parameters AS p").Order("p.position").Joins("INNER JOIN product_parameters AS pp ON p.id=pp.parameter_id").
+		Select("pp.val_ru,pp.val_uz,pp.val_en,p.position,p.name_ru,p.name_uz,p.name_en,pp.parameter_id").
+		Find(&parameters, "pp.product_id=?", inputId).Error
 	if err != nil {
 		newResponse(c, http.StatusInternalServerError, "failed to get media")
 		h.log.Error("failed to get product media", err.Error())

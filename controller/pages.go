@@ -14,25 +14,22 @@ import (
 	"gorm.io/gorm/clause"
 )
 
-type CategoryController struct {
+type PagesController struct {
 	*Handler
 }
 
-func (h *Handler) NewCategoryController(api *gin.RouterGroup) {
-	category := &CategoryController{h}
-	cate := api.Group("category", h.DeserializeAdmin())
+func (h *Handler) NewPagesController(api *gin.RouterGroup) {
+	category := &PagesController{h}
+	cate := api.Group("pages", h.DeserializeAdmin())
 	{
 		cate.POST("", category.CreateCategory)
 		cate.PUT("/:id", category.UpdateCategory)
 		cate.GET("/:id", category.GetByID)
 		cate.GET("/all", category.GetCategory)
 		cate.DELETE("/:id", category.DeleteByID)
-		cate.GET("/addition/:id", category.GetProductAddition)
-		cate.POST("/addition", category.AddProductAddition)
-		cate.DELETE("/addition", category.DeleteProductAddition)
 
 	}
-	customCate := api.Group("category")
+	customCate := api.Group("pages")
 	{
 		customCate.GET("", category.GetCustomerCategory)
 	}
@@ -44,15 +41,15 @@ func (h *Handler) NewCategoryController(api *gin.RouterGroup) {
 // @Security		BearerAuth
 // @Accept			json
 // @Produce			json
-// @Param			data 	formData		models.CategoryRequest	true	"data body"
+// @Param			data 	formData		models.PagesRequest	true	"data body"
 // @Param			image_file	formData	file				false	"file"
-// @Success			201		{object}	models.Category
+// @Success			201		{object}	models.Pages
 // @Failure			400,409	{object}	response
 // @Failure			500		{object}	response
-// @Router			/api/category [POST]
-func (h *CategoryController) CreateCategory(c *gin.Context) {
+// @Router			/api/pages [POST]
+func (h *PagesController) CreateCategory(c *gin.Context) {
 	admin := h.GetAdmin(c)
-	var body models.CategoryRequest
+	var body models.PagesRequest
 	err := c.ShouldBind(&body)
 	if err != nil {
 		newResponse(c, http.StatusBadRequest, err.Error())
@@ -69,14 +66,13 @@ func (h *CategoryController) CreateCategory(c *gin.Context) {
 		}
 
 		body.Image = name
-	}
-	url := h.humanizer.Regenerate(body.NameRu)
 
-	category := models.Category{
+	}
+	category := models.Pages{
 		NameRu:           body.NameRu,
 		NameUz:           body.NameUz,
 		NameEn:           body.NameEn,
-		Url:              url,
+		Url:              body.Url,
 		DescriptionRu:    body.DescriptionRu,
 		DescriptionUz:    body.DescriptionUz,
 		DescriptionEn:    body.DescriptionEn,
@@ -92,25 +88,8 @@ func (h *CategoryController) CreateCategory(c *gin.Context) {
 		CreatedID:        &admin.Id,
 		CreatedAt:        timeNow(),
 	}
-	if body.Url == "" {
-		// count, err := p.productsRepo.GetCountNameRu(c.Request.Context(), body.NameRu)
-		var count int64
-
-		err := h.db.WithContext(c.Request.Context()).Table("category").Count(&count).Error
-		if err != nil {
-			return
-		}
-		url := h.humanizer.Regenerate(body.NameRu)
-		if count != 0 {
-			url = url + fmt.Sprintf("-%d", count+1)
-		}
-		body.Url = url
-	}
 	if body.Position != nil {
 		category.Position = body.Position
-	}
-	if body.ParentID != 0 {
-		category.CategoryID = &body.ParentID
 	}
 	err = h.db.Clauses(clause.Returning{}).Create(&category).Error
 	if err != nil {
@@ -127,17 +106,17 @@ func (h *CategoryController) CreateCategory(c *gin.Context) {
 // @Accept			json
 // @Produce			json
 // @Param           id    path     string   true   "category id"
-// @Param			data 	formData		models.CategoryRequest	true	"data body"
+// @Param			data 	formData		models.PagesRequest	true	"data body"
 // @Param			image_file	formData	file				false	"file"
-// @Success			201		{object}	models.Category
+// @Success			201		{object}	models.Pages
 // @Failure			400,409	{object}	response
 // @Failure			500		{object}	response
-// @Router			/api/category/{id} [PUT]
-func (h *CategoryController) UpdateCategory(c *gin.Context) {
+// @Router			/api/pages/{id} [PUT]
+func (h *PagesController) UpdateCategory(c *gin.Context) {
 	admin := h.GetAdmin(c)
 	categoryId := c.Param("id")
 	id, _ := strconv.ParseInt(categoryId, 10, 64)
-	var body models.CategoryRequest
+	var body models.PagesRequest
 	err := c.ShouldBind(&body)
 	if err != nil {
 		newResponse(c, http.StatusBadRequest, err.Error())
@@ -156,7 +135,7 @@ func (h *CategoryController) UpdateCategory(c *gin.Context) {
 		}
 		columns["image"] = name
 	}
-	category := models.Category{
+	category := models.Pages{
 		ID: int(id),
 	}
 	if body.DescriptionEn != "" {
@@ -165,9 +144,7 @@ func (h *CategoryController) UpdateCategory(c *gin.Context) {
 	if body.Position != nil {
 		columns["position"] = body.Position
 	}
-	if body.ParentID != 0 {
-		columns["category_id"] = body.ParentID
-	}
+
 	if body.DescriptionRu != "" {
 		columns["description_ru"] = body.DescriptionRu
 	}
@@ -182,8 +159,6 @@ func (h *CategoryController) UpdateCategory(c *gin.Context) {
 	}
 	if body.NameRu != "" {
 		columns["name_ru"] = body.NameRu
-		url := h.humanizer.Regenerate(body.NameRu)
-		columns["url"] = url
 	}
 	if body.NameUz != "" {
 		columns["name_uz"] = body.NameUz
@@ -229,12 +204,12 @@ func (h *CategoryController) UpdateCategory(c *gin.Context) {
 // @Security		BearerAuth
 // @Accept			json
 // @Produce			json
-// @Success			201		{object}	[]models.Category
+// @Success			201		{object}	[]models.Pages
 // @Failure			400,409	{object}	response
 // @Failure			500		{object}	response
-// @Router			/api/category/all [GET]
-func (h *CategoryController) GetCategory(c *gin.Context) {
-	var category []models.Category
+// @Router			/api/pages/all [GET]
+func (h *PagesController) GetCategory(c *gin.Context) {
+	var category []models.Pages
 	err := h.db.Find(&category).Error
 	if err != nil {
 		newResponse(c, http.StatusBadRequest, err.Error())
@@ -249,13 +224,13 @@ func (h *CategoryController) GetCategory(c *gin.Context) {
 // @Tags			Category
 // @Accept			json
 // @Produce			json
-// @Param           data  query    models.CategoryFilter true "category filter"
-// @Success			201		{object}	[]models.Category
+// @Param           data  query    models.PagesFilter true "category filter"
+// @Success			201		{object}	[]models.Pages
 // @Failure			400,409	{object}	response
 // @Failure			500		{object}	response
-// @Router			/api/category [GET]
-func (h *CategoryController) GetCustomerCategory(c *gin.Context) {
-	var body models.CategoryFilter
+// @Router			/api/pages [GET]
+func (h *PagesController) GetCustomerCategory(c *gin.Context) {
+	var body models.PagesFilter
 	err := c.ShouldBindQuery(&body)
 	if err != nil {
 		newResponse(c, http.StatusBadRequest, err.Error())
@@ -267,15 +242,13 @@ func (h *CategoryController) GetCustomerCategory(c *gin.Context) {
 	if body.PageSize == 0 {
 		body.PageSize = 10
 	}
-	var category []models.Category
-	db := h.db.Debug().Model(&models.Category{}).Order("position NULLS LAST")
+	var category []models.Pages
+	db := h.db.Debug().Model(&models.Pages{}).Order("position NULLS LAST")
 	if body.Name != "" {
 		field := fmt.Sprintf("%%%s%%", body.Name)
 		db = db.Where("name_ru LIKE ? OR name_uz  LIKE ? OR name_en LIKE ?", field)
 	}
-	if body.ParentID != nil {
-		db = db.Where("category_id=?", body.ParentID)
-	}
+
 	fmt.Println("size", body.PageSize)
 	err = db.Limit(body.PageSize).Offset((body.Page-1)*body.PageSize).Find(&category, "is_active=true").Error
 	if err != nil {
@@ -293,14 +266,14 @@ func (h *CategoryController) GetCustomerCategory(c *gin.Context) {
 // @Accept			json
 // @Produce			json
 // @Param           id    path     int   true   "category id"
-// @Success			201		{object}	models.Category
+// @Success			201		{object}	models.Pages
 // @Failure			400,409	{object}	response
 // @Failure			500		{object}	response
-// @Router			/api/category/{id} [GET]
-func (h *CategoryController) GetByID(c *gin.Context) {
+// @Router			/api/pages/{id} [GET]
+func (h *PagesController) GetByID(c *gin.Context) {
 	inputId := c.Param("id")
-	var category models.Category
-	err := h.db.Model(&models.Category{}).Preload("Category").Preload("Created").
+	var category models.Pages
+	err := h.db.Model(&models.Pages{}).Preload("Created").
 		Preload("Updated").Preload("Deleted").First(&category, "id=?", inputId).Error
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
@@ -323,105 +296,18 @@ func (h *CategoryController) GetByID(c *gin.Context) {
 // @Success			201		{object}	response
 // @Failure			400,409	{object}	response
 // @Failure			500		{object}	response
-// @Router			/api/category/{id} [DELETE]
-func (h *CategoryController) DeleteByID(c *gin.Context) {
+// @Router			/api/pages/{id} [DELETE]
+func (h *PagesController) DeleteByID(c *gin.Context) {
 	// admin := h.GetAdmin(c)
 	categoryId := c.Param("id")
 	if categoryId == "" {
 		newResponse(c, http.StatusBadRequest, "empty category id")
 		return
 	}
-	err := h.db.Delete(&models.Category{}, "id=?", categoryId).Error
+	err := h.db.Delete(&models.Pages{}, "id=?", categoryId).Error
 	if err != nil {
 		if strings.Contains(err.Error(), "foreign key constraint") {
 			newResponse(c, http.StatusBadRequest, "this category has relation to product")
-			return
-		}
-		newResponse(c, http.StatusInternalServerError, err.Error())
-		return
-	}
-	c.JSON(http.StatusOK, response{"success"})
-}
-
-// @Summary		  Add category addition
-// @Description	   this api is to add category addition
-// @Tags			Category
-// @Security		BearerAuth
-// @Accept			json
-// @Produce			json
-// @Param           body    body    models.ProductAdditionRequest true "add products addition"
-// @Success			201		{object}	response
-// @Failure			400,409	{object}	response
-// @Failure			500		{object}	response
-// @Router			/api/category/addition [POST]
-func (h *CategoryController) AddProductAddition(c *gin.Context) {
-	var body models.ProductAdditionRequest
-	err := c.ShouldBindJSON(&body)
-	if err != nil {
-		newResponse(c, http.StatusBadRequest, err.Error())
-		return
-	}
-	err = h.db.Create(&models.ProductAdditions{
-		ProductCategoryID:  body.ProductCategoryID,
-		AdditionCategoryID: body.AdditionCategoryID,
-	}).Error
-	if err != nil {
-		if strings.Contains(err.Error(), "duplicate key value violates unique constraint") {
-			newResponse(c, http.StatusBadRequest, "this category has relation with addition")
-			return
-		}
-		newResponse(c, http.StatusInternalServerError, err.Error())
-		return
-	}
-	c.JSON(http.StatusOK, response{"success"})
-}
-
-// @Summary		 Get category additions
-// @Description	   this api is to get category addition
-// @Tags			Category
-// @Security		BearerAuth
-// @Accept			json
-// @Produce			json
-// @Param           id     	path   int  true  "category id"
-// @Success			201		{object}	[]models.Products
-// @Failure			400,409	{object}	response
-// @Failure			500		{object}	response
-// @Router			/api/category/addition/{id} [GET]
-func (h *CategoryController) GetProductAddition(c *gin.Context) {
-	id := c.Param("id")
-	var products []models.Products
-	err := h.db.Table("products AS p").Select("p.*").Joins("INNER JOIN product_additions AS pa ON pa.product_category_id=?", id).
-		Where("p.parent_id=pa.addition_category_id AND p.is_active=true AND p.deleted_at IS NUll").Find(&products).Error
-	if err != nil {
-		newResponse(c, http.StatusInternalServerError, err.Error())
-		return
-	}
-	c.JSON(http.StatusOK, products)
-}
-
-// @Summary		  DELETE category addition
-// @Description	   this api is to delete category addition
-// @Tags			Category
-// @Security		BearerAuth
-// @Accept			json
-// @Produce			json
-// @Param           body    query    models.ProductAdditionRequest true "delete products addition"
-// @Success			201		{object}	response
-// @Failure			400,409	{object}	response
-// @Failure			500		{object}	response
-// @Router			/api/category/addition [DELETE]
-func (h *CategoryController) DeleteProductAddition(c *gin.Context) {
-	var body models.ProductAdditionRequest
-	err := c.ShouldBindQuery(&body)
-	if err != nil {
-		newResponse(c, http.StatusBadRequest, err.Error())
-		return
-	}
-	err = h.db.Delete(&models.ProductAdditions{}, "product_category_id=? AND addition_category_id=?",
-		body.ProductCategoryID, body.AdditionCategoryID).Error
-	if err != nil {
-		if strings.Contains(err.Error(), "foreign key constraint") {
-			newResponse(c, http.StatusBadRequest, "this category has relation with addition")
 			return
 		}
 		newResponse(c, http.StatusInternalServerError, err.Error())

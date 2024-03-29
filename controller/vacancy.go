@@ -276,10 +276,6 @@ func (h *VacancyController) Delete(c *gin.Context) {
 	var vacancy models.Vacancy
 	err := h.db.Debug().Model(&vacancy).Where("id=?", inputId).Update("is_deleted", true).Error
 	if err != nil {
-		// if errors.Is(err, gorm.ErrRecordNotFound) {
-		// 	newResponse(c, http.StatusBadRequest, "not found vacancy")
-		// 	return
-		// }
 		newResponse(c, http.StatusBadRequest, err.Error())
 		return
 	}

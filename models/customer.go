@@ -11,11 +11,11 @@ type Customer struct {
 	Birthday  string     `gorm:"type:date;default:null" json:"birthday"`
 	Created   *Admins    `gorm:"foreignKey:CreatedID"       json:"created"`
 	CreatedID *int       `gorm:"type:bigint;default:null"  json:"-"`
-	CreatedAt *time.Time `gorm:"type:timestamptz;default:null" json:"createdAt"`
+	CreatedAt *time.Time `gorm:"type:timestamptz;default:null" json:"created_at"`
 	Updated   *Admins    `gorm:"foreignKey:UpdatedID"       json:"updated"`
 	UpdatedID *int       `gorm:"type:bigint;default:null"  json:"-"`
-	UpdatedAt *time.Time `gorm:"type:timestamptz;default:null" json:"updatedAt"`
-	LastVisit *time.Time `gorm:"type:timestamptz;default:null" json:"lastVisit"`
+	UpdatedAt *time.Time `gorm:"type:timestamptz;default:null" json:"updated_at"`
+	LastVisit *time.Time `gorm:"type:timestamptz;default:null" json:"last_visit"`
 }
 
 type CustomerFavorites struct {
@@ -29,7 +29,7 @@ type Codes struct {
 	ID        uint32     `gorm:"type:bigint;primaryKey" json:"id"`
 	Phone     int        `gorm:"type:bigint;index" json:"phone"`
 	Code      int        `gorm:"type:integer" json:"code"`
-	CreatedAt *time.Time `gorm:"type:timestamptz;default:null" json:"createdAt"`
+	CreatedAt *time.Time `gorm:"type:timestamptz;default:null" json:"created_at"`
 }
 type CustomerMetadata struct {
 	Id int

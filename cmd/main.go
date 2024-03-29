@@ -1,7 +1,6 @@
 package main
 
 import (
-	"context"
 	"fmt"
 	"net/http"
 
@@ -10,10 +9,10 @@ import (
 	"github.com/Asliddin3/energy-maximum/docs"
 	"github.com/Asliddin3/energy-maximum/migrate"
 	"github.com/Asliddin3/energy-maximum/pkg/hash"
+	"github.com/Asliddin3/energy-maximum/pkg/humanizer"
 	"github.com/Asliddin3/energy-maximum/pkg/logger"
 	"github.com/Asliddin3/energy-maximum/pkg/middleware"
 	postgresdb "github.com/Asliddin3/energy-maximum/pkg/postgres"
-	"github.com/allegro/bigcache/v3"
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
 	"github.com/mvrilo/go-redoc"
@@ -63,32 +62,23 @@ func main() {
 		log.Error("failed to migrate db", logger.Error(err))
 		return
 	}
-	ctx := context.Background()
-	cache, err := bigcache.New(
-		ctx,
-		bigcache.Config{
-			Shards:             1024,
-			LifeWindow:         10,
-			MaxEntriesInWindow: 0,
-			MaxEntrySize:       60,
-			Verbose:            false,
-		},
-	)
-	if err != nil {
-		log.Error("failed to initialize bigcashe", logger.Error(err))
-		return
-	}
+	humanizer := humanizer.NewHumanizer(map[string]string{
+		"ь": "",
+		"ъ": "",
+	})
+
 	hash := hash.NewHasher()
-	handler := controller.NewHandler(db, log, cache, cfg, hash)
+	handler := controller.NewHandler(db, log, cfg, hash, humanizer)
 
 	handler.Init(server)
 
-	docs.SwaggerInfo.Host = fmt.Sprintf("%s:%d", cfg.Host, cfg.Port)
+	docs.SwaggerInfo.Host = "backend.e-automation.uz"
 	server.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	server.GET("/ping", func(c *gin.Context) {
 		c.String(http.StatusOK, "pong")
 	})
-	err = server.Run(fmt.Sprintf(":%d", cfg.Port))
+
+	err = server.Run(fmt.Sprintf("%s:%d", cfg.Host, cfg.Port))
 	if err != nil {
 		log.Error("router running error", logger.Error(err))
 		return

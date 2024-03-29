@@ -12,6 +12,11 @@ func Migrate(db *gorm.DB) error {
 		&models.Products{},
 		&models.Brand{},
 		&models.Customer{},
+		&models.Pages{},
+		&models.Roles{},
+		&models.RoleItems{},
+		&models.ModuleItems{},
+		&models.Modules{},
 		&models.CustomerFavorites{},
 		&models.Country{},
 		&models.Contact{},
@@ -40,7 +45,6 @@ func Migrate(db *gorm.DB) error {
 	}
 	err = db.AutoMigrate(
 		&models.Vacancy{},
-		// &models.Applicant{},
 		&models.News{},
 		&models.Parameters{},
 		&models.ProductParameters{},

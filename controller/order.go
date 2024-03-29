@@ -348,7 +348,6 @@ func (h *OrderController) GetAllOrders(c *gin.Context) {
 // @Failure			500		{object}	response
 // @Router			/api/order/{id} [POST]
 func (h *OrderController) CreateOrderByAdmin(c *gin.Context) {
-	// customer := h.GetCustomer(c)
 	inputId := c.Param("id")
 	id, err := strconv.ParseInt(inputId, 10, 64)
 	if err != nil {

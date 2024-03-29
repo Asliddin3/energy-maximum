@@ -80,32 +80,32 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "string",
-                        "name": "descriptionEn",
+                        "name": "description_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionRu",
+                        "name": "description_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionUz",
+                        "name": "description_uz",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameEn",
+                        "name": "name_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameRu",
+                        "name": "name_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameUz",
+                        "name": "name_uz",
                         "in": "formData"
                     },
                     {
@@ -234,32 +234,32 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "name": "descriptionEn",
+                        "name": "description_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionRu",
+                        "name": "description_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionUz",
+                        "name": "description_uz",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameEn",
+                        "name": "name_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameRu",
+                        "name": "name_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameUz",
+                        "name": "name_uz",
                         "in": "formData"
                     },
                     {
@@ -409,6 +409,11 @@ const docTemplate = `{
                 }
             },
             "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "this api is for create admin",
                 "consumes": [
                     "application/json"
@@ -643,7 +648,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/models.Admins"
+                            "$ref": "#/definitions/models.AdminResponse"
                         }
                     },
                     "400": {
@@ -804,17 +809,17 @@ const docTemplate = `{
                     },
                     {
                         "type": "boolean",
-                        "name": "isActive",
-                        "in": "query"
-                    },
-                    {
-                        "type": "boolean",
-                        "name": "isSuperuser",
+                        "name": "is_active",
                         "in": "query"
                     },
                     {
                         "type": "string",
                         "name": "password",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "role_id",
                         "in": "query"
                     },
                     {
@@ -1267,17 +1272,17 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "name": "nameEn",
+                        "name": "name_en",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "name": "nameRu",
+                        "name": "name_ru",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "name": "nameUz",
+                        "name": "name_uz",
                         "in": "query"
                     }
                 ],
@@ -1425,32 +1430,32 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "string",
-                        "name": "descriptionEn",
+                        "name": "description_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionRu",
+                        "name": "description_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionUz",
+                        "name": "description_uz",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameEn",
+                        "name": "name_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameRu",
+                        "name": "name_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameUz",
+                        "name": "name_uz",
                         "in": "formData"
                     },
                     {
@@ -1574,32 +1579,32 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "name": "descriptionEn",
+                        "name": "description_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionRu",
+                        "name": "description_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionUz",
+                        "name": "description_uz",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameEn",
+                        "name": "name_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameRu",
+                        "name": "name_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameUz",
+                        "name": "name_uz",
                         "in": "formData"
                     },
                     {
@@ -1726,7 +1731,7 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "name": "pageSize",
+                        "name": "page_size",
                         "in": "query"
                     }
                 ],
@@ -1782,22 +1787,22 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "string",
-                        "name": "descriptionEn",
+                        "name": "description_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionRu",
+                        "name": "description_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionUz",
+                        "name": "description_uz",
                         "in": "formData"
                     },
                     {
                         "type": "boolean",
-                        "name": "isActive",
+                        "name": "is_active",
                         "in": "formData"
                     },
                     {
@@ -1807,17 +1812,17 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "name": "nameEn",
+                        "name": "name_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameRu",
+                        "name": "name_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameUz",
+                        "name": "name_uz",
                         "in": "formData"
                     },
                     {
@@ -1827,12 +1832,12 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "name": "seoDescription",
+                        "name": "seo_description",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "seoTitle",
+                        "name": "seo_title",
                         "in": "formData"
                     },
                     {
@@ -2042,22 +2047,22 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "name": "descriptionEn",
+                        "name": "description_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionRu",
+                        "name": "description_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionUz",
+                        "name": "description_uz",
                         "in": "formData"
                     },
                     {
                         "type": "boolean",
-                        "name": "isActive",
+                        "name": "is_active",
                         "in": "formData"
                     },
                     {
@@ -2067,17 +2072,17 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "name": "nameEn",
+                        "name": "name_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameRu",
+                        "name": "name_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameUz",
+                        "name": "name_uz",
                         "in": "formData"
                     },
                     {
@@ -2087,12 +2092,12 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "name": "seoDescription",
+                        "name": "seo_description",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "seoTitle",
+                        "name": "seo_title",
                         "in": "formData"
                     },
                     {
@@ -2209,12 +2214,12 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "name": "pageSize",
+                        "name": "page_size",
                         "in": "query"
                     },
                     {
                         "type": "integer",
-                        "name": "parentId",
+                        "name": "parent_id",
                         "in": "query"
                     }
                 ],
@@ -2268,42 +2273,42 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "string",
-                        "name": "descriptionEn",
+                        "name": "description_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionRu",
+                        "name": "description_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionUz",
+                        "name": "description_uz",
                         "in": "formData"
                     },
                     {
                         "type": "boolean",
-                        "name": "isActive",
+                        "name": "is_active",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameEn",
+                        "name": "name_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameRu",
+                        "name": "name_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameUz",
+                        "name": "name_uz",
                         "in": "formData"
                     },
                     {
                         "type": "integer",
-                        "name": "parentId",
+                        "name": "parent_id",
                         "in": "formData"
                     },
                     {
@@ -2313,12 +2318,37 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "name": "seoDescription",
+                        "name": "seo_description_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "seoTitle",
+                        "name": "seo_description_ru",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "seo_description_uz",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "seo_title_en",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "seo_title_ru",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "seo_title_uz",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "url",
                         "in": "formData"
                     },
                     {
@@ -2432,12 +2462,12 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "integer",
-                        "name": "additionCategoryId",
+                        "name": "addition_category_id",
                         "in": "query"
                     },
                     {
                         "type": "integer",
-                        "name": "productCategoryId",
+                        "name": "product_category_id",
                         "in": "query"
                     }
                 ],
@@ -2657,42 +2687,42 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "name": "descriptionEn",
+                        "name": "description_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionRu",
+                        "name": "description_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionUz",
+                        "name": "description_uz",
                         "in": "formData"
                     },
                     {
                         "type": "boolean",
-                        "name": "isActive",
+                        "name": "is_active",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameEn",
+                        "name": "name_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameRu",
+                        "name": "name_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameUz",
+                        "name": "name_uz",
                         "in": "formData"
                     },
                     {
                         "type": "integer",
-                        "name": "parentId",
+                        "name": "parent_id",
                         "in": "formData"
                     },
                     {
@@ -2702,12 +2732,37 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "name": "seoDescription",
+                        "name": "seo_description_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "seoTitle",
+                        "name": "seo_description_ru",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "seo_description_uz",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "seo_title_en",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "seo_title_ru",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "seo_title_uz",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "url",
                         "in": "formData"
                     },
                     {
@@ -3293,17 +3348,17 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "name": "nameEn",
+                        "name": "name_en",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "name": "nameRu",
+                        "name": "name_ru",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "name": "nameUz",
+                        "name": "name_uz",
                         "in": "query"
                     }
                 ],
@@ -3922,6 +3977,544 @@ const docTemplate = `{
                 }
             }
         },
+        "/api/modules": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "This api for get Modules",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Module"
+                ],
+                "summary": "Get all Modules",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Modules"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "This API to create a Module.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Module"
+                ],
+                "summary": "Create a Module.",
+                "parameters": [
+                    {
+                        "description": "data body",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.CreateModuleInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/models.Modules"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/modules-items": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "This api for get Modules items",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ModuleItems"
+                ],
+                "summary": "Get all Modules items",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Module ID",
+                        "name": "moduleId",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.ModuleItems"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "This API to create an module item.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ModuleItems"
+                ],
+                "summary": "Create an Module item.",
+                "parameters": [
+                    {
+                        "description": "data body",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.CreateModuleItemInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/models.ModuleItems"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/modules-items/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "This API to get module item by id.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ModuleItems"
+                ],
+                "summary": "Get module by id.",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "id",
+                        "description": "id for get module",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.ModuleItems"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "This API to update an module item.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ModuleItems"
+                ],
+                "summary": "Update a module item.",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "id",
+                        "description": "id for update Module item",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "data body",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.UpdateModuleItemInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.ModuleItems"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "This API to delete module item by id.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ModuleItems"
+                ],
+                "summary": "Delete module item by id.",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "id",
+                        "description": "id for delete module item",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/modules/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "This API to get module by id.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Module"
+                ],
+                "summary": "Get module by id.",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "id",
+                        "description": "id for get module",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Modules"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "This API to update an Module.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Module"
+                ],
+                "summary": "Update an Module.",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "id",
+                        "description": "id for update Module",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "data body",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.UpdateModuleInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Modules"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "This API to get module by id.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Module"
+                ],
+                "summary": "Get module by id.",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "id",
+                        "description": "id for get module",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    }
+                }
+            }
+        },
         "/api/news": {
             "get": {
                 "description": "this api is get news",
@@ -3948,7 +4541,7 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "name": "pageSize",
+                        "name": "page_size",
                         "in": "query"
                     }
                 ],
@@ -4002,32 +4595,32 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "string",
-                        "name": "descriptionEn",
+                        "name": "description_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionRu",
+                        "name": "description_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionUz",
+                        "name": "description_uz",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameEn",
+                        "name": "name_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameRu",
+                        "name": "name_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameUz",
+                        "name": "name_uz",
                         "in": "formData"
                     },
                     {
@@ -4146,32 +4739,32 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "name": "descriptionEn",
+                        "name": "description_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionRu",
+                        "name": "description_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionUz",
+                        "name": "description_uz",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameEn",
+                        "name": "name_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameRu",
+                        "name": "name_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameUz",
+                        "name": "name_uz",
                         "in": "formData"
                     },
                     {
@@ -4293,7 +4886,7 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "name": "pageSize",
+                        "name": "page_size",
                         "in": "query"
                     },
                     {
@@ -4408,17 +5001,17 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "integer",
-                        "name": "customerId",
+                        "name": "customer_id",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "name": "dateFrom",
+                        "name": "date_from",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "name": "dateTo",
+                        "name": "date_to",
                         "in": "query"
                     },
                     {
@@ -4428,7 +5021,7 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "name": "pageSize",
+                        "name": "page_size",
                         "in": "query"
                     },
                     {
@@ -4489,7 +5082,7 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "string",
-                        "name": "fullName",
+                        "name": "full_name",
                         "in": "query"
                     },
                     {
@@ -4499,7 +5092,7 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "name": "pageSize",
+                        "name": "page_size",
                         "in": "query"
                     },
                     {
@@ -4991,6 +5584,485 @@ const docTemplate = `{
                 }
             }
         },
+        "/api/pages": {
+            "get": {
+                "description": "this api is get category",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Get category",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "page_size",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Pages"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "this api is create new category",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Create new category",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "description_en",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "description_ru",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "description_uz",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "boolean",
+                        "name": "is_active",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "name_en",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "name_ru",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "name_uz",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "position",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "seo_description_en",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "seo_description_ru",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "seo_description_uz",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "seo_title_en",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "seo_title_ru",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "seo_title_uz",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "url",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "file",
+                        "description": "file",
+                        "name": "image_file",
+                        "in": "formData"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/models.Pages"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/pages/all": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "this api is get category",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Get category",
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Pages"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/pages/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "this api is Update category",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Update category",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "category id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/models.Pages"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "this api is Update category",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Update category",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "category id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "description_en",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "description_ru",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "description_uz",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "boolean",
+                        "name": "is_active",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "name_en",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "name_ru",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "name_uz",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "position",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "seo_description_en",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "seo_description_ru",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "seo_description_uz",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "seo_title_en",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "seo_title_ru",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "seo_title_uz",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "url",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "file",
+                        "description": "file",
+                        "name": "image_file",
+                        "in": "formData"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/models.Pages"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "this api is to delete category",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Category"
+                ],
+                "summary": "DELETE category",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    }
+                }
+            }
+        },
         "/api/parameter": {
             "get": {
                 "security": [
@@ -5022,7 +6094,12 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "name": "pageSize",
+                        "name": "page_size",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "name": "with_deleted",
                         "in": "query"
                     }
                 ],
@@ -5193,24 +6270,13 @@ const docTemplate = `{
                         "required": true
                     },
                     {
-                        "type": "string",
-                        "name": "nameEn",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "name": "nameRu",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "name": "nameUz",
-                        "in": "query"
-                    },
-                    {
-                        "type": "integer",
-                        "name": "position",
-                        "in": "query"
+                        "description": "data body",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ParametersRequest"
+                        }
                     }
                 ],
                 "responses": {
@@ -5310,12 +6376,17 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "boolean",
-                        "name": "isNew",
+                        "name": "is_active",
                         "in": "query"
                     },
                     {
                         "type": "boolean",
-                        "name": "isTop",
+                        "name": "is_new",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "name": "is_top",
                         "in": "query"
                     },
                     {
@@ -5330,12 +6401,12 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "name": "pageSize",
+                        "name": "page_size",
                         "in": "query"
                     },
                     {
                         "type": "integer",
-                        "name": "parentId",
+                        "name": "parent_id",
                         "in": "query"
                     },
                     {
@@ -5408,62 +6479,63 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "integer",
-                        "name": "brandId",
+                        "name": "brand_id",
                         "in": "formData"
                     },
                     {
                         "type": "integer",
-                        "name": "countryId",
+                        "name": "country_id",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionEn",
+                        "name": "description_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionRu",
+                        "name": "description_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionUz",
+                        "name": "description_uz",
                         "in": "formData"
                     },
                     {
                         "type": "boolean",
-                        "name": "isActive",
+                        "name": "is_active",
                         "in": "formData"
                     },
                     {
                         "type": "boolean",
-                        "name": "isNew",
+                        "name": "is_new",
                         "in": "formData"
                     },
                     {
                         "type": "boolean",
-                        "name": "isTop",
+                        "name": "is_top",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameEn",
+                        "name": "name_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameRu",
-                        "in": "formData"
+                        "name": "name_ru",
+                        "in": "formData",
+                        "required": true
                     },
                     {
                         "type": "string",
-                        "name": "nameUz",
+                        "name": "name_uz",
                         "in": "formData"
                     },
                     {
                         "type": "integer",
-                        "name": "parentId",
+                        "name": "parent_id",
                         "in": "formData"
                     },
                     {
@@ -5478,12 +6550,37 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "name": "seoDescription",
+                        "name": "seo_description_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "seoTitle",
+                        "name": "seo_description_ru",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "seo_description_uz",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "seo_title_en",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "seo_title_ru",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "seo_title_uz",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "url",
                         "in": "formData"
                     },
                     {
@@ -5542,12 +6639,17 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "boolean",
-                        "name": "isNew",
+                        "name": "is_active",
                         "in": "query"
                     },
                     {
                         "type": "boolean",
-                        "name": "isTop",
+                        "name": "is_new",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "name": "is_top",
                         "in": "query"
                     },
                     {
@@ -5562,12 +6664,12 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "name": "pageSize",
+                        "name": "page_size",
                         "in": "query"
                     },
                     {
                         "type": "integer",
-                        "name": "parentId",
+                        "name": "parent_id",
                         "in": "query"
                     },
                     {
@@ -5799,6 +6901,63 @@ const docTemplate = `{
                 }
             }
         },
+        "/api/product/parameter/": {
+            "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "this api will create gotten parameters and delete other relations product parameters",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Create product parameters",
+                "parameters": [
+                    {
+                        "description": "data body",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ProductParameters"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/models.ProductParameters"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    }
+                }
+            }
+        },
         "/api/product/parameter/{id}": {
             "post": {
                 "security": [
@@ -5832,6 +6991,68 @@ const docTemplate = `{
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/models.ProductParamReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/models.Products"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "this api will create gotten parameters and delete other relations product parameters",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Create product parameters",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "product id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "data body",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ProductParamDeleteReq"
                         }
                     }
                 ],
@@ -5944,62 +7165,63 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "name": "brandId",
+                        "name": "brand_id",
                         "in": "formData"
                     },
                     {
                         "type": "integer",
-                        "name": "countryId",
+                        "name": "country_id",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionEn",
+                        "name": "description_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionRu",
+                        "name": "description_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionUz",
+                        "name": "description_uz",
                         "in": "formData"
                     },
                     {
                         "type": "boolean",
-                        "name": "isActive",
+                        "name": "is_active",
                         "in": "formData"
                     },
                     {
                         "type": "boolean",
-                        "name": "isNew",
+                        "name": "is_new",
                         "in": "formData"
                     },
                     {
                         "type": "boolean",
-                        "name": "isTop",
+                        "name": "is_top",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameEn",
+                        "name": "name_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameRu",
-                        "in": "formData"
+                        "name": "name_ru",
+                        "in": "formData",
+                        "required": true
                     },
                     {
                         "type": "string",
-                        "name": "nameUz",
+                        "name": "name_uz",
                         "in": "formData"
                     },
                     {
                         "type": "integer",
-                        "name": "parentId",
+                        "name": "parent_id",
                         "in": "formData"
                     },
                     {
@@ -6014,12 +7236,37 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "name": "seoDescription",
+                        "name": "seo_description_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "seoTitle",
+                        "name": "seo_description_ru",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "seo_description_uz",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "seo_title_en",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "seo_title_ru",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "seo_title_uz",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "name": "url",
                         "in": "formData"
                     },
                     {
@@ -6251,6 +7498,653 @@ const docTemplate = `{
                 }
             }
         },
+        "/api/role-items": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "this api is to get roles",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Get roles",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "page_size",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "description": "All        bool   ` + "`" + `json:\"all\"  form:\"all\"` + "`" + `",
+                        "name": "with_delete",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.RoleItems"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "this api is for Create role",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Create role",
+                "parameters": [
+                    {
+                        "description": "data body",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.RoleItemRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/models.RoleItems"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/role-items/list": {
+            "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "This api is for update Role module item it will delete all existing role module items and will create news",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Update a Role module items",
+                "parameters": [
+                    {
+                        "description": "data body",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.UpdateRoleItemsList"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.RoleItems"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/role-items/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "this api is for Get by id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Get by id",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "role id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.RoleItems"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "this api is for Update roles",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Update roles",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "data body",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.RoleItemRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/models.RoleItems"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "this api is to delete Roles",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Delete Roles",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/roles": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "this api is to get roles",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Get roles",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "page_size",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "description": "All        bool   ` + "`" + `json:\"all\"  form:\"all\"` + "`" + `",
+                        "name": "with_delete",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Roles"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "this api is for Create role",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Create role",
+                "parameters": [
+                    {
+                        "description": "data body",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.RolesRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/models.Roles"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/roles/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "this api is for Get by id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Get by id",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "role id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.RoleWithModuleItems"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "this api is for Update roles",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Update roles",
+                "parameters": [
+                    {
+                        "description": "data body",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.RolesRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/models.Roles"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "this api is to delete Roles",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Delete Roles",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/controller.response"
+                        }
+                    }
+                }
+            }
+        },
         "/api/service": {
             "get": {
                 "description": "this api is get service",
@@ -6314,32 +8208,32 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "string",
-                        "name": "descriptionEn",
+                        "name": "description_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionRu",
+                        "name": "description_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionUz",
+                        "name": "description_uz",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameEn",
+                        "name": "name_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameRu",
+                        "name": "name_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameUz",
+                        "name": "name_uz",
                         "in": "formData"
                     },
                     {
@@ -6463,32 +8357,32 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "name": "descriptionEn",
+                        "name": "description_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionRu",
+                        "name": "description_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionUz",
+                        "name": "description_uz",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameEn",
+                        "name": "name_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameRu",
+                        "name": "name_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameUz",
+                        "name": "name_uz",
                         "in": "formData"
                     },
                     {
@@ -6647,37 +8541,37 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "string",
-                        "name": "descriptionEn",
+                        "name": "description_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionRu",
+                        "name": "description_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionUz",
+                        "name": "description_uz",
                         "in": "formData"
                     },
                     {
                         "type": "boolean",
-                        "name": "isActive",
+                        "name": "is_active",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameEn",
+                        "name": "name_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameRu",
+                        "name": "name_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameUz",
+                        "name": "name_uz",
                         "in": "formData"
                     },
                     {
@@ -6687,47 +8581,47 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "name": "requirementEn",
+                        "name": "requirement_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "requirementRu",
+                        "name": "requirement_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "requirementUz",
+                        "name": "requirement_uz",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "responsibilityEn",
+                        "name": "responsibility_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "responsibilityRu",
+                        "name": "responsibility_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "responsibilityUz",
+                        "name": "responsibility_uz",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "typeEn",
+                        "name": "type_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "typeRu",
+                        "name": "type_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "typeUz",
+                        "name": "type_uz",
                         "in": "formData"
                     },
                     {
@@ -6840,7 +8734,7 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "name": "pageSize",
+                        "name": "page_size",
                         "in": "query"
                     },
                     {
@@ -6850,7 +8744,7 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "name": "vacancyId",
+                        "name": "vacancy_id",
                         "in": "query"
                     }
                 ],
@@ -6914,7 +8808,7 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "name": "vacancyId",
+                        "name": "vacancy_id",
                         "in": "formData"
                     },
                     {
@@ -7302,37 +9196,37 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "name": "descriptionEn",
+                        "name": "description_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionRu",
+                        "name": "description_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "descriptionUz",
+                        "name": "description_uz",
                         "in": "formData"
                     },
                     {
                         "type": "boolean",
-                        "name": "isActive",
+                        "name": "is_active",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameEn",
+                        "name": "name_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameRu",
+                        "name": "name_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "nameUz",
+                        "name": "name_uz",
                         "in": "formData"
                     },
                     {
@@ -7342,47 +9236,47 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "name": "requirementEn",
+                        "name": "requirement_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "requirementRu",
+                        "name": "requirement_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "requirementUz",
+                        "name": "requirement_uz",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "responsibilityEn",
+                        "name": "responsibility_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "responsibilityRu",
+                        "name": "responsibility_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "responsibilityUz",
+                        "name": "responsibility_uz",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "typeEn",
+                        "name": "type_en",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "typeRu",
+                        "name": "type_ru",
                         "in": "formData"
                     },
                     {
                         "type": "string",
-                        "name": "typeUz",
+                        "name": "type_uz",
                         "in": "formData"
                     },
                     {
@@ -7489,16 +9383,16 @@ const docTemplate = `{
                 "created": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "createdAt": {
+                "created_at": {
                     "type": "string"
                 },
-                "descriptionEn": {
+                "description_en": {
                     "type": "string"
                 },
-                "descriptionRu": {
+                "description_ru": {
                     "type": "string"
                 },
-                "descriptionUz": {
+                "description_uz": {
                     "type": "string"
                 },
                 "id": {
@@ -7507,13 +9401,13 @@ const docTemplate = `{
                 "image": {
                     "type": "string"
                 },
-                "nameEn": {
+                "name_en": {
                     "type": "string"
                 },
-                "nameRu": {
+                "name_ru": {
                     "type": "string"
                 },
-                "nameUz": {
+                "name_uz": {
                     "type": "string"
                 },
                 "position": {
@@ -7525,7 +9419,7 @@ const docTemplate = `{
                 "updated": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "updatedAt": {
+                "updated_at": {
                     "type": "string"
                 }
             }
@@ -7541,28 +9435,69 @@ const docTemplate = `{
                 }
             }
         },
-        "models.Admins": {
+        "models.AdminResponse": {
             "type": "object",
             "properties": {
-                "createdAt": {
+                "created_at": {
                     "type": "string"
                 },
-                "deletedAt": {
+                "deleted_at": {
                     "type": "string"
                 },
                 "id": {
                     "type": "integer"
                 },
-                "isActive": {
+                "is_active": {
                     "type": "boolean"
                 },
-                "isSuperuser": {
-                    "type": "boolean"
-                },
-                "lastVisit": {
+                "last_visit": {
                     "type": "string"
                 },
-                "updatedAt": {
+                "moduleItemKeys": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "role": {
+                    "$ref": "#/definitions/models.Roles"
+                },
+                "role_id": {
+                    "type": "integer"
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.Admins": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "is_active": {
+                    "type": "boolean"
+                },
+                "last_visit": {
+                    "type": "string"
+                },
+                "role": {
+                    "$ref": "#/definitions/models.Roles"
+                },
+                "role_id": {
+                    "type": "integer"
+                },
+                "updated_at": {
                     "type": "string"
                 },
                 "username": {
@@ -7573,14 +9508,14 @@ const docTemplate = `{
         "models.AdminsCreateRequest": {
             "type": "object",
             "properties": {
-                "isActive": {
-                    "type": "boolean"
-                },
-                "isSuperuser": {
+                "is_active": {
                     "type": "boolean"
                 },
                 "password": {
                     "type": "string"
+                },
+                "role_id": {
+                    "type": "integer"
                 },
                 "username": {
                     "type": "string"
@@ -7593,25 +9528,25 @@ const docTemplate = `{
                 "created": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "createdAt": {
+                "created_at": {
                     "type": "string"
                 },
                 "id": {
                     "type": "integer"
                 },
-                "nameEn": {
+                "name_en": {
                     "type": "string"
                 },
-                "nameRu": {
+                "name_ru": {
                     "type": "string"
                 },
-                "nameUz": {
+                "name_uz": {
                     "type": "string"
                 },
                 "updated": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "updatedAt": {
+                "updated_at": {
                     "type": "string"
                 }
             }
@@ -7619,13 +9554,13 @@ const docTemplate = `{
         "models.AnalogRequest": {
             "type": "object",
             "properties": {
-                "nameEn": {
+                "name_en": {
                     "type": "string"
                 },
-                "nameRu": {
+                "name_ru": {
                     "type": "string"
                 },
-                "nameUz": {
+                "name_uz": {
                     "type": "string"
                 }
             }
@@ -7636,7 +9571,7 @@ const docTemplate = `{
                 "created": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "createdAt": {
+                "created_at": {
                     "type": "string"
                 },
                 "id": {
@@ -7648,19 +9583,19 @@ const docTemplate = `{
                         "$ref": "#/definitions/models.Products"
                     }
                 },
-                "nameEn": {
+                "name_en": {
                     "type": "string"
                 },
-                "nameRu": {
+                "name_ru": {
                     "type": "string"
                 },
-                "nameUz": {
+                "name_uz": {
                     "type": "string"
                 },
                 "updated": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "updatedAt": {
+                "updated_at": {
                     "type": "string"
                 }
             }
@@ -7668,7 +9603,7 @@ const docTemplate = `{
         "models.Applicant": {
             "type": "object",
             "properties": {
-                "createdAt": {
+                "created_at": {
                     "type": "string"
                 },
                 "description": {
@@ -7692,7 +9627,7 @@ const docTemplate = `{
                 "vacancy": {
                     "$ref": "#/definitions/models.Vacancy"
                 },
-                "vacancyId": {
+                "vacancy_id": {
                     "type": "integer"
                 }
             }
@@ -7703,16 +9638,16 @@ const docTemplate = `{
                 "created": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "createdAt": {
+                "created_at": {
                     "type": "string"
                 },
-                "descriptionEn": {
+                "description_en": {
                     "type": "string"
                 },
-                "descriptionRu": {
+                "description_ru": {
                     "type": "string"
                 },
-                "descriptionUz": {
+                "description_uz": {
                     "type": "string"
                 },
                 "id": {
@@ -7721,13 +9656,13 @@ const docTemplate = `{
                 "image": {
                     "type": "string"
                 },
-                "nameEn": {
+                "name_en": {
                     "type": "string"
                 },
-                "nameRu": {
+                "name_ru": {
                     "type": "string"
                 },
-                "nameUz": {
+                "name_uz": {
                     "type": "string"
                 },
                 "position": {
@@ -7736,7 +9671,7 @@ const docTemplate = `{
                 "updated": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "updatedAt": {
+                "updated_at": {
                     "type": "string"
                 }
             }
@@ -7747,16 +9682,16 @@ const docTemplate = `{
                 "created": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "createdAt": {
+                "created_at": {
                     "type": "string"
                 },
-                "descriptionEn": {
+                "description_en": {
                     "type": "string"
                 },
-                "descriptionRu": {
+                "description_ru": {
                     "type": "string"
                 },
-                "descriptionUz": {
+                "description_uz": {
                     "type": "string"
                 },
                 "id": {
@@ -7765,34 +9700,34 @@ const docTemplate = `{
                 "image": {
                     "type": "string"
                 },
-                "isActive": {
+                "is_active": {
                     "type": "boolean"
                 },
                 "letter": {
                     "type": "string"
                 },
-                "nameEn": {
+                "name_en": {
                     "type": "string"
                 },
-                "nameRu": {
+                "name_ru": {
                     "type": "string"
                 },
-                "nameUz": {
+                "name_uz": {
                     "type": "string"
                 },
                 "position": {
                     "type": "integer"
                 },
-                "seoDescription": {
+                "seo_description": {
                     "type": "string"
                 },
-                "seoTitle": {
+                "seo_title": {
                     "type": "string"
                 },
                 "updated": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "updatedAt": {
+                "updated_at": {
                     "type": "string"
                 }
             }
@@ -7817,22 +9752,22 @@ const docTemplate = `{
                 "created": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "createdAt": {
+                "created_at": {
                     "type": "string"
                 },
                 "deleted": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "deletedAt": {
+                "deleted_at": {
                     "type": "string"
                 },
-                "descriptionEn": {
+                "description_en": {
                     "type": "string"
                 },
-                "descriptionRu": {
+                "description_ru": {
                     "type": "string"
                 },
-                "descriptionUz": {
+                "description_uz": {
                     "type": "string"
                 },
                 "id": {
@@ -7841,37 +9776,52 @@ const docTemplate = `{
                 "image": {
                     "type": "string"
                 },
-                "isActive": {
+                "is_active": {
                     "type": "boolean"
                 },
-                "nameEn": {
+                "name_en": {
                     "type": "string"
                 },
-                "nameRu": {
+                "name_ru": {
                     "type": "string"
                 },
-                "nameUz": {
+                "name_uz": {
                     "type": "string"
                 },
                 "parent": {
                     "$ref": "#/definitions/models.Category"
                 },
-                "parentId": {
+                "parent_id": {
                     "type": "integer"
                 },
                 "position": {
                     "type": "integer"
                 },
-                "seoDescription": {
+                "seo_description_en": {
                     "type": "string"
                 },
-                "seoTitle": {
+                "seo_description_ru": {
+                    "type": "string"
+                },
+                "seo_description_uz": {
+                    "type": "string"
+                },
+                "seo_title_en": {
+                    "type": "string"
+                },
+                "seo_title_ru": {
+                    "type": "string"
+                },
+                "seo_title_uz": {
                     "type": "string"
                 },
                 "updated": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "updatedAt": {
+                "updated_at": {
+                    "type": "string"
+                },
+                "url": {
                     "type": "string"
                 }
             }
@@ -7901,7 +9851,7 @@ const docTemplate = `{
                 "created": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "createdAt": {
+                "created_at": {
                     "type": "string"
                 },
                 "email": {
@@ -7910,7 +9860,7 @@ const docTemplate = `{
                 "id": {
                     "type": "integer"
                 },
-                "isMain": {
+                "is_main": {
                     "type": "boolean"
                 },
                 "latitude": {
@@ -7919,19 +9869,19 @@ const docTemplate = `{
                 "longitude": {
                     "type": "string"
                 },
-                "nameEn": {
+                "name_en": {
                     "type": "string"
                 },
-                "nameRu": {
+                "name_ru": {
                     "type": "string"
                 },
-                "nameUz": {
+                "name_uz": {
                     "type": "string"
                 },
                 "phone": {
                     "type": "string"
                 },
-                "workingHours": {
+                "working_hours": {
                     "type": "string"
                 }
             }
@@ -7945,7 +9895,7 @@ const docTemplate = `{
                 "email": {
                     "type": "string"
                 },
-                "isMain": {
+                "is_main": {
                     "type": "boolean"
                 },
                 "latitude": {
@@ -7954,19 +9904,19 @@ const docTemplate = `{
                 "longitude": {
                     "type": "string"
                 },
-                "nameEn": {
+                "name_en": {
                     "type": "string"
                 },
-                "nameRu": {
+                "name_ru": {
                     "type": "string"
                 },
-                "nameUz": {
+                "name_uz": {
                     "type": "string"
                 },
                 "phone": {
                     "type": "string"
                 },
-                "workingHours": {
+                "working_hours": {
                     "type": "string"
                 }
             }
@@ -7977,19 +9927,19 @@ const docTemplate = `{
                 "created": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "createdAt": {
+                "created_at": {
                     "type": "string"
                 },
                 "id": {
                     "type": "integer"
                 },
-                "nameEn": {
+                "name_en": {
                     "type": "string"
                 },
-                "nameRu": {
+                "name_ru": {
                     "type": "string"
                 },
-                "nameUz": {
+                "name_uz": {
                     "type": "string"
                 }
             }
@@ -7997,13 +9947,55 @@ const docTemplate = `{
         "models.CountryRequest": {
             "type": "object",
             "properties": {
-                "nameEn": {
+                "name_en": {
                     "type": "string"
                 },
-                "nameRu": {
+                "name_ru": {
                     "type": "string"
                 },
-                "nameUz": {
+                "name_uz": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.CreateModuleInput": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.CreateModuleItemInput": {
+            "type": "object",
+            "required": [
+                "description",
+                "end_point",
+                "key",
+                "method",
+                "module_id",
+                "name"
+            ],
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "end_point": {
+                    "type": "string"
+                },
+                "key": {
+                    "type": "string"
+                },
+                "method": {
+                    "type": "string"
+                },
+                "module_id": {
+                    "type": "integer"
+                },
+                "name": {
                     "type": "string"
                 }
             }
@@ -8011,16 +10003,16 @@ const docTemplate = `{
         "models.CustomOrderResponse": {
             "type": "object",
             "properties": {
-                "activeCount": {
+                "active_count": {
                     "type": "integer"
                 },
-                "cancelledCount": {
+                "cancelled_count": {
                     "type": "integer"
                 },
                 "count": {
                     "type": "integer"
                 },
-                "finishedCount": {
+                "finished_count": {
                     "type": "integer"
                 },
                 "orders": {
@@ -8032,7 +10024,7 @@ const docTemplate = `{
                 "page": {
                     "type": "integer"
                 },
-                "pageSize": {
+                "page_size": {
                     "type": "integer"
                 }
             }
@@ -8046,7 +10038,7 @@ const docTemplate = `{
                 "created": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "createdAt": {
+                "created_at": {
                     "type": "string"
                 },
                 "email": {
@@ -8055,7 +10047,7 @@ const docTemplate = `{
                 "id": {
                     "type": "integer"
                 },
-                "lastVisit": {
+                "last_visit": {
                     "type": "string"
                 },
                 "name": {
@@ -8067,7 +10059,7 @@ const docTemplate = `{
                 "updated": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "updatedAt": {
+                "updated_at": {
                     "type": "string"
                 }
             }
@@ -8131,22 +10123,62 @@ const docTemplate = `{
                 }
             }
         },
+        "models.ModuleItems": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "end_point": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "key": {
+                    "type": "string"
+                },
+                "method": {
+                    "type": "string"
+                },
+                "module": {
+                    "$ref": "#/definitions/models.Modules"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.Modules": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
         "models.News": {
             "type": "object",
             "properties": {
                 "created": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "createdAt": {
+                "created_at": {
                     "type": "string"
                 },
-                "descriptionEn": {
+                "description_en": {
                     "type": "string"
                 },
-                "descriptionRu": {
+                "description_ru": {
                     "type": "string"
                 },
-                "descriptionUz": {
+                "description_uz": {
                     "type": "string"
                 },
                 "id": {
@@ -8155,13 +10187,13 @@ const docTemplate = `{
                 "image": {
                     "type": "string"
                 },
-                "nameEn": {
+                "name_en": {
                     "type": "string"
                 },
-                "nameRu": {
+                "name_ru": {
                     "type": "string"
                 },
-                "nameUz": {
+                "name_uz": {
                     "type": "string"
                 },
                 "position": {
@@ -8170,7 +10202,7 @@ const docTemplate = `{
                 "updated": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "updatedAt": {
+                "updated_at": {
                     "type": "string"
                 }
             }
@@ -8178,10 +10210,10 @@ const docTemplate = `{
         "models.OrderApplicant": {
             "type": "object",
             "properties": {
-                "createdAt": {
+                "created_at": {
                     "type": "string"
                 },
-                "fullName": {
+                "full_name": {
                     "type": "string"
                 },
                 "id": {
@@ -8198,7 +10230,7 @@ const docTemplate = `{
         "models.OrderApplicantRequest": {
             "type": "object",
             "properties": {
-                "fullName": {
+                "full_name": {
                     "type": "string"
                 },
                 "message": {
@@ -8218,7 +10250,7 @@ const docTemplate = `{
                 "item": {
                     "$ref": "#/definitions/models.Products"
                 },
-                "itemId": {
+                "item_id": {
                     "type": "integer"
                 },
                 "total": {
@@ -8232,7 +10264,7 @@ const docTemplate = `{
                 "amount": {
                     "type": "integer"
                 },
-                "itemId": {
+                "item_id": {
                     "type": "integer"
                 },
                 "price": {
@@ -8263,19 +10295,19 @@ const docTemplate = `{
                 "created": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "createdAt": {
+                "created_at": {
                     "type": "string"
                 },
                 "customer": {
                     "$ref": "#/definitions/models.Customer"
                 },
-                "customerId": {
+                "customer_id": {
                     "type": "integer"
                 },
                 "deleted": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "deletedAt": {
+                "deleted_at": {
                     "type": "string"
                 },
                 "description": {
@@ -8299,7 +10331,7 @@ const docTemplate = `{
                 "updated": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "updatedAt": {
+                "updated_at": {
                     "type": "string"
                 }
             }
@@ -8310,19 +10342,19 @@ const docTemplate = `{
                 "created": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "createdAt": {
+                "created_at": {
                     "type": "string"
                 },
                 "customer": {
                     "$ref": "#/definitions/models.Customer"
                 },
-                "customerId": {
+                "customer_id": {
                     "type": "integer"
                 },
                 "deleted": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "deletedAt": {
+                "deleted_at": {
                     "type": "string"
                 },
                 "description": {
@@ -8340,7 +10372,81 @@ const docTemplate = `{
                 "updated": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "updatedAt": {
+                "updated_at": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.Pages": {
+            "type": "object",
+            "properties": {
+                "created": {
+                    "$ref": "#/definitions/models.Admins"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "deleted": {
+                    "$ref": "#/definitions/models.Admins"
+                },
+                "deleted_at": {
+                    "type": "string"
+                },
+                "description_en": {
+                    "type": "string"
+                },
+                "description_ru": {
+                    "type": "string"
+                },
+                "description_uz": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "image": {
+                    "type": "string"
+                },
+                "is_active": {
+                    "type": "boolean"
+                },
+                "name_en": {
+                    "type": "string"
+                },
+                "name_ru": {
+                    "type": "string"
+                },
+                "name_uz": {
+                    "type": "string"
+                },
+                "position": {
+                    "type": "integer"
+                },
+                "seo_description_en": {
+                    "type": "string"
+                },
+                "seo_description_ru": {
+                    "type": "string"
+                },
+                "seo_description_uz": {
+                    "type": "string"
+                },
+                "seo_title_en": {
+                    "type": "string"
+                },
+                "seo_title_ru": {
+                    "type": "string"
+                },
+                "seo_title_uz": {
+                    "type": "string"
+                },
+                "updated": {
+                    "$ref": "#/definitions/models.Admins"
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "url": {
                     "type": "string"
                 }
             }
@@ -8351,19 +10457,22 @@ const docTemplate = `{
                 "created": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "createdAt": {
+                "created_at": {
                     "type": "string"
                 },
                 "id": {
                     "type": "integer"
                 },
-                "nameEn": {
+                "is_deleted": {
+                    "type": "boolean"
+                },
+                "name_en": {
                     "type": "string"
                 },
-                "nameRu": {
+                "name_ru": {
                     "type": "string"
                 },
-                "nameUz": {
+                "name_uz": {
                     "type": "string"
                 },
                 "position": {
@@ -8374,13 +10483,13 @@ const docTemplate = `{
         "models.ParametersRequest": {
             "type": "object",
             "properties": {
-                "nameEn": {
+                "name_en": {
                     "type": "string"
                 },
-                "nameRu": {
+                "name_ru": {
                     "type": "string"
                 },
-                "nameUz": {
+                "name_uz": {
                     "type": "string"
                 },
                 "position": {
@@ -8391,10 +10500,10 @@ const docTemplate = `{
         "models.ProductAdditionRequest": {
             "type": "object",
             "properties": {
-                "additionCategoryId": {
+                "addition_category_id": {
                     "type": "integer"
                 },
-                "productCategoryId": {
+                "product_category_id": {
                     "type": "integer"
                 }
             }
@@ -8411,11 +10520,22 @@ const docTemplate = `{
                 "position": {
                     "type": "integer"
                 },
-                "productId": {
+                "product_id": {
                     "type": "integer"
                 },
                 "type": {
                     "type": "string"
+                }
+            }
+        },
+        "models.ProductParamDeleteReq": {
+            "type": "object",
+            "properties": {
+                "parameterIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
                 }
             }
         },
@@ -8430,28 +10550,57 @@ const docTemplate = `{
                 }
             }
         },
+        "models.ProductParameterResponse": {
+            "type": "object",
+            "properties": {
+                "name_en": {
+                    "type": "string"
+                },
+                "name_ru": {
+                    "type": "string"
+                },
+                "name_uz": {
+                    "type": "string"
+                },
+                "parameter_id": {
+                    "type": "integer"
+                },
+                "position": {
+                    "type": "integer"
+                },
+                "val_en": {
+                    "type": "string"
+                },
+                "val_ru": {
+                    "type": "string"
+                },
+                "val_uz": {
+                    "type": "string"
+                }
+            }
+        },
         "models.ProductParameters": {
             "type": "object",
             "properties": {
                 "parameter": {
                     "$ref": "#/definitions/models.Parameters"
                 },
-                "parameterId": {
+                "parameter_id": {
                     "type": "integer"
                 },
                 "product": {
                     "$ref": "#/definitions/models.Products"
                 },
-                "productId": {
+                "product_id": {
                     "type": "integer"
                 },
-                "valEn": {
+                "val_en": {
                     "type": "string"
                 },
-                "valRu": {
+                "val_ru": {
                     "type": "string"
                 },
-                "valUz": {
+                "val_uz": {
                     "type": "string"
                 }
             }
@@ -8479,34 +10628,34 @@ const docTemplate = `{
                 "brand": {
                     "$ref": "#/definitions/models.Brand"
                 },
-                "brandId": {
+                "brand_id": {
                     "type": "integer"
                 },
                 "country": {
                     "$ref": "#/definitions/models.Country"
                 },
-                "countryId": {
+                "country_id": {
                     "type": "integer"
                 },
                 "created": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "createdAt": {
+                "created_at": {
                     "type": "string"
                 },
                 "deleted": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "deletedAt": {
+                "deleted_at": {
                     "type": "string"
                 },
-                "descriptionEn": {
+                "description_en": {
                     "type": "string"
                 },
-                "descriptionRu": {
+                "description_ru": {
                     "type": "string"
                 },
-                "descriptionUz": {
+                "description_uz": {
                     "type": "string"
                 },
                 "id": {
@@ -8515,13 +10664,13 @@ const docTemplate = `{
                 "image": {
                     "type": "string"
                 },
-                "isActive": {
+                "is_active": {
                     "type": "boolean"
                 },
-                "isNew": {
+                "is_new": {
                     "type": "boolean"
                 },
-                "isTop": {
+                "is_top": {
                     "type": "boolean"
                 },
                 "media": {
@@ -8530,25 +10679,25 @@ const docTemplate = `{
                         "$ref": "#/definitions/models.ProductMedia"
                     }
                 },
-                "nameEn": {
+                "name_en": {
                     "type": "string"
                 },
-                "nameRu": {
+                "name_ru": {
                     "type": "string"
                 },
-                "nameUz": {
+                "name_uz": {
                     "type": "string"
                 },
                 "parameters": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/models.ProductParameters"
+                        "$ref": "#/definitions/models.ProductParameterResponse"
                     }
                 },
                 "parent": {
                     "$ref": "#/definitions/models.Category"
                 },
-                "parentId": {
+                "parent_id": {
                     "type": "integer"
                 },
                 "position": {
@@ -8557,16 +10706,31 @@ const docTemplate = `{
                 "price": {
                     "type": "number"
                 },
-                "seoDescription": {
+                "seo_description_en": {
                     "type": "string"
                 },
-                "seoTitle": {
+                "seo_description_ru": {
+                    "type": "string"
+                },
+                "seo_description_uz": {
+                    "type": "string"
+                },
+                "seo_title_en": {
+                    "type": "string"
+                },
+                "seo_title_ru": {
+                    "type": "string"
+                },
+                "seo_title_uz": {
                     "type": "string"
                 },
                 "updated": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "updatedAt": {
+                "updated_at": {
+                    "type": "string"
+                },
+                "url": {
                     "type": "string"
                 }
             }
@@ -8577,34 +10741,34 @@ const docTemplate = `{
                 "brand": {
                     "$ref": "#/definitions/models.Brand"
                 },
-                "brandId": {
+                "brand_id": {
                     "type": "integer"
                 },
                 "country": {
                     "$ref": "#/definitions/models.Country"
                 },
-                "countryId": {
+                "country_id": {
                     "type": "integer"
                 },
                 "created": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "createdAt": {
+                "created_at": {
                     "type": "string"
                 },
                 "deleted": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "deletedAt": {
+                "deleted_at": {
                     "type": "string"
                 },
-                "descriptionEn": {
+                "description_en": {
                     "type": "string"
                 },
-                "descriptionRu": {
+                "description_ru": {
                     "type": "string"
                 },
-                "descriptionUz": {
+                "description_uz": {
                     "type": "string"
                 },
                 "id": {
@@ -8613,28 +10777,28 @@ const docTemplate = `{
                 "image": {
                     "type": "string"
                 },
-                "isActive": {
+                "is_active": {
                     "type": "boolean"
                 },
-                "isNew": {
+                "is_new": {
                     "type": "boolean"
                 },
-                "isTop": {
+                "is_top": {
                     "type": "boolean"
                 },
-                "nameEn": {
+                "name_en": {
                     "type": "string"
                 },
-                "nameRu": {
+                "name_ru": {
                     "type": "string"
                 },
-                "nameUz": {
+                "name_uz": {
                     "type": "string"
                 },
                 "parent": {
                     "$ref": "#/definitions/models.Category"
                 },
-                "parentId": {
+                "parent_id": {
                     "type": "integer"
                 },
                 "position": {
@@ -8643,16 +10807,31 @@ const docTemplate = `{
                 "price": {
                     "type": "number"
                 },
-                "seoDescription": {
+                "seo_description_en": {
                     "type": "string"
                 },
-                "seoTitle": {
+                "seo_description_ru": {
+                    "type": "string"
+                },
+                "seo_description_uz": {
+                    "type": "string"
+                },
+                "seo_title_en": {
+                    "type": "string"
+                },
+                "seo_title_ru": {
+                    "type": "string"
+                },
+                "seo_title_uz": {
                     "type": "string"
                 },
                 "updated": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "updatedAt": {
+                "updated_at": {
+                    "type": "string"
+                },
+                "url": {
                     "type": "string"
                 }
             }
@@ -8677,7 +10856,7 @@ const docTemplate = `{
                 "page": {
                     "type": "integer"
                 },
-                "pageSize": {
+                "page_size": {
                     "type": "integer"
                 },
                 "products": {
@@ -8694,28 +10873,28 @@ const docTemplate = `{
                 "created": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "createdAt": {
+                "created_at": {
                     "type": "string"
                 },
-                "descriptionEn": {
+                "description_en": {
                     "type": "string"
                 },
-                "descriptionRu": {
+                "description_ru": {
                     "type": "string"
                 },
-                "descriptionUz": {
+                "description_uz": {
                     "type": "string"
                 },
                 "id": {
                     "type": "integer"
                 },
-                "nameEn": {
+                "name_en": {
                     "type": "string"
                 },
-                "nameRu": {
+                "name_ru": {
                     "type": "string"
                 },
-                "nameUz": {
+                "name_uz": {
                     "type": "string"
                 }
             }
@@ -8723,22 +10902,158 @@ const docTemplate = `{
         "models.PublicOfferRequest": {
             "type": "object",
             "properties": {
-                "descriptionEn": {
+                "description_en": {
                     "type": "string"
                 },
-                "descriptionRu": {
+                "description_ru": {
                     "type": "string"
                 },
-                "descriptionUz": {
+                "description_uz": {
                     "type": "string"
                 },
-                "nameEn": {
+                "name_en": {
                     "type": "string"
                 },
-                "nameRu": {
+                "name_ru": {
                     "type": "string"
                 },
-                "nameUz": {
+                "name_uz": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.RoleItemRequest": {
+            "type": "object",
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "role_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.RoleItems": {
+            "type": "object",
+            "properties": {
+                "created": {
+                    "$ref": "#/definitions/models.Admins"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "key": {
+                    "type": "string"
+                },
+                "module_item": {
+                    "$ref": "#/definitions/models.ModuleItems"
+                },
+                "role": {
+                    "$ref": "#/definitions/models.Roles"
+                },
+                "role_id": {
+                    "type": "integer"
+                },
+                "updated": {
+                    "$ref": "#/definitions/models.Admins"
+                },
+                "updated_at": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.RoleWithModuleItems": {
+            "type": "object",
+            "properties": {
+                "comment": {
+                    "type": "string"
+                },
+                "created": {
+                    "$ref": "#/definitions/models.Admins"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "is_active": {
+                    "type": "boolean"
+                },
+                "is_deleted": {
+                    "type": "boolean"
+                },
+                "key": {
+                    "type": "string"
+                },
+                "module_item_keys": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "title": {
+                    "type": "string"
+                },
+                "updated": {
+                    "$ref": "#/definitions/models.Admins"
+                },
+                "updated_at": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.Roles": {
+            "type": "object",
+            "properties": {
+                "comment": {
+                    "type": "string"
+                },
+                "created": {
+                    "$ref": "#/definitions/models.Admins"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "is_active": {
+                    "type": "boolean"
+                },
+                "is_deleted": {
+                    "type": "boolean"
+                },
+                "key": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "updated": {
+                    "$ref": "#/definitions/models.Admins"
+                },
+                "updated_at": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.RolesRequest": {
+            "type": "object",
+            "properties": {
+                "comment": {
+                    "type": "string"
+                },
+                "is_active": {
+                    "type": "boolean"
+                },
+                "key": {
+                    "type": "string"
+                },
+                "title": {
                     "type": "string"
                 }
             }
@@ -8749,16 +11064,16 @@ const docTemplate = `{
                 "created": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "createdAt": {
+                "created_at": {
                     "type": "string"
                 },
-                "descriptionEn": {
+                "description_en": {
                     "type": "string"
                 },
-                "descriptionRu": {
+                "description_ru": {
                     "type": "string"
                 },
-                "descriptionUz": {
+                "description_uz": {
                     "type": "string"
                 },
                 "id": {
@@ -8767,13 +11082,13 @@ const docTemplate = `{
                 "image": {
                     "type": "string"
                 },
-                "nameEn": {
+                "name_en": {
                     "type": "string"
                 },
-                "nameRu": {
+                "name_ru": {
                     "type": "string"
                 },
-                "nameUz": {
+                "name_uz": {
                     "type": "string"
                 },
                 "position": {
@@ -8782,7 +11097,7 @@ const docTemplate = `{
                 "updated": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "updatedAt": {
+                "updated_at": {
                     "type": "string"
                 }
             }
@@ -8792,6 +11107,68 @@ const docTemplate = `{
             "properties": {
                 "accessToken": {
                     "type": "string"
+                },
+                "moduleItemKeys": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "models.UpdateModuleInput": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.UpdateModuleItemInput": {
+            "type": "object",
+            "required": [
+                "description",
+                "end_point",
+                "key",
+                "method",
+                "module_id",
+                "name"
+            ],
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "end_point": {
+                    "type": "string"
+                },
+                "key": {
+                    "type": "string"
+                },
+                "method": {
+                    "type": "string"
+                },
+                "module_id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.UpdateRoleItemsList": {
+            "type": "object",
+            "properties": {
+                "module_item_keys": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "role_id": {
+                    "type": "integer"
                 }
             }
         },
@@ -8801,16 +11178,16 @@ const docTemplate = `{
                 "created": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "createdAt": {
+                "created_at": {
                     "type": "string"
                 },
-                "descriptionEn": {
+                "description_en": {
                     "type": "string"
                 },
-                "descriptionRu": {
+                "description_ru": {
                     "type": "string"
                 },
-                "descriptionUz": {
+                "description_uz": {
                     "type": "string"
                 },
                 "id": {
@@ -8819,55 +11196,55 @@ const docTemplate = `{
                 "image": {
                     "type": "string"
                 },
-                "isActive": {
+                "is_active": {
                     "type": "boolean"
                 },
-                "isDeleted": {
+                "is_deleted": {
                     "type": "boolean"
                 },
-                "nameEn": {
+                "name_en": {
                     "type": "string"
                 },
-                "nameRu": {
+                "name_ru": {
                     "type": "string"
                 },
-                "nameUz": {
+                "name_uz": {
                     "type": "string"
                 },
                 "region": {
                     "type": "string"
                 },
-                "requirementEn": {
+                "requirement_en": {
                     "type": "string"
                 },
-                "requirementRu": {
+                "requirement_ru": {
                     "type": "string"
                 },
-                "requirementUz": {
+                "requirement_uz": {
                     "type": "string"
                 },
-                "responsibilityEn": {
+                "responsibility_en": {
                     "type": "string"
                 },
-                "responsibilityRu": {
+                "responsibility_ru": {
                     "type": "string"
                 },
-                "responsibilityUz": {
+                "responsibility_uz": {
                     "type": "string"
                 },
-                "typeEn": {
+                "type_en": {
                     "type": "string"
                 },
-                "typeRu": {
+                "type_ru": {
                     "type": "string"
                 },
-                "typeUz": {
+                "type_uz": {
                     "type": "string"
                 },
                 "updated": {
                     "$ref": "#/definitions/models.Admins"
                 },
-                "updatedAt": {
+                "updated_at": {
                     "type": "string"
                 }
             }

@@ -2,17 +2,15 @@ package models
 
 import "time"
 
-type Category struct {
+type Pages struct {
 	ID               int        `gorm:"type:bigint;primaryKey" json:"id"`
 	NameUz           string     `gorm:"type:varchar(250) not null" json:"name_uz"`
 	NameRu           string     `gorm:"type:varchar(250) not null" json:"name_ru"`
 	NameEn           string     `gorm:"type:varchar(250) not null" json:"name_en"`
-	Url              string     `gorm:"type:varchar(250);default:null;unique" json:"url"`
+	Url              string     `gorm:"type:varchar(250);default:null" json:"url"`
 	DescriptionRu    string     `gorm:"type:text not null" json:"description_ru"`
 	DescriptionUz    string     `gorm:"type:text not null" json:"description_uz"`
 	DescriptionEn    string     `gorm:"type:text not null" json:"description_en"`
-	Category         *Category  `gorm:"foreignKey:CategoryID" json:"parent"`
-	CategoryID       *int       `gorm:"type:integer;default:null;index" json:"parent_id"`
 	Position         *int       `gorm:"type:integer;default:null;index" json:"position"`
 	SeoTitleRu       string     `gorm:"type:varchar(150)" json:"seo_title_ru"`
 	SeoTitleUz       string     `gorm:"type:varchar(150)" json:"seo_title_uz"`
@@ -33,18 +31,7 @@ type Category struct {
 	DeletedAt        *time.Time `gorm:"type:timestamptz;default:null" json:"deleted_at"`
 }
 
-type ProductAdditions struct {
-	ProductCategoryID  int       `gorm:"type:integer not null" json:"product_category_id"`
-	ProductCategory    *Category `gorm:"foreignKey:ProductCategoryID;unique_index:idx_index_addition" json:"-"`
-	AdditionCategoryID int       `gorm:"type:integer not null" json:"addition_category_id"`
-	AdditionCategory   *Category `gorm:"foreignKey:AdditionCategoryID;unique_index:idx_index_addition" json:"-"`
-}
-type ProductAdditionRequest struct {
-	ProductCategoryID  int `json:"product_category_id" form:"product_category_id"`
-	AdditionCategoryID int `json:"addition_category_id" form:"addition_category_id"`
-}
-
-type CategoryRequest struct {
+type PagesRequest struct {
 	NameRu           string `json:"name_ru" form:"name_ru"`
 	NameEn           string `json:"name_en" form:"name_en"`
 	NameUz           string `json:"name_uz" form:"name_uz"`
@@ -53,7 +40,6 @@ type CategoryRequest struct {
 	DescriptionEn    string `json:"description_en" form:"description_en"`
 	DescriptionRu    string `json:"description_ru" form:"description_ru"`
 	DescriptionUz    string `json:"description_uz" form:"description_uz"`
-	ParentID         int    `json:"parent_id" form:"parent_id"`
 	IsActive         *bool  `json:"is_active" form:"is_active"`
 	SeoTitleRu       string `json:"seo_title_ru" form:"seo_title_ru"`
 	SeoTitleUz       string `json:"seo_title_uz" form:"seo_title_uz"`
@@ -63,9 +49,8 @@ type CategoryRequest struct {
 	SeoDescriptionEn string `json:"seo_description_en" form:"seo_description_en"`
 	Image            string `json:"-" form:"-"`
 }
-type CategoryFilter struct {
+type PagesFilter struct {
 	Name     string `json:"name" form:"name"`
-	ParentID *int   `json:"parent_id" form:"parent_id"`
 	Page     int    `json:"page" form:"page"`
 	PageSize int    `json:"page_size" form:"page_size"`
 }

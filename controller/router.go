@@ -1,9 +1,6 @@
 package controller
 
 import (
-	"encoding/json"
-	"errors"
-	"fmt"
 	"net/http"
 	"strings"
 	"time"
@@ -12,32 +9,32 @@ import (
 	"github.com/Asliddin3/energy-maximum/models"
 	"github.com/Asliddin3/energy-maximum/pkg/file"
 	"github.com/Asliddin3/energy-maximum/pkg/hash"
+	"github.com/Asliddin3/energy-maximum/pkg/humanizer"
 	"github.com/Asliddin3/energy-maximum/pkg/logger"
 	"github.com/Asliddin3/energy-maximum/pkg/sms"
 	"github.com/Asliddin3/energy-maximum/pkg/utils"
 
-	"github.com/allegro/bigcache/v3"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 )
 
 type Handler struct {
 	db           *gorm.DB
-	BigCache     *bigcache.BigCache
 	filesService *file.FilesService
 	log          *logger.MyLogger
 	cfg          *config.Config
 	hash         *hash.Hash
+	humanizer    *humanizer.ManagerHumanizer
 }
 
-func NewHandler(db *gorm.DB, log *logger.MyLogger, cache *bigcache.BigCache, cfg config.Config, hash *hash.Hash) *Handler {
+func NewHandler(db *gorm.DB, log *logger.MyLogger, cfg config.Config, hash *hash.Hash, hum *humanizer.ManagerHumanizer) *Handler {
 	return &Handler{
 		db:           db,
 		log:          log,
 		filesService: file.NewFilesService(cfg),
-		BigCache:     cache,
 		cfg:          &cfg,
 		hash:         hash,
+		humanizer:    hum,
 	}
 }
 
@@ -46,6 +43,9 @@ func (h *Handler) Init(server *gin.Engine) {
 	api := server.Group("api")
 	{
 		h.NewAnalogController(api)
+		h.NewPagesController(api)
+		h.NewModuleController(api)
+		h.NewRolesController(api)
 		h.NewPublicOfferController(api)
 		h.NewCategoryController(api)
 		h.NewServiceController(api)
@@ -92,45 +92,15 @@ func (h *Handler) DeserializeCustomer() gin.HandlerFunc {
 			ctx.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"status": "fail", "message": "You are not logged in"})
 			return
 		}
-		tokenKey, err := utils.ValidateToken(access_token, h.cfg.AccessTokenPublicKey)
+		sub, err := utils.ValidateToken(access_token, h.cfg.AccessTokenPublicKey)
 		if err != nil {
 			ctx.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"status": "fail", "message": err.Error()})
 			return
 		}
-		sub := strings.Split(tokenKey.(string), ":")[1]
-		key := fmt.Sprintf("customer:%v", sub)
-		var user models.CustomerMetadata
-		userByte, err := h.BigCache.Get(key)
-		if err != nil && !errors.Is(err, bigcache.ErrEntryNotFound) {
-			ctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"status": "fail", "message": err.Error()})
-			return
+		user := models.CustomerMetadata{
+			Id: int(sub.(float64)),
 		}
-		if err == bigcache.ErrEntryNotFound {
-			result := h.db.Debug().Model(&models.Customer{}).Where("id=?", fmt.Sprint(sub)).
-				Select("id").First(&user)
-			if result.Error != nil {
-				ctx.AbortWithStatusJSON(http.StatusForbidden, gin.H{"status": "fail", "message": "the user belonging to this token no longer exists"})
-				return
-			}
-			fmt.Println("gotten user from db", user)
-			res, err := json.Marshal(&user)
-			if err != nil {
-				ctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"status": "fail", "message": err.Error()})
-				return
-			}
 
-			err = h.BigCache.Set(key, res)
-			if err != nil {
-				ctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"status": "fail", "message": err.Error()})
-				return
-			}
-		} else {
-			err = json.Unmarshal(userByte, &user)
-			if err != nil {
-				ctx.AbortWithStatusJSON(http.StatusInternalServerError, err.Error())
-				return
-			}
-		}
 		err = h.db.Model(&models.Customer{}).Where("id=?", user.Id).UpdateColumn("last_visit", time.Now()).Error
 		if err != nil {
 			ctx.AbortWithStatusJSON(http.StatusInternalServerError, err.Error())
@@ -167,42 +137,16 @@ func (h *Handler) DeserializeAdmin() gin.HandlerFunc {
 			ctx.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"status": "fail", "message": err.Error()})
 			return
 		}
-		key := fmt.Sprintf("admin:%v", sub)
-		var user models.AdminMetadata
-		userByte, err := h.BigCache.Get(key)
-		if err != nil && !errors.Is(err, bigcache.ErrEntryNotFound) {
-			ctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"status": "fail", "message": err.Error()})
-			return
+		user := models.AdminMetadata{
+			Id: int(sub.(float64)),
 		}
-		if err == bigcache.ErrEntryNotFound {
-			result := h.db.Debug().Model(&models.Admins{}).Where("id=? AND deleted_at IS NULL AND is_active=true", fmt.Sprint(sub)).
-				Select("id,is_superuser").First(&user)
-			if result.Error != nil {
-				ctx.AbortWithStatusJSON(http.StatusForbidden, gin.H{"status": "fail", "message": "the user belonging to this token no longer exists"})
-				return
-			}
-			fmt.Println("gotten user from db", user)
-			res, err := json.Marshal(&user)
-			if err != nil {
-				ctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"status": "fail", "message": err.Error()})
-				return
-			}
 
-			err = h.BigCache.Set(key, res)
-			if err != nil {
-				ctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"status": "fail", "message": err.Error()})
-				return
-			}
-		} else {
-			err = json.Unmarshal(userByte, &user)
-			if err != nil {
-				ctx.AbortWithStatusJSON(http.StatusInternalServerError, err.Error())
-				return
-			}
-		}
-		err = h.db.Model(&models.Admins{}).Where("id=?", user.Id).UpdateColumn("last_visit", time.Now()).Error
-		if err != nil {
-			ctx.AbortWithStatusJSON(http.StatusInternalServerError, err.Error())
+		rows := h.db.Model(&models.Admins{}).Where("id=? AND deleted_at IS NULL AND is_active=true", sub).UpdateColumn("last_visit", time.Now())
+		if rows.Error != nil {
+			ctx.AbortWithStatusJSON(http.StatusInternalServerError, rows.Error.Error())
+			return
+		} else if rows.RowsAffected == 0 {
+			newResponse(ctx, http.StatusUnauthorized, "not found admin")
 			return
 		}
 		ctx.Set("admin", user)
